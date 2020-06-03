@@ -4,7 +4,9 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { cart } from "reducers/cart";
 import { products } from "reducers/products";
 import { user } from "reducers/user";
-import { Button } from "components/Button";
+import { Login } from "components/Login";
+import { Signup } from "components/Signup";
+import { BrowserRouter, Switch, Route } from "react-router-dom"; // added
 
 const reducer = combineReducers({
   cart: cart.reducer,
@@ -17,8 +19,21 @@ const store = configureStore({ reducer });
 export const App = () => {
   return (
     <Provider store={store}>
-      <div>Find me in src/app.js! </div>
-      <Button />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact>
+            <div>Första sidan </div>
+          </Route>
+
+          <Route path="/login">
+            <Login />
+          </Route>
+
+          <Route path="/signup">
+            <Signup />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </Provider>
   );
 };
