@@ -68,31 +68,31 @@ export const login = (email, password) => {
 //Thunk to sign up
 export const signup = (event, name, email, password, street, postcode, city, telephone) => {
   const SIGNUP_URL = ''
-return (dispatch) => {
-  event.preventDefault() //do we need this?
-  fetch(SIGNUP_URL, {
-    method: 'POST',
-    body: JSON.stringify({ name, email, password, street, postcode, city, telephone }),
-    headers: { 'Content-Type': 'application/json' },
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw 'Could not create account.'
-      }
-      return res.json()
+  return (dispatch) => {
+    event.preventDefault() //do we need this?
+    fetch(SIGNUP_URL, {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password, street, postcode, city, telephone }),
+      headers: { 'Content-Type': 'application/json' },
     })
-    .then((json) => {
-      dispatch(
-        user.actions.setAccessToken({
-          accessToken: json.accessToken,
-        })
-      )
-      dispatch(user.actions.setUserId({ userId: json.userId }))
-    })
-    .catch((err) => {
-      dispatch(user.actions.setErrorMessage({ errorMessage: err }))
-    })
-}
+      .then((res) => {
+        if (!res.ok) {
+          throw 'Could not create account.'
+        }
+        return res.json()
+      })
+      .then((json) => {
+        dispatch(
+          user.actions.setAccessToken({
+            accessToken: json.accessToken,
+          })
+        )
+        dispatch(user.actions.setUserId({ userId: json.userId }))
+      })
+      .catch((err) => {
+        dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+      })
+  }
 }
 
 //Thunk to get users profile page
