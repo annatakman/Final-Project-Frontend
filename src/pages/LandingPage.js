@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import { FeatureGrid } from 'components/FeaturedGrid'
 
 const Container = styled.div`
-  height: 100vh;  
+   
 `
 const HeroImage = styled.div`
   background-image: url('https://res.cloudinary.com/everlane/image/upload/c_scale/dpr_1.5,f_auto,q_65/v1/i/f52990bb_f4e3.jpg');
-  height: 70%;
+  height: 70vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,6 +32,7 @@ export const LandingPage = () => {
           <SubTitle>Give clothes new life</SubTitle>
         </HeroTextContainer>
       </HeroImage>
+      <FeatureGrid />
     </Container>
   )
 }

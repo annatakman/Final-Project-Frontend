@@ -1,4 +1,4 @@
-/* import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 export const products = createSlice({
   name: 'products',
@@ -7,14 +7,14 @@ export const products = createSlice({
     setProducts: (state, action) => {
       state.products = action.payload
     },
-    return: () => {
+    /* return: () => {
       return initialState
-    }
+    } */
   }
-}) */
+})
 
 //Thunk to fetch products from our API
-/* export const fetchProducts = () => {
+export const fetchProducts = () => {
   const PRODUCTS_URL = 'http://localhost:8080/products'
   return (dispatch) => {
     fetch(PRODUCTS_URL)
@@ -23,4 +23,4 @@ export const products = createSlice({
         dispatch(products.actions.setProducts(json))
       })
   }
-} */
+}
