@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Button } from "./Button";
 import { useDispatch, useSelector } from "react-redux";
 import { user, login } from "../reducers/user";
+import { Profilpage } from "./Profilpage";
 
 //const LOGIN_URL = "http://localhost:8080/sessions";
 
@@ -36,20 +37,37 @@ export const Login = () => {
     dispatch(login(email, password));
   };
 
-  return (
-    <Section>
-      <Form onSubmit={handleLogin}>
-        <label for="email">
-          Email
-          <input type="email" id="email" name="email" />
-        </label>
-        <label for="password">
-          Password
-          <input type="password" id="password" name="password" />
-        </label>
+  if (!accessToken) {
+    // If user is logged out, show login form
 
-        <Button type="submit" title="Login" />
-      </Form>
-    </Section>
-  );
+    return (
+      <Section>
+        <Form onSubmit={handleLogin}>
+          <label for="email">
+            Email
+            <input
+              required
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </label>
+          <label for="password">
+            Password
+            <input
+              type="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </label>
+
+          <Button type="submit" title="Login" />
+        </Form>
+      </Section>
+    );
+  } else {
+    // If user is logged in, show profile
+    return <Profilpage />;
+  }
 };
+//export default Login;
