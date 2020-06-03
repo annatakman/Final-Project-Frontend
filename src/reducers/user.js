@@ -91,23 +91,6 @@ return (dispatch) => {
     .catch((err) => {
       dispatch(user.actions.setErrorMessage({ errorMessage: err }))
     })
-      .then((res) => {
-        if (!res.ok) {
-          throw 'Could not create account.'
-        }
-        return res.json()
-      })
-      .then((json) => {
-        dispatch(
-          user.actions.setAccessToken({
-            accessToken: json.accessToken,
-          })
-        )
-        dispatch(user.actions.setUserId({ userId: json.userId }))
-      })
-      .catch((err) => {
-        dispatch(user.actions.setErrorMessage({ errorMessage: err }))
-      })
   }
 }
 
