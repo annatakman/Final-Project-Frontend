@@ -37,12 +37,12 @@ export const user = createSlice({
 })
 
 // Thunk to login user
-export const login = (name, password) => {
+export const login = (email, password) => {
   const LOGIN_URL = ''
   return (dispatch) => {
     fetch(LOGIN_URL, {
       method: 'POST',
-      body: JSON.stringify({ name, password }),
+      body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => {
@@ -63,6 +63,36 @@ export const login = (name, password) => {
         dispatch(user.actions.setErrorMessage({ errorMessage: err }))
       })
   }
+}
+
+//Thunk to sign up new user
+export const signup = (event, name, email, password, street, postcode, city, telephone) => {
+  const SIGNUP_URL = ''
+return (dispatch) => {
+  event.preventDefault() //do we need this?
+  fetch(SIGNUP_URL, {
+    method: 'POST',
+    body: JSON.stringify({ name, email, password, street, postcode, city, telephone }),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw 'Could not create account.'
+      }
+      return res.json()
+    })
+    .then((json) => {
+      dispatch(
+        user.actions.setAccessToken({
+          accessToken: json.accessToken,
+        })
+      )
+      dispatch(user.actions.setUserId({ userId: json.userId }))
+    })
+    .catch((err) => {
+      dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+    })
+}
 }
 
 //Thunk to get users profile page
