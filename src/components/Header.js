@@ -17,7 +17,6 @@ const ListItem = styled.li`
   float: left;
   padding: 1rem;
   position: relative;
-  text-decoration: none;
 `
 
 export const Header = () => {
@@ -40,9 +39,9 @@ export const Header = () => {
         <Link to='/signup'>
           <ListItem>
             Sign up
-        </ListItem>
+          </ListItem>
         </Link>
       </NavList>
-    </Nav >
+    </Nav>
   )
 }
