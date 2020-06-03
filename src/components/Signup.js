@@ -27,7 +27,7 @@ const Form = styled.form`
 
 export const Signup = () => {
   const dispatch = useDispatch();
-  const accessToken = useSelector((store) => store.user.login.accessToken);
+  //const accessToken = useSelector((store) => store.user.login.accessToken);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -38,7 +38,7 @@ export const Signup = () => {
 
     fetch(SIGNUP_URL, {
       method: "POST",
-      body: JSON.stringify({ name, password }),
+      body: JSON.stringify({ name, email, password }),
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => {

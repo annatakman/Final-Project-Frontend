@@ -4,5 +4,5 @@ import React from "react";
 //import { Button } from "./Button";
 
 export const Profilpage = () => {
-  return <div> det här är din pril</div>;
+  return <div> det här är din profil</div>;
 };
