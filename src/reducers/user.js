@@ -25,7 +25,7 @@ export const user = createSlice({
     },
     setProfilePage: (state, action) => {
       const { profilePage } = action.payload;
-      //console.log(`Secret Message: ${profilePage}`);
+      //console.log(`Secret Message: ${profilePage}`)
       state.login.profilePage = profilePage;
     },
     setErrorMessage: (state, action) => {
@@ -37,14 +37,12 @@ export const user = createSlice({
 });
 
 // Thunk to login user
-export const login = (name, password) => {
-  //byta name till email
-  //byta name till email
+export const login = (email, password) => {
   const LOGIN_URL = "http://localhost:8080/sessions";
   return (dispatch) => {
     fetch(LOGIN_URL, {
       method: "POST",
-      body: JSON.stringify({ name, password }), //byta name till email
+      body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => {
@@ -67,13 +65,75 @@ export const login = (name, password) => {
   };
 };
 
+//Thunk to sign up new user
+export const signup = (
+  name,
+  email,
+  password,
+  street,
+  postcode,
+  city,
+  telephone
+) => {
+  const SIGNUP_URL = "http://localhost:8080/users";
+  return (dispatch) => {
+    fetch(SIGNUP_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        street,
+        postcode,
+        city,
+        telephone,
+      }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw "Could not create account.";
+        }
+        return res.json();
+      })
+      .then((json) => {
+        dispatch(
+          user.actions.setAccessToken({
+            accessToken: json.accessToken,
+          })
+        );
+        dispatch(user.actions.setUserId({ userId: json.userId }));
+      })
+      .catch((err) => {
+        dispatch(user.actions.setErrorMessage({ errorMessage: err }));
+      })
+      .then((res) => {
+        if (!res.ok) {
+          throw "Could not create account.";
+        }
+        return res.json();
+      })
+      .then((json) => {
+        dispatch(
+          user.actions.setAccessToken({
+            accessToken: json.accessToken,
+          })
+        );
+        dispatch(user.actions.setUserId({ userId: json.userId }));
+      })
+      .catch((err) => {
+        dispatch(user.actions.setErrorMessage({ errorMessage: err }));
+      });
+  };
+};
+
 //Thunk to get users profile page
-export const getProfilePage = () => {
-  const USERS_URL = "";
+export const getProfilePage = (userId) => {
+  const USERS_URL = `http://localhost:8080/users/${userId}`;
   return (dispatch, getState) => {
     const accessToken = getState().user.login.accessToken;
     const userId = getState().user.login.userId;
-    fetch(`${USERS_URL}/${userId}/profile`, {
+    fetch(USERS_URL, {
       method: "GET",
       headers: { Authorization: accessToken },
     })
