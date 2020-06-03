@@ -6,7 +6,7 @@ const initialState = {
     userId: 0,
     secretMessage: null,
     errorMessage: null,
-  },
+  }
 };
 
 export const user = createSlice({
@@ -107,51 +107,6 @@ export const signup = (
       .catch((err) => {
         dispatch(user.actions.setErrorMessage({ errorMessage: err }));
       })
-  };
-};
-
-//Thunk to sign up new user
-export const signup = (
-  name,
-  email,
-  password,
-  street,
-  postcode,
-  city,
-  telephone
-) => {
-  const SIGNUP_URL = "http://localhost:8080/users";
-  return (dispatch) => {
-    fetch(SIGNUP_URL, {
-      method: "POST",
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-        street,
-        postcode,
-        city,
-        telephone,
-      }),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw "Could not create account.";
-        }
-        return res.json();
-      })
-      .then((json) => {
-        dispatch(
-          user.actions.setAccessToken({
-            accessToken: json.accessToken,
-          })
-        );
-        dispatch(user.actions.setUserId({ userId: json.userId }));
-      })
-      .catch((err) => {
-        dispatch(user.actions.setErrorMessage({ errorMessage: err }));
-      });
   };
 };
 
