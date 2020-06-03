@@ -6,6 +6,7 @@ import { products } from "reducers/products";
 import { user } from "reducers/user";
 import { Login } from "components/Login";
 import { Signup } from "components/Signup";
+import { Profilpage } from "components/Profilpage";
 import { BrowserRouter, Switch, Route } from "react-router-dom"; // added
 
 const reducer = combineReducers({
@@ -31,6 +32,10 @@ export const App = () => {
 
           <Route path="/signup">
             <Signup />
+          </Route>
+
+          <Route path="/profilpage">
+            <Profilpage />
           </Route>
         </Switch>
       </BrowserRouter>

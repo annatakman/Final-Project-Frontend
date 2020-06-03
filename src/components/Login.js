@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { Button } from "./Button";
+import { useDispatch, useSelector } from "react-redux";
+import { user, login } from "../reducers/user";
 
 //const LOGIN_URL = "http://localhost:8080/sessions";
 
@@ -24,7 +26,16 @@ const Form = styled.form`
 `;
 
 export const Login = () => {
-  const handleLogin = (event) => {};
+  const dispatch = useDispatch();
+  const accessToken = useSelector((store) => store.user.login.accessToken);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    dispatch(login(email, password));
+  };
+
   return (
     <Section>
       <Form onSubmit={handleLogin}>
