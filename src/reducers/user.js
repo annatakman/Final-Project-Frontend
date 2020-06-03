@@ -112,7 +112,7 @@ return (dispatch) => {
 }
 
 //Thunk to get users profile page
-export const getProfilePage = () => {
+export const getProfilePage = (userId) => {
   const USERS_URL = `http://localhost:8080/users/${userId}`
   return (dispatch, getState) => {
     const accessToken = getState().user.login.accessToken;
