@@ -25,7 +25,7 @@ export const user = createSlice({
     },
     setProfilePage: (state, action) => {
       const { profilePage } = action.payload
-      //console.log(`Secret Message: ${profilePage}`);
+      //console.log(`Secret Message: ${profilePage}`)
       state.login.profilePage = profilePage
     },
     setErrorMessage: (state, action) => {
@@ -38,7 +38,7 @@ export const user = createSlice({
 
 // Thunk to login user
 export const login = (email, password) => {
-  const LOGIN_URL = ''
+  const LOGIN_URL = 'http://localhost:8080/sessions'
   return (dispatch) => {
     fetch(LOGIN_URL, {
       method: 'POST',
@@ -65,15 +65,31 @@ export const login = (email, password) => {
   }
 }
 
-//Thunk to sign up
-export const signup = (event, name, email, password, street, postcode, city, telephone) => {
-  const SIGNUP_URL = ''
-  return (dispatch) => {
-    event.preventDefault() //do we need this?
-    fetch(SIGNUP_URL, {
-      method: 'POST',
-      body: JSON.stringify({ name, email, password, street, postcode, city, telephone }),
-      headers: { 'Content-Type': 'application/json' },
+//Thunk to sign up new user
+export const signup = (name, email, password, street, postcode, city, telephone) => {
+  const SIGNUP_URL = 'http://localhost:8080/users'
+return (dispatch) => {
+  fetch(SIGNUP_URL, {
+    method: 'POST',
+    body: JSON.stringify({ name, email, password, street, postcode, city, telephone }),
+    headers: { 'Content-Type': 'application/json' },
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw 'Could not create account.'
+      }
+      return res.json()
+    })
+    .then((json) => {
+      dispatch(
+        user.actions.setAccessToken({
+          accessToken: json.accessToken,
+        })
+      )
+      dispatch(user.actions.setUserId({ userId: json.userId }))
+    })
+    .catch((err) => {
+      dispatch(user.actions.setErrorMessage({ errorMessage: err }))
     })
       .then((res) => {
         if (!res.ok) {
@@ -97,19 +113,19 @@ export const signup = (event, name, email, password, street, postcode, city, tel
 
 //Thunk to get users profile page
 export const getProfilePage = () => {
-  const USERS_URL = ''
+  const USERS_URL = `http://localhost:8080/users/${userId}`
   return (dispatch, getState) => {
     const accessToken = getState().user.login.accessToken;
     const userId = getState().user.login.userId
-    fetch(`${USERS_URL}/${userId}/profile`, {
+    fetch(USERS_URL, {
       method: 'GET',
       headers: { Authorization: accessToken },
     })
       .then((res) => {
         if (res.ok) {
-          return res.json();
+          return res.json()
         }
-        throw 'Could not get profile information. Make sure you are logged in.';
+        throw 'Could not get profile information. Make sure you are logged in.'
       })
       .then((json) => {
         dispatch(
