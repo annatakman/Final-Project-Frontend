@@ -65,7 +65,7 @@ export const login = (email, password) => {
   }
 }
 
-//Thunk to sign up new user
+//Thunk to sign up
 export const signup = (event, name, email, password, street, postcode, city, telephone) => {
   const SIGNUP_URL = ''
 return (dispatch) => {
