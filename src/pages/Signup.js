@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"
 import { user, login, signup } from '../reducers/user'
 import styled from 'styled-components'
-//import { Link } from "react-router-dom";
 import { Button } from '../components/Button'
 
 const SIGNUP_URL = 'http://localhost:8080/users'
