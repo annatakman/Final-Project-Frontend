@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { user, login } from "../reducers/user";
-import styled from "styled-components";
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { user, login, signup } from '../reducers/user'
+import styled from 'styled-components'
 //import { Link } from "react-router-dom";
-import { Button } from "../components/Button";
+import { Button } from '../components/Button'
 
-const SIGNUP_URL = "http://localhost:8080/users";
+const SIGNUP_URL = 'http://localhost:8080/users'
 
 const Section = styled.section`
   display: flex;
@@ -14,7 +14,7 @@ const Section = styled.section`
   a {
     text-decoration: none;
   }
-`;
+`
 
 const Form = styled.form`
   display: flex;
@@ -23,48 +23,28 @@ const Form = styled.form`
     margin: 10px;
     color: #254b62;
   }
-`;
+`
 
 export const Signup = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   //const accessToken = useSelector((store) => store.user.login.accessToken);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   // To sign up a user.
   const handleSignup = (event) => {
-    event.preventDefault();
-
-    fetch(SIGNUP_URL, {
-      method: "POST",
-      body: JSON.stringify({ name, email, password }),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw "Could not create account.  Try a different username.";
-        }
-        return res.json();
-      })
-      .then((json) => {
-        // Save the login info
-        dispatch(
-          user.actions.setAccessToken({
-            accessToken: json.accessToken,
-          })
-        );
-        dispatch(user.actions.setUserId({ userId: json.userId }));
-      })
-      .catch((err) => {
-        dispatch(user.actions.setErrorMessage({ errorMessage: err }));
-      });
-  };
+    event.preventDefault()
+    dispatch(signup(name, email, password))
+    setName('')
+    setEmail('')
+    setPassword('')
+  }
 
   return (
     <Section>
       <Form onSubmit={handleSignup}>
-        <label for="name">
+        <label htmlFor="name">
           Name
           <input
             required
@@ -72,7 +52,7 @@ export const Signup = () => {
             onChange={(event) => setName(event.target.value)}
           />
         </label>
-        <label for="email">
+        <label htmlFor="email">
           Email
           <input
             required
@@ -80,7 +60,7 @@ export const Signup = () => {
             onChange={(event) => setEmail(event.target.value)}
           />
         </label>
-        <label for="password">
+        <label htmlFor="password">
           Password
           <input
             type="password"
@@ -93,5 +73,5 @@ export const Signup = () => {
         <Button type="submit" title="Sign up" />
       </Form>
     </Section>
-  );
-};
+  )
+}

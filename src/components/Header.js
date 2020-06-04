@@ -70,7 +70,7 @@ export const Header = () => {
 
         {accessToken &&
           <>
-            <Link to='/login'>
+            <Link to='/profilepage'>
               <ListItem>
                 Profile
               </ListItem>
