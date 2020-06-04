@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from "../reducers/user"
 
 const Nav = styled.nav`
   display: flex;
@@ -41,7 +42,12 @@ const ListItem = styled.li`
 `
 
 export const Header = () => {
+  const dispatch = useDispatch()
   const accessToken = useSelector((store) => store.user.login.accessToken)
+  const handleSignOut = () => {
+    dispatch(logout());
+  }
+
   return (
     <Nav>
       <Link to='/'>
@@ -76,7 +82,7 @@ export const Header = () => {
               </ListItem>
             </Link>
             <Link to='/'>
-              <ListItem>
+              <ListItem onClick={handleSignOut}>
                 Sign out
               </ListItem>
             </Link>
