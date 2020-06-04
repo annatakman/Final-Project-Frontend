@@ -6,17 +6,37 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 40px;
+  height: 25px;
   margin: 0;
   padding: 0 0 0 20px;
+
+  @media (min-width: 768px) {
+      height: 40px;
+    }
 `
-const Title = styled.h1``
-const NavList = styled.ul``
+const Title = styled.h1`
+  font-size: 15px;
+
+  @media (min-width: 768px) {
+      font-size: 20px;
+    }
+`
+const NavList = styled.ul`
+  font-size: 12px;
+
+  @media (min-width: 768px) {
+      font-size: 15px;
+    }
+`
 const ListItem = styled.li`
   display: block;
   float: left;
-  padding: 1rem;
+  padding: 0.5rem;
   position: relative;
+
+  @media (min-width: 768px) {
+    padding: 1rem;
+    }
 `
 
 export const Header = () => {

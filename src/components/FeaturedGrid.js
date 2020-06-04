@@ -6,10 +6,15 @@ const FeaturedContainer = styled.section`
 `
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 32% 32% 32%;
-  grid-column-gap: 2%;
-  width: 100vw;
+  grid-template-columns: 100%;
   margin: 20px;
+  grid-row-gap: 20px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 32% 32% 32%;
+    grid-column-gap: 2%;
+    width: 100vw; 
+  }
 `
 const Article = styled.article`
   width: 100%;

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledButton = styled.button`
   font-family: "Josefin Sans", sans-serif;
@@ -13,8 +13,8 @@ const StyledButton = styled.button`
   font-size: 22px;
   display: block;
   margin: 25px 0 0 10px;
-`;
+`
 
 export const Button = ({ title, onClick }) => (
   <StyledButton onClick={onClick}>{title}</StyledButton>
-);
+)
