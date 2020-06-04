@@ -4,9 +4,9 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit"
 import { cart } from "reducers/cart"
 import { products } from "reducers/products"
 import { user } from "reducers/user"
-import { Login } from "components/Login"
-import { Signup } from "components/Signup"
-import { Profilpage } from "components/Profilpage"
+import { Login } from "pages/Login"
+import { Signup } from "pages/Signup"
+import { ProfilePage } from "pages/ProfilePage"
 import { BrowserRouter, Switch, Route } from "react-router-dom" // added
 import { Header } from "components/Header"
 import { LandingPage } from "pages/LandingPage"
@@ -37,8 +37,8 @@ export const App = () => {
             <Signup />
           </Route>
 
-          <Route path="/profilpage">
-            <Profilpage />
+          <Route path="/profilepage">
+            <ProfilePage />
           </Route>
         </Switch>
       </BrowserRouter>

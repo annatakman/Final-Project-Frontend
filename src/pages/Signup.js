@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { user, login } from "../reducers/user";
 import styled from "styled-components";
 //import { Link } from "react-router-dom";
-import { Button } from "./Button";
+import { Button } from "../components/Button";
 
 const SIGNUP_URL = "http://localhost:8080/users";
 

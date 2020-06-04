@@ -3,6 +3,6 @@ import React from "react";
 //import { Link } from "react-router-dom";
 //import { Button } from "./Button";
 
-export const Profilpage = () => {
+export const ProfilePage = () => {
   return <div> det här är din profil</div>;
 };

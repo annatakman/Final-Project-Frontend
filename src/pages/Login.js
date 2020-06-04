@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 //import { Link } from "react-router-dom";
-import { Button } from "./Button";
+import { Button } from "../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { user, login } from "../reducers/user";
-import { Profilpage } from "./Profilpage";
+import { ProfilePage } from "./ProfilePage";
 
 //const LOGIN_URL = "http://localhost:8080/sessions";
 
@@ -67,7 +67,7 @@ export const Login = () => {
     );
   } else {
     // If user is logged in, show profile
-    return <Profilpage />;
+    return <ProfilePage />;
   }
 };
 //export default Login;

@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Nav = styled.nav`
   display: flex;
@@ -40,6 +41,7 @@ const ListItem = styled.li`
 `
 
 export const Header = () => {
+  const accessToken = useSelector((store) => store.user.login.accessToken)
   return (
     <Nav>
       <Link to='/'>
@@ -51,16 +53,35 @@ export const Header = () => {
           Cart
         </ListItem>
 
-        <Link to='/login'>
-          <ListItem>
-            Log in
-          </ListItem>
-        </Link>
-        <Link to='/signup'>
-          <ListItem>
-            Sign up
-          </ListItem>
-        </Link>
+        {!accessToken &&
+          <>
+            <Link to='/login'>
+              <ListItem>
+                Log in
+              </ListItem>
+            </Link>
+            <Link to='/signup'>
+              <ListItem>
+                Sign up
+              </ListItem>
+            </Link>
+          </>
+        }
+
+        {accessToken &&
+          <>
+            <Link to='/login'>
+              <ListItem>
+                Profile
+              </ListItem>
+            </Link>
+            <Link to='/'>
+              <ListItem>
+                Sign out
+              </ListItem>
+            </Link>
+          </>
+        }
       </NavList>
     </Nav>
   )
