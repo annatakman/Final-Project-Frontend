@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from "react-router-dom";
 import { user, login, signup } from '../reducers/user'
 import styled from 'styled-components'
 //import { Link } from "react-router-dom";
@@ -27,6 +28,7 @@ const Form = styled.form`
 
 export const Signup = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   //const accessToken = useSelector((store) => store.user.login.accessToken);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -39,6 +41,7 @@ export const Signup = () => {
     setName('')
     setEmail('')
     setPassword('')
+    history.push('/login')
   }
 
   return (
