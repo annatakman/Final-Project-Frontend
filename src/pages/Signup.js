@@ -38,9 +38,9 @@ export const Signup = () => {
   const handleSignup = (event) => {
     event.preventDefault()
     dispatch(signup(name, email, password))
-    setName('')
-    setEmail('')
-    setPassword('')
+    // setName('')
+    // setEmail('')
+    // setPassword('')
     history.push('/login')
   }
 
