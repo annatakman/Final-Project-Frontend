@@ -45,7 +45,7 @@ export const Login = () => {
   return (
     <Section>
       <Form onSubmit={handleLogin}>
-        <label for="email">
+        <label htmlFor="email">
           Email
             <input
             required
@@ -53,7 +53,7 @@ export const Login = () => {
             onChange={(event) => setEmail(event.target.value)}
           />
         </label>
-        <label for="password">
+        <label htmlFor="password">
           Password
             <input
             type="password"
