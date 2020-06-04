@@ -48,7 +48,7 @@ export const FeatureGrid = () => {
       {products.length > 0 &&
         <Grid>
           {products.map((product) => (
-            <Article>
+            <Article key={product._id}>
               <Img src={product.imageUrl} />
               <Details>
                 <p>{product.name}</p>
