@@ -12,6 +12,10 @@ const Nav = styled.nav`
   margin: 0;
   padding: 0 0 0 20px;
 
+  a {
+    text-decoration: none;
+  }
+
   @media (min-width: 768px) {
       height: 40px;
     }
