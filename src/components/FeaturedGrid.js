@@ -41,13 +41,13 @@ export const FeatureGrid = () => {
       })
   }, [PRODUCTS_URL])
 
-
+  const filteredProducts = products.filter((product) => product.featured === true)
 
   return (
     <FeaturedContainer>
       {products.length > 0 &&
         <Grid>
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <Article key={product._id}>
               <Img src={product.imageUrl} />
               <Details>
