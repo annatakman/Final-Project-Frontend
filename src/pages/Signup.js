@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { user, login, signup } from '../reducers/user'
 import styled from 'styled-components'
-//import { Link } from "react-router-dom";
+import { user, login, signup } from '../reducers/user'
+// import { Link } from "react-router-dom";
 import { Button } from '../components/Button'
-
-const SIGNUP_URL = 'http://localhost:8080/users'
 
 const Section = styled.section`
   display: flex;
@@ -27,7 +25,7 @@ const Form = styled.form`
 
 export const Signup = () => {
   const dispatch = useDispatch()
-  //const accessToken = useSelector((store) => store.user.login.accessToken);
+  // const accessToken = useSelector((store) => store.user.login.accessToken);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

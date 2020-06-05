@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   login: {
@@ -10,27 +10,27 @@ const initialState = {
 };
 
 export const user = createSlice({
-  name: "user",
+  name: 'user',
   initialState: initialState,
   reducers: {
     setAccessToken: (state, action) => {
       const { accessToken } = action.payload;
-      //console.log(`Access Token: ${accessToken}`)
+      // console.log(`Access Token: ${accessToken}`)
       state.login.accessToken = accessToken;
     },
     setUserId: (state, action) => {
       const { userId } = action.payload;
-      //console.log(`User Id: ${userId}`)
+      // console.log(`User Id: ${userId}`)
       state.login.userId = userId;
     },
     setProfilePage: (state, action) => {
       const { profilePage } = action.payload;
-      //console.log(`Secret Message: ${profilePage}`)
+      // console.log(`Secret Message: ${profilePage}`)
       state.login.profilePage = profilePage;
     },
     setErrorMessage: (state, action) => {
       const { errorMessage } = action.payload;
-      //console.log(`Error Message: ${errorMessage}`)
+      // console.log(`Error Message: ${errorMessage}`)
       state.login.errorMessage = errorMessage;
     },
   },
@@ -38,18 +38,18 @@ export const user = createSlice({
 
 // Thunk to login user
 export const login = (email, password) => {
-  const LOGIN_URL = "http://localhost:8080/sessions";
+  const LOGIN_URL = 'http://localhost:8080/sessions';
   return (dispatch) => {
     fetch(LOGIN_URL, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => {
         if (res.ok) {
           return res.json();
         }
-        throw "Unable to sign in.";
+        throw 'Unable to sign in.';
       })
       .then((json) => {
         dispatch(
@@ -65,7 +65,7 @@ export const login = (email, password) => {
   };
 };
 
-//Thunk to sign up new user
+// Thunk to sign up new user
 export const signup = (
   name,
   email,
@@ -75,10 +75,10 @@ export const signup = (
   city,
   telephone
 ) => {
-  const SIGNUP_URL = "http://localhost:8080/users";
+  const SIGNUP_URL = 'http://localhost:8080/users';
   return (dispatch) => {
     fetch(SIGNUP_URL, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({
         name,
         email,
@@ -88,11 +88,11 @@ export const signup = (
         city,
         telephone,
       }),
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => {
         if (!res.ok) {
-          throw "Could not create account.";
+          throw 'Could not create account.';
         }
         return res.json();
       })
@@ -110,21 +110,21 @@ export const signup = (
   };
 };
 
-//Thunk to get users profile page
+// Thunk to get users profile page
 export const getProfilePage = (userId) => {
   const USERS_URL = `http://localhost:8080/users/${userId}`;
   return (dispatch, getState) => {
     const accessToken = getState().user.login.accessToken;
     const userId = getState().user.login.userId;
     fetch(USERS_URL, {
-      method: "GET",
+      method: 'GET',
       headers: { Authorization: accessToken },
     })
       .then((res) => {
         if (res.ok) {
           return res.json();
         }
-        throw "Could not get profile information. Make sure you are logged in.";
+        throw 'Could not get profile information. Make sure you are logged in.';
       })
       .then((json) => {
         dispatch(
@@ -137,7 +137,7 @@ export const getProfilePage = (userId) => {
   };
 };
 
-//Thunk to logout user
+// Thunk to logout user
 export const logout = () => {
   return (dispatch) => {
     dispatch(user.actions.setProfilePage({ profilePage: null }));

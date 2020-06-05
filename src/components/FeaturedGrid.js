@@ -17,18 +17,6 @@ const Grid = styled.div`
     width: 100vw; 
   }
 `
-const Article = styled.article`
-  width: 100%;
-  background: #d8dadc;
-`
-const Img = styled.img`
-  width: 100%;
-`
-const Details = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-`
 
 export const FeatureGrid = () => {
   const PRODUCTS_URL = 'http://localhost:8080/products'
