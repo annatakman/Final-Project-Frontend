@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { ProductCard } from './ProductCard'
 
 const FeaturedContainer = styled.section`
   display: flex;
@@ -48,14 +49,12 @@ export const FeatureGrid = () => {
       {products.length > 0 &&
         <Grid>
           {filteredProducts.map((product) => (
-            <Article key={product._id}>
-              <Img src={product.imageUrl} />
-              <Details>
-                <p>{product.name}</p>
-                <p>{product.price} EUR</p>
-              </Details>
-            </Article>
-
+            <ProductCard
+              _id={product._id}
+              imageUrl={product.imageUrl}
+              name={product.name}
+              price={product.price}
+            />
           ))}
         </Grid>
       }
