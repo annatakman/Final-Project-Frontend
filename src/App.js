@@ -10,6 +10,7 @@ import { ProfilePage } from "pages/ProfilePage"
 import { BrowserRouter, Switch, Route } from "react-router-dom" // added
 import { Header } from "components/Header"
 import { LandingPage } from "pages/LandingPage"
+import { ProductPage } from 'pages/ProductPage'
 
 const reducer = combineReducers({
   cart: cart.reducer,
@@ -27,6 +28,10 @@ export const App = () => {
         <Switch>
           <Route path="/" exact>
             <LandingPage />
+          </Route>
+
+          <Route path="/products" exact>
+            <ProductPage />
           </Route>
 
           <Route path="/login">
