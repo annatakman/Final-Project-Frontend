@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "../components/Button";
@@ -33,9 +33,14 @@ export const Login = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    dispatch(login(email, password));
-    history.push('/profilepage')
+    dispatch(login(email, password))
   };
+
+  useEffect(() => {
+    if (accessToken) {
+      history.push('/profilepage')
+    }
+  }, [accessToken]);
 
   return (
     <Section>
