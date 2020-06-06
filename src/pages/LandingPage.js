@@ -1,9 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FeatureGrid } from 'components/FeaturedGrid'
+import { Button } from 'components/Button'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
-   
+  a {
+    text-decoration: none;
+  }
 `
 const HeroImage = styled.div`
   background-image: url('https://res.cloudinary.com/everlane/image/upload/c_scale/dpr_1.5,f_auto,q_65/v1/i/f52990bb_f4e3.jpg');
@@ -41,6 +45,9 @@ export const LandingPage = () => {
         </HeroTextContainer>
       </HeroImage>
       <FeatureGrid />
+      <Link to='/products'>
+        <Button title='All products' />
+      </Link>
     </Container>
   )
 }

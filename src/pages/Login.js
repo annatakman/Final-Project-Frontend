@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
-import { Button } from "../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { user, login } from "../reducers/user";
 import { ProfilePage } from "./ProfilePage";
+import { Button } from "../components/Button";
 
-//const LOGIN_URL = "http://localhost:8080/sessions";
+// const LOGIN_URL = "http://localhost:8080/sessions";
 
 const Section = styled.section`
   display: flex;
@@ -29,9 +29,9 @@ const Form = styled.form`
 export const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory()
-  const accessToken = useSelector((store) => store.user.login.accessToken);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const accessToken = useSelector((store) => store.user.login.accessToken);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -47,7 +47,7 @@ export const Login = () => {
       <Form onSubmit={handleLogin}>
         <label htmlFor="email">
           Email
-            <input
+          <input
             required
             value={email}
             onChange={(event) => setEmail(event.target.value)}
@@ -55,7 +55,7 @@ export const Login = () => {
         </label>
         <label htmlFor="password">
           Password
-            <input
+          <input
             type="password"
             required
             value={password}
@@ -72,4 +72,4 @@ export const Login = () => {
     return <ProfilePage />;
   } */
 };
-//export default Login;
+// export default Login;

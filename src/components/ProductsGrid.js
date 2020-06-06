@@ -18,7 +18,7 @@ const Grid = styled.div`
   }
 `
 
-export const FeatureGrid = () => {
+export const ProductsGrid = () => {
   const PRODUCTS_URL = 'http://localhost:8080/products'
   const [products, setProducts] = useState([])
 
@@ -30,13 +30,11 @@ export const FeatureGrid = () => {
       })
   }, [PRODUCTS_URL])
 
-  const filteredProducts = products.filter((product) => product.featured === true)
-
   return (
     <FeaturedContainer>
       {products.length > 0 &&
         <Grid>
-          {filteredProducts.map((product) => (
+          {products.map((product) => (
             <ProductCard
               _id={product._id}
               imageUrl={product.imageUrl}

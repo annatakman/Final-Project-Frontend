@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from "../reducers/user"
+import { logout } from '../reducers/user'
 
 const Nav = styled.nav`
   display: flex;
@@ -12,23 +12,27 @@ const Nav = styled.nav`
   margin: 0;
   padding: 0 0 0 20px;
 
+  a {
+    text-decoration: none;
+  }
+
   @media (min-width: 768px) {
-      height: 40px;
-    }
+    height: 40px;
+  }
 `
 const Title = styled.h1`
   font-size: 15px;
 
   @media (min-width: 768px) {
-      font-size: 20px;
-    }
+    font-size: 20px;
+  }
 `
 const NavList = styled.ul`
   font-size: 12px;
 
   @media (min-width: 768px) {
-      font-size: 15px;
-    }
+    font-size: 15px;
+  }
 `
 const ListItem = styled.li`
   display: block;
@@ -38,7 +42,7 @@ const ListItem = styled.li`
 
   @media (min-width: 768px) {
     padding: 1rem;
-    }
+  }
 `
 
 export const Header = () => {
