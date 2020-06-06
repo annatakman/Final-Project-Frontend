@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { user, login } from "../reducers/user";
 import { ProfilePage } from "./ProfilePage";
 
-//const LOGIN_URL = "http://localhost:8080/sessions";
-
 const Section = styled.section`
   display: flex;
   flex-direction: column;
@@ -38,9 +36,6 @@ export const Login = () => {
     dispatch(login(email, password));
     history.push('/profilepage')
   };
-
-  /* if (!accessToken) { */
-  // If user is logged out, show login form
 
   return (
     <Section>

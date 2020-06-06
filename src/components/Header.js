@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from "../reducers/user"
+import { user } from "../reducers/user"
 
 const Nav = styled.nav`
   display: flex;
@@ -45,7 +45,7 @@ export const Header = () => {
   const dispatch = useDispatch()
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const handleSignOut = () => {
-    dispatch(logout());
+    dispatch(user.actions.logout());
   }
 
   return (
