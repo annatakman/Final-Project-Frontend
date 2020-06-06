@@ -27,7 +27,7 @@ const Form = styled.form`
 export const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory()
-  // const accessToken = useSelector((store) => store.user.login.accessToken);
+  const accessToken = useSelector((store) => store.user.login.accessToken);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -67,9 +67,5 @@ export const Login = () => {
       </Form>
     </Section>
   );
-  /* } else {
-    // If user is logged in, show profile
-    return <ProfilePage />;
-  } */
 };
-// export default Login;
+
