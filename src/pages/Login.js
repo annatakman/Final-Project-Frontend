@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { user, login } from "../reducers/user";
 import { ProfilePage } from "./ProfilePage";
 import { Button } from "../components/Button";
-
-// const LOGIN_URL = "http://localhost:8080/sessions";
 
 const Section = styled.section`
   display: flex;
@@ -35,12 +33,14 @@ export const Login = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    dispatch(login(email, password));
-    history.push('/profilepage')
+    dispatch(login(email, password))
   };
 
-  /* if (!accessToken) { */
-  // If user is logged out, show login form
+  useEffect(() => {
+    if (accessToken) {
+      history.push('/profilepage')
+    }
+  }, [accessToken]);
 
   return (
     <Section>
