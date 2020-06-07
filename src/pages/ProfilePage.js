@@ -38,7 +38,7 @@ export const ProfilePage = () => {
         history.push('/login')
       }
 
-      <Button title="Logout" onClick={handleSignOut} />
+      <Button title="Signout" onClick={handleSignOut} />
     </ProfileDetails>
   )
 }
