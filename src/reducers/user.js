@@ -73,7 +73,7 @@ export const login = (email, password) => {
         if (res.ok) {
           return res.json();
         }
-        throw 'Unable to sign in.';
+        throw new Error('Unable to sign in.');
       })
       .then((json) => {
         dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }))
@@ -86,7 +86,7 @@ export const login = (email, password) => {
         dispatch(user.actions.setTelephone({ telephone: json.telephone }))
       })
       .catch((err) => {
-        //dispatch(user.actions.setErrorMessage({ errorMessage: err }));
+        dispatch(user.actions.setErrorMessage({ errorMessage: err }));
       });
   };
 };
@@ -118,7 +118,7 @@ export const signup = (
     })
       .then((res) => {
         if (!res.ok) {
-          throw 'Could not create account.';
+          throw new Error('Could not create account.');
         }
         return res.json();
       })
@@ -133,41 +133,10 @@ export const signup = (
         dispatch(user.actions.setTelephone({ telephone: json.user.telephone }))
       })
       .catch((err) => {
-        //dispatch(user.actions.setErrorMessage({ errorMessage: err }));
+        dispatch(user.actions.setErrorMessage({ errorMessage: err }));
       })
   };
 };
-
-// // Thunk to get users profile page
-// export const getSecretMessage = (userId) => {
-//   const USERS_URL = `http://localhost:8080/users`;
-//   return (dispatch, getState) => {
-//     const accessToken = getState().user.login.accessToken;
-//     const userId = getState().user.login.userId;
-//     const name = getState().user.login.name;
-//     const email = getState().user.login.email;
-
-//     //Why do we write like this?
-//     fetch(`${USERS_URL}/${userId}`, {
-//       method: 'GET',
-//       headers: { Authorization: accessToken },
-//     })
-//       .then((res) => {
-//         if (res.ok) {
-//           return res.json();
-//         }
-//         throw 'Could not get profile information. Make sure you are logged in.';
-//       })
-//       .then((json) => {
-//         dispatch(
-//           user.actions.setSecretMessage({ secretMessage: JSON.stringify(json) })
-//         );
-//       })
-//       .catch((err) => {
-//         dispatch(user.actions.setErrorMessage({ errorMessage: err }));
-//       });
-//   };
-// };
 
 // // Thunk to logout user
 // export const logout = () => {
