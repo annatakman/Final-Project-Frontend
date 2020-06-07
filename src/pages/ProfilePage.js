@@ -14,6 +14,8 @@ export const ProfilePage = () => {
   const userEmail = useSelector((store) => store.user.login.email);
   const userStreet = useSelector((store) => store.user.login.street);
   const userPostcode = useSelector((store) => store.user.login.postcode);
+  const userCity = useSelector((store) => store.user.login.city);
+  const userTelephone = useSelector((store) => store.user.login.telephone);
 
   return (
     <ProfileDetails>
@@ -23,6 +25,8 @@ export const ProfilePage = () => {
           <h4>{userEmail}</h4>
           <h4>{userStreet}</h4>
           <h4>{userPostcode}</h4>
+          <h4>{userCity}</h4>
+          <h4>{userTelephone}</h4>
         </div>
       }
       {!accessToken &&

@@ -67,9 +67,5 @@ export const Login = () => {
       </Form>
     </Section>
   );
-  /* } else {
-    // If user is logged in, show profile
-    return <ProfilePage />;
-  } */
 };
-//export default Login;
+
