@@ -13,6 +13,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom" // added
 import { Header } from "components/Header"
 import { LandingPage } from "pages/LandingPage"
 import { ProductPage } from 'pages/ProductPage'
+import { Footer } from "components/Footer"
 
 const reducer = combineReducers({
   cart: cart.reducer,
@@ -51,6 +52,7 @@ export const App = () => {
             <ProfilePage />
           </Route>
         </Switch>
+        <Footer />
       </BrowserRouter>
     </Provider>
   )
