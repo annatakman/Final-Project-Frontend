@@ -13,6 +13,7 @@ import { Header } from "components/Header"
 import { LandingPage } from "pages/LandingPage"
 import { ProductPage } from 'pages/ProductPage'
 import { ProductDetails } from 'pages/ProductDetails'
+import { Footer } from "components/Footer"
 
 const reducer = combineReducers({
   cart: cart.reducer,
@@ -57,6 +58,7 @@ export const App = () => {
           </Route>
 
         </Switch>
+        <Footer />
       </BrowserRouter>
     </Provider>
   )
