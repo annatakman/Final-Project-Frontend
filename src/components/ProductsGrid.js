@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { ProductCard } from './ProductCard'
 
 const FeaturedContainer = styled.section`
@@ -35,12 +36,14 @@ export const ProductsGrid = () => {
       {products.length > 0 &&
         <Grid>
           {products.map((product) => (
-            <ProductCard
+            <Link to={`/products/${product._id}`}>
+              <ProductCard
               _id={product._id}
               imageUrl={product.imageUrl}
               name={product.name}
               price={product.price}
             />
+            </Link>
           ))}
         </Grid>
       }

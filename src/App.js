@@ -4,15 +4,15 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit"
 import persistState from "redux-localstorage"
 import { compose, createStore } from "redux"
 import { cart } from "reducers/cart"
-import { products } from "reducers/products"
 import { user } from "reducers/user"
 import { Login } from "pages/Login"
 import { Signup } from "pages/Signup"
 import { ProfilePage } from "pages/ProfilePage"
-import { BrowserRouter, Switch, Route } from "react-router-dom" // added
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { Header } from "components/Header"
 import { LandingPage } from "pages/LandingPage"
 import { ProductPage } from 'pages/ProductPage'
+import { ProductDetails } from 'pages/ProductDetails'
 
 const reducer = combineReducers({
   cart: cart.reducer,
@@ -31,12 +31,17 @@ export const App = () => {
       <BrowserRouter>
         <Header />
         <Switch>
+
           <Route path="/" exact>
             <LandingPage />
           </Route>
 
           <Route path="/products" exact>
             <ProductPage />
+          </Route>
+
+          <Route path="/products/:productId" >
+            <ProductDetails />
           </Route>
 
           <Route path="/login">
@@ -50,6 +55,7 @@ export const App = () => {
           <Route path="/profilepage">
             <ProfilePage />
           </Route>
+
         </Switch>
       </BrowserRouter>
     </Provider>
