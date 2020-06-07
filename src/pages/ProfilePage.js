@@ -25,6 +25,7 @@ export const ProfilePage = () => {
     <ProfileDetails>
       {accessToken &&
         <div>
+          <h4>Your profile</h4>
           <h4>{userName}</h4>
           <h4>{userEmail}</h4>
           <h4>{userStreet}</h4>
