@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
-//import { Button } from "./Button";
+import { Button } from "../components/Button";
 
 const ProfileDetails = styled.section``
 
@@ -28,6 +28,8 @@ export const ProfilePage = () => {
       {!accessToken &&
         history.push('/login')
       }
+
+      <Button title="Logout"/>
     </ProfileDetails>
   )
 }
