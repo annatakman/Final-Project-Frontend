@@ -21,7 +21,7 @@ const reducer = combineReducers({
   user: user.reducer,
 })
 
-//const enhancer = compose(persistState())
+// const enhancer = compose(persistState())
 
 const store = configureStore({ reducer })
 // const store = createStore(reducer, enhancer)
