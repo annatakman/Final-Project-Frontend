@@ -3,12 +3,16 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
 import { Button } from "../components/Button";
+import { user } from "../reducers/user"
 
 const ProfileDetails = styled.section``
 
 export const ProfilePage = () => {
   const history = useHistory()
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const handleSignOut = () => {
+    dispatch(user.actions.logout());
+  }
   const accessToken = useSelector((store) => store.user.login.accessToken);
   const userName = useSelector((store) => store.user.login.name);
   const userEmail = useSelector((store) => store.user.login.email);
@@ -33,7 +37,7 @@ export const ProfilePage = () => {
         history.push('/login')
       }
 
-      <Button title="Logout"/>
+      <Button title="Logout" onClick={handleSignOut} />
     </ProfileDetails>
   )
 }
