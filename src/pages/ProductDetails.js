@@ -36,6 +36,7 @@ const ButtonWrapper = styled.div`
   }
 `
 
+//Page with product details fetched depending on the product id
 export const ProductDetails = () => {
   const { productId } = useParams()
   const [product, setProduct] = useState({})
@@ -52,15 +53,15 @@ export const ProductDetails = () => {
   return (
     <DetailPage>
       <Article>
-      <Image src={product.imageUrl} alt={product.name}></Image>
-      <Details>
-      <h4>{product.description}</h4>
-      <p>Size: {product.size}</p>
-      <p>Price: {product.price} EUR</p>
-      </Details> 
-      <ButtonWrapper>
-        <Button title='Add to cart' />
-      </ButtonWrapper>
+        <Image src={product.imageUrl} alt={product.name}></Image>
+        <Details>
+          <h4>{product.description}</h4>
+          <p>Size: {product.size}</p>
+          <p>Price: {product.price} EUR</p>
+        </Details>
+        <ButtonWrapper>
+          <Button title='Add to cart' />
+        </ButtonWrapper>
       </Article>
       <Link to='/products'>
         <Button title='Back to all products' />
