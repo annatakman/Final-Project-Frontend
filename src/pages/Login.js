@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { user, login } from "../reducers/user";
-import { ProfilePage } from "./ProfilePage";
-import { Button } from "../components/Button";
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { user, login } from '../reducers/user'
+import { ProfilePage } from './ProfilePage'
+import { Button } from '../components/Button'
 
 const Section = styled.section`
   display: flex;
@@ -13,7 +13,7 @@ const Section = styled.section`
   a {
     text-decoration: none;
   }
-`;
+`
 
 const Form = styled.form`
   display: flex;
@@ -22,25 +22,25 @@ const Form = styled.form`
     margin: 10px;
     color: #254b62;
   }
-`;
+`
 
 export const Login = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const history = useHistory()
-  const accessToken = useSelector((store) => store.user.login.accessToken);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const accessToken = useSelector((store) => store.user.login.accessToken)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleLogin = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     dispatch(login(email, password))
-  };
+  }
 
   useEffect(() => {
     if (accessToken) {
       history.push('/profilepage')
     }
-  }, [accessToken]);
+  }, [accessToken])
 
   return (
     <Section>
@@ -66,6 +66,5 @@ export const Login = () => {
         <Button type="submit" title="Login" />
       </Form>
     </Section>
-  );
-};
-
+  )
+}

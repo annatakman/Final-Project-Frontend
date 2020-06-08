@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { user } from "../reducers/user"
+import { user } from '../reducers/user'
+//import { Cart } from "../components/Cart";
 
 const Nav = styled.nav`
   display: flex;
@@ -49,49 +50,39 @@ export const Header = () => {
   const dispatch = useDispatch()
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const handleSignOut = () => {
-    dispatch(user.actions.logout());
+    dispatch(user.actions.logout())
   }
 
   return (
     <Nav>
-      <Link to='/'>
+      <Link to="/">
         <Title>FINAL PROJECT</Title>
       </Link>
 
       <NavList>
-        <ListItem>
-          Cart
-        </ListItem>
+        <ListItem>Cart</ListItem>
 
-        {!accessToken &&
+        {!accessToken && (
           <>
-            <Link to='/login'>
-              <ListItem>
-                Log in
-              </ListItem>
+            <Link to="/login">
+              <ListItem>Log in</ListItem>
             </Link>
-            <Link to='/signup'>
-              <ListItem>
-                Sign up
-              </ListItem>
+            <Link to="/signup">
+              <ListItem>Sign up</ListItem>
             </Link>
           </>
-        }
+        )}
 
-        {accessToken &&
+        {accessToken && (
           <>
-            <Link to='/profilepage'>
-              <ListItem>
-                Profile
-              </ListItem>
+            <Link to="/profilepage">
+              <ListItem>Profile</ListItem>
             </Link>
-            <Link to='/'>
-              <ListItem onClick={handleSignOut}>
-                Sign out
-              </ListItem>
+            <Link to="/">
+              <ListItem onClick={handleSignOut}>Sign out</ListItem>
             </Link>
           </>
-        }
+        )}
       </NavList>
     </Nav>
   )

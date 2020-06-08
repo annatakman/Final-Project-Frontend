@@ -10,7 +10,7 @@ export const products = createSlice({
     /* return: () => {
       return initialState
     } */
-  }
+  },
 })
 
 //Thunk to fetch products from our API

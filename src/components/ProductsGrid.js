@@ -15,7 +15,7 @@ const Grid = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: 32% 32% 32%;
     grid-column-gap: 2%;
-    width: 100vw; 
+    width: 100vw;
   }
 `
 
@@ -33,20 +33,20 @@ export const ProductsGrid = () => {
 
   return (
     <FeaturedContainer>
-      {products.length > 0 &&
+      {products.length > 0 && (
         <Grid>
           {products.map((product) => (
             <Link to={`/products/${product._id}`}>
               <ProductCard
-              _id={product._id}
-              imageUrl={product.imageUrl}
-              name={product.name}
-              price={product.price}
-            />
+                _id={product._id}
+                imageUrl={product.imageUrl}
+                name={product.name}
+                price={product.price}
+              />
             </Link>
           ))}
         </Grid>
-      }
+      )}
     </FeaturedContainer>
   )
 }

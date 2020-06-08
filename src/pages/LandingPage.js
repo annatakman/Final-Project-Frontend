@@ -45,8 +45,8 @@ export const LandingPage = () => {
         </HeroTextContainer>
       </HeroImage>
       <FeatureGrid />
-      <Link to='/products'>
-        <Button title='All products' />
+      <Link to="/products">
+        <Button title="All products" />
       </Link>
     </Container>
   )

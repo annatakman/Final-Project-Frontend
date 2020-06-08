@@ -1,22 +1,24 @@
-import React from "react"
-import { Provider } from "react-redux"
-import { configureStore, createStore, combineReducers, applyMiddleware, compose } from "@reduxjs/toolkit"
-import persistState from "redux-localstorage"
-// import { compose, createStore } from "redux"
+import React from 'react'
+import { Provider } from 'react-redux'
+import {
+  createStore,
+  combineReducers,
+  applyMiddleware,
+  compose,
+} from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
-import { cart } from "reducers/cart"
-import { user } from "reducers/user"
-import { Login } from "pages/Login"
-import { Signup } from "pages/Signup"
-import { ProfilePage } from "pages/ProfilePage"
-import { BrowserRouter, Switch, Route } from "react-router-dom"
-import { Header } from "components/Header"
-import { LandingPage } from "pages/LandingPage"
+import { cart } from 'reducers/cart'
+import { user } from 'reducers/user'
+import { Login } from 'pages/Login'
+import { Signup } from 'pages/Signup'
+import { ProfilePage } from 'pages/ProfilePage'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Header } from 'components/Header'
+import { LandingPage } from 'pages/LandingPage'
 import { ProductPage } from 'pages/ProductPage'
 import { ProductDetails } from 'pages/ProductDetails'
-import { Footer } from "components/Footer"
+import { Footer } from 'components/Footer'
 
-// const enhancer = compose(persistState())
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const savetoLocal = (state) => {
   try {
@@ -40,16 +42,16 @@ const loadFromLocal = () => {
 
 const reducer = combineReducers({
   cart: cart.reducer,
-  /* products: products.reducer, */
   user: user.reducer,
 })
 
 const persistedState = loadFromLocal()
-const store = createStore(reducer, persistedState, enhancer(applyMiddleware(thunk)))
+const store = createStore(
+  reducer,
+  persistedState,
+  enhancer(applyMiddleware(thunk))
+)
 store.subscribe(() => savetoLocal(store.getState()))
-
-// const store = configureStore({ reducer })
-// const store = createStore(reducer, enhancer)
 
 export const App = () => {
   return (
@@ -57,7 +59,6 @@ export const App = () => {
       <BrowserRouter>
         <Header />
         <Switch>
-
           <Route path="/" exact>
             <LandingPage />
           </Route>
@@ -66,7 +67,7 @@ export const App = () => {
             <ProductPage />
           </Route>
 
-          <Route path="/products/:productId" >
+          <Route path="/products/:productId">
             <ProductDetails />
           </Route>
 
@@ -81,7 +82,6 @@ export const App = () => {
           <Route path="/profilepage">
             <ProfilePage />
           </Route>
-
         </Switch>
         <Footer />
       </BrowserRouter>
