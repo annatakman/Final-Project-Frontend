@@ -77,7 +77,7 @@ export const login = (email, password) => {
       })
       .then((json) => {
         dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }))
-        dispatch(user.actions.setUserId({ userId: json.userId }))
+        dispatch(user.actions.setUserId({ userId: json._id }))
         dispatch(user.actions.setName({ name: json.name }))
         dispatch(user.actions.setEmail({ email: json.email }))
         dispatch(user.actions.setStreet({ street: json.street }))

@@ -36,3 +36,37 @@ export const cart = createSlice({
     },
   },
 })
+
+export const submitOrder = (
+  items,
+  userId,
+  name,
+  street,
+  postcode,
+  city,
+  telephone,
+  accessToken
+) => {
+  const SUBMIT_ORDER_URL = 'http://localhost:8080/orders'
+  return (dispatch) => {
+    fetch(SUBMIT_ORDER_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        items,
+        userId,
+        name,
+        street,
+        postcode,
+        city,
+        telephone
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: accessToken
+      }
+    })
+      .then(() => {
+        dispatch(cart.actions.clearCart())
+      })
+  }
+}
