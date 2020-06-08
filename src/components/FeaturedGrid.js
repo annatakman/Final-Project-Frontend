@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { ProductCard } from './ProductCard'
+import { useDispatch } from 'react-redux'
+import { cart } from '../reducers/cart'
 
 const FeaturedContainer = styled.section`
   display: flex;
@@ -15,7 +17,7 @@ const Grid = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: 32% 32% 32%;
     grid-column-gap: 2%;
-    width: 100vw; 
+    width: 100vw;
   }
 `
 
@@ -31,24 +33,26 @@ export const FeatureGrid = () => {
       })
   }, [PRODUCTS_URL])
 
-  const filteredProducts = products.filter((product) => product.featured === true)
+  const filteredProducts = products.filter(
+    (product) => product.featured === true
+  )
 
   return (
     <FeaturedContainer>
-      {products.length > 0 &&
+      {products.length > 0 && (
         <Grid>
           {filteredProducts.map((product) => (
-            <Link to={`/products/${product._id}`}>
-              <ProductCard
-                _id={product._id}
-                imageUrl={product.imageUrl}
-                name={product.name}
-                price={product.price}
-              />
-            </Link>
+            // <Link to={`/products/${product._id}`}>
+            <ProductCard
+              _id={product._id}
+              imageUrl={product.imageUrl}
+              name={product.name}
+              price={product.price}
+            />
+            // </Link>
           ))}
         </Grid>
-      }
+      )}
     </FeaturedContainer>
   )
 }

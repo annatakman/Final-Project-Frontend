@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { user } from '../reducers/user'
-//import { Cart } from "../components/Cart";
 
 const Nav = styled.nav`
   display: flex;
@@ -60,7 +59,9 @@ export const Header = () => {
       </Link>
 
       <NavList>
-        <ListItem>Cart</ListItem>
+        <Link to="/cart">
+          <ListItem>Cart</ListItem>
+        </Link>
 
         {!accessToken && (
           <>

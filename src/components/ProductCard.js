@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link, useHistory } from 'react-router-dom'
 import { Button } from './Button'
 import { useDispatch } from 'react-redux'
 import { cart } from '../reducers/cart'
@@ -37,18 +38,21 @@ const ButtonWrapper = styled.div`
 
 export const ProductCard = ({ _id, imageUrl, name, price }) => {
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const handleAddToCart = () => {
-    dispatch(cart.actions.addProduct({ _id, name, quantity: 1 }))
+    dispatch(cart.actions.addProduct({ _id, name, quantity: 1, price }))
   }
 
   return (
     <Article key={_id}>
-      <Img src={imageUrl} />
-      <Details>
-        <p>{name}</p>
-        <p>{price} EUR</p>
-      </Details>
+      <Link to={`/products/${_id}`}>
+        <Img src={imageUrl} />
+        <Details>
+          <p>{name}</p>
+          <p>{price} EUR</p>
+        </Details>
+      </Link>
       <ButtonWrapper>
         <Button onClick={handleAddToCart} title="Add To Cart"></Button>
       </ButtonWrapper>

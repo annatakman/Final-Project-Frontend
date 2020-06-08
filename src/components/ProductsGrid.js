@@ -36,14 +36,12 @@ export const ProductsGrid = () => {
       {products.length > 0 && (
         <Grid>
           {products.map((product) => (
-            <Link to={`/products/${product._id}`}>
-              <ProductCard
-                _id={product._id}
-                imageUrl={product.imageUrl}
-                name={product.name}
-                price={product.price}
-              />
-            </Link>
+            <ProductCard
+              _id={product._id}
+              imageUrl={product.imageUrl}
+              name={product.name}
+              price={product.price}
+            />
           ))}
         </Grid>
       )}

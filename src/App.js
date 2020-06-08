@@ -18,6 +18,8 @@ import { LandingPage } from 'pages/LandingPage'
 import { ProductPage } from 'pages/ProductPage'
 import { ProductDetails } from 'pages/ProductDetails'
 import { Footer } from 'components/Footer'
+import { CartPage } from 'pages/CartPage'
+import { Checkout } from 'pages/Checkout'
 
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const savetoLocal = (state) => {
@@ -81,6 +83,14 @@ export const App = () => {
 
           <Route path="/profilepage">
             <ProfilePage />
+          </Route>
+
+          <Route path="/cart">
+            <CartPage />
+          </Route>
+
+          <Route path="/checkout">
+            <Checkout />
           </Route>
         </Switch>
         <Footer />
