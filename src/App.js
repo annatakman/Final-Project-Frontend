@@ -1,28 +1,27 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import persistState from "redux-localstorage";
-import { compose, createStore } from "redux";
-import { cart } from "reducers/cart";
-import { products } from "reducers/products";
-import { user } from "reducers/user";
-import { Login } from "pages/Login";
-import { Signup } from "pages/Signup";
-import { ProfilePage } from "pages/ProfilePage";
-import { BrowserRouter, Switch, Route } from "react-router-dom"; // added
-import { Header } from "components/Header";
-import { LandingPage } from "pages/LandingPage";
-import { ProductPage } from "pages/ProductPage";
+import React from 'react'
+import { Provider } from 'react-redux'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import persistState from 'redux-localstorage'
+import { compose, createStore } from 'redux'
+import { cart } from 'reducers/cart'
+import { products } from 'reducers/products'
+import { user } from 'reducers/user'
+import { Login } from 'pages/Login'
+import { Signup } from 'pages/Signup'
+import { ProfilePage } from 'pages/ProfilePage'
+import { BrowserRouter, Switch, Route } from 'react-router-dom' // added
+import { Header } from 'components/Header'
+import { LandingPage } from 'pages/LandingPage'
+import { ProductPage } from 'pages/ProductPage'
 
 const reducer = combineReducers({
   cart: cart.reducer,
-  /* products: products.reducer, */
   user: user.reducer,
-});
+})
 
 //const enhancer = compose(persistState())
 
-const store = configureStore({ reducer });
+const store = configureStore({ reducer })
 // const store = createStore(reducer, enhancer)
 
 export const App = () => {
@@ -53,5 +52,5 @@ export const App = () => {
         </Switch>
       </BrowserRouter>
     </Provider>
-  );
-};
+  )
+}
