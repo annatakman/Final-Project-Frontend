@@ -10,7 +10,7 @@ const Container = styled.div`
   }
 `
 const HeroImage = styled.div`
-  background-image: url('https://res.cloudinary.com/everlane/image/upload/c_scale/dpr_1.5,f_auto,q_65/v1/i/f52990bb_f4e3.jpg');
+  background-image: url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
   height: 20vh;
   position: relative;
   background-size: cover;
@@ -29,7 +29,7 @@ const HeroTextContainer = styled.div`
   text-align: center;
   position: absolute;
   top: 50%;
-  left: 60%;
+  left: 70%;
   transform: translate(-50%, -50%);
 `
 const HeroTitle = styled.h2``
