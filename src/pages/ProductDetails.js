@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -32,19 +33,13 @@ const ButtonWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-
   ${Article}:hover & {
     opacity: 1;
   }
 `
 
-<<<<<<< HEAD
 export const ProductDetails = (/* { _id, imageUrl, name, price } */) => {
   const dispatch = useDispatch()
-=======
-//Page with product details fetched depending on the product id
-export const ProductDetails = () => {
->>>>>>> 914ff27f08c8a2ee78c46fcc934818715a5f3595
   const { productId } = useParams()
   const [product, setProduct] = useState({})
   const PRODUCT_URL = `http://localhost:8080/products/${productId}`
@@ -64,22 +59,14 @@ export const ProductDetails = () => {
   return (
     <DetailPage>
       <Article>
-<<<<<<< HEAD
         <Image src={product.imageUrl} alt={product.name} />
-=======
-        <Image src={product.imageUrl} alt={product.name}></Image>
->>>>>>> 914ff27f08c8a2ee78c46fcc934818715a5f3595
         <Details>
           <h4>{product.description}</h4>
           <p>Size: {product.size}</p>
           <p>Price: {product.price} EUR</p>
         </Details>
         <ButtonWrapper>
-<<<<<<< HEAD
           <Button onClick={handleAddToCart} title="Add To Cart"></Button>
-=======
-          <Button title='Add to cart' />
->>>>>>> 914ff27f08c8a2ee78c46fcc934818715a5f3595
         </ButtonWrapper>
       </Article>
       <Link to="/products">
