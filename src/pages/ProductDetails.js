@@ -42,6 +42,12 @@ export const ProductDetails = (/* { _id, imageUrl, name, price } */) => {
   const dispatch = useDispatch()
   const { productId } = useParams()
   const [product, setProduct] = useState({})
+  /* const [_id, set_id] = useState('')
+  const [name, setname] = useState('')
+  const [price, setPrice] = useState() */
+  const _id = product._id
+  const name = product.name
+  const price = product.price
   const PRODUCT_URL = `http://localhost:8080/products/${productId}`
 
   useEffect(() => {
@@ -49,11 +55,14 @@ export const ProductDetails = (/* { _id, imageUrl, name, price } */) => {
       .then((res) => res.json())
       .then((data) => {
         setProduct(data)
+        /* set_id(data._id)
+        setName(data.name)
+        setPrice(data.price) */
       })
   }, [PRODUCT_URL])
 
   const handleAddToCart = () => {
-    dispatch(cart.actions.addProduct({ product }))
+    dispatch(cart.actions.addProduct({ _id, name, quantity: 1, price }))
   }
 
   return (
