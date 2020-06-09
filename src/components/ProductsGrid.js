@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { ProductCard } from './ProductCard'
+import { Pagination } from './Pagination'
 
 const FeaturedContainer = styled.section`
   display: flex;
+  flex-direction: column;
 `
 const Grid = styled.div`
   display: grid;
@@ -20,16 +22,27 @@ const Grid = styled.div`
 `
 
 export const ProductsGrid = () => {
-  const PRODUCTS_URL = 'http://localhost:8080/products'
   const [products, setProducts] = useState([])
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
 
   useEffect(() => {
-    fetch(PRODUCTS_URL)
+    fetch(`http://localhost:8080/products?page=${page}`)
       .then((res) => res.json())
-      .then((data) => {
-        setProducts(data)
+      .then((json) => {
+        setProducts(json.products)
+        setPage(json.page)
+        setTotalPages(json.total_pages)
       })
-  }, [PRODUCTS_URL])
+  }, [page])
+
+  const previousPage = () => {
+    setPage(page - 1)
+  }
+
+  const nextPage = () => {
+    setPage(page + 1)
+  }
 
   return (
     <FeaturedContainer>
@@ -45,6 +58,11 @@ export const ProductsGrid = () => {
           ))}
         </Grid>
       )}
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        back={previousPage}
+        next={nextPage} />
     </FeaturedContainer>
   )
 }

@@ -28,8 +28,8 @@ export const FeatureGrid = () => {
   useEffect(() => {
     fetch(PRODUCTS_URL)
       .then((res) => res.json())
-      .then((data) => {
-        setProducts(data)
+      .then((json) => {
+        setProducts(json.products)
       })
   }, [PRODUCTS_URL])
 
@@ -42,14 +42,12 @@ export const FeatureGrid = () => {
       {products.length > 0 && (
         <Grid>
           {filteredProducts.map((product) => (
-            // <Link to={`/products/${product._id}`}>
             <ProductCard
               _id={product._id}
               imageUrl={product.imageUrl}
               name={product.name}
               price={product.price}
             />
-            // </Link>
           ))}
         </Grid>
       )}
