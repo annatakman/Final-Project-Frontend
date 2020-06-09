@@ -37,10 +37,18 @@ export const ProductsGrid = () => {
   }, [page])
 
   const previousPage = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
     setPage(page - 1)
   }
 
   const nextPage = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
     setPage(page + 1)
   }
 
