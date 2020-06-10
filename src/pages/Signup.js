@@ -17,7 +17,6 @@ const Form = styled.form`
   flex-direction: column;
   label {
     margin: 10px;
-    color: #254b62;
   }
 `
 export const Signup = () => {

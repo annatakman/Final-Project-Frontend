@@ -1,63 +1,86 @@
-
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import styled from 'styled-components'
+import { useParams, useHistory } from 'react-router-dom'
+import styled from 'styled-components/macro'
 import { Button } from 'components/Button'
 import { useDispatch } from 'react-redux'
 import { cart } from '../reducers/cart'
 
-const DetailPage = styled.section``
-
-const Article = styled.article`
-  position: relative;
-  width: 70vh;
-  background: #d8dadc;
+const DetailPage = styled.section`
+  
+  @media (min-width: 1025px) {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    padding: 0 20px 20px 20px;
+  }
 `
+
 const Image = styled.img`
   width: 100%;
+  @media (min-width: 1025px) {
+    height: 90vh;
+    width: auto;
+}
 `
 
 const Details = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* justify-content: space-between; */
   padding: 0 20px;
+  
+  `
+const Title = styled.h3`
+  margin: 5px 0 2px 0;
 `
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  transition: 0.5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  ${Article}:hover & {
-    opacity: 1;
+
+const SubTitle = styled.h4`
+  margin: 5px 0 2px 0;
+
+  @media (min-width: 1025px) {
+    margin-top: 20px;
   }
 `
 
-export const ProductDetails = (/* { _id, imageUrl, name, price } */) => {
+const Specification = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  @media (min-width: 1025px) {
+    margin-top: 10px;
+  }
+`
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 1025px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    margin-top: 30px;
+  }
+`
+
+export const ProductDetails = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const { productId } = useParams()
   const [product, setProduct] = useState({})
-  /* const [_id, set_id] = useState('')
-  const [name, setname] = useState('')
-  const [price, setPrice] = useState() */
-  const _id = product._id
-  const name = product.name
-  const price = product.price
+  const [_id, set_id] = useState('')
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState()
   const PRODUCT_URL = `http://localhost:8080/products/${productId}`
 
   useEffect(() => {
     fetch(PRODUCT_URL)
       .then((res) => res.json())
-      .then((data) => {
-        setProduct(data)
-        /* set_id(data._id)
-        setName(data.name)
-        setPrice(data.price) */
+      .then((json) => {
+        setProduct(json)
+        set_id(json._id)
+        setName(json.name)
+        setPrice(json.price)
       })
   }, [PRODUCT_URL])
 
@@ -65,22 +88,25 @@ export const ProductDetails = (/* { _id, imageUrl, name, price } */) => {
     dispatch(cart.actions.addProduct({ _id, name, quantity: 1, price }))
   }
 
+  const toAllProducts = () => {
+    history.push('/products')
+  }
+
   return (
     <DetailPage>
-      <Article>
-        <Image src={product.imageUrl} alt={product.name} />
-        <Details>
-          <h4>{product.description}</h4>
+      <Image src={product.imageUrl} alt={product.name} />
+      <Details>
+        <Title>{product.name}</Title>
+        <SubTitle>{product.description}</SubTitle>
+        <Specification>
           <p>Size: {product.size}</p>
-          <p>Price: {product.price} EUR</p>
-        </Details>
-        <ButtonWrapper>
-          <Button onClick={handleAddToCart} title="Add To Cart"></Button>
-        </ButtonWrapper>
-      </Article>
-      <Link to="/products">
-        <Button title="Back to all products" />
-      </Link>
-    </DetailPage>
+          <p>{product.price} €</p>
+        </Specification>
+        <Wrapper>
+          <Button onClick={handleAddToCart} title="Add to cart" background="#1a1a1a" color="#fff" />
+          <Button onClick={toAllProducts} title="Back to all products" />
+        </Wrapper>
+      </Details>
+    </DetailPage >
   )
 }

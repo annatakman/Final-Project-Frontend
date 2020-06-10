@@ -20,7 +20,6 @@ const Form = styled.form`
   flex-direction: column;
   label {
     margin: 10px;
-    color: #254b62;
   }
 `
 
@@ -62,7 +61,6 @@ export const Login = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-
         <Button type="submit" title="Login" />
       </Form>
     </Section>

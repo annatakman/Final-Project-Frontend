@@ -10,7 +10,8 @@ const Nav = styled.nav`
   align-items: center;
   height: 25px;
   margin: 0;
-  padding: 0 0 0 20px;
+  padding: 6px 0 6px 20px;
+  text-transform: uppercase;
 
   a {
     text-decoration: none;
@@ -24,7 +25,7 @@ const Title = styled.h1`
   font-size: 15px;
 
   @media (min-width: 768px) {
-    font-size: 20px;
+    font-size: 24px;
   }
 `
 const NavList = styled.ul`
@@ -39,6 +40,7 @@ const ListItem = styled.li`
   float: left;
   padding: 0.5rem;
   position: relative;
+  font-weight: bold;
 
   @media (min-width: 768px) {
     padding: 1rem;

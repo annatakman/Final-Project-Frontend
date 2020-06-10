@@ -5,14 +5,28 @@ import { cart } from '../reducers/cart'
 import { user } from '../reducers/user'
 import { CartItem } from '../components/CartItem'
 import { Button } from '../components/Button'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 //import { Modal } from "react-bootstrap";
 
-const Title = styled.h1`
-  color: blue;
-  font-size: 12px;
+const CartWrapper = styled.section`
+    padding: 20px;
 `
+
 const Cart = styled.section``
+
+const ButtonWrapper = styled.div`
+display: grid;
+grid-template-columns: 1fr;
+
+@media (min-width: 1025px) {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  margin-top: 30px;
+}
+`
+
+const Text = styled.p``
 
 export const CartPage = () => {
   const dispatch = useDispatch()
@@ -27,33 +41,36 @@ export const CartPage = () => {
     history.push('/checkout')
   }
 
-  /*   useEffect(() => {
-    if (accessToken) {
-      
-    }
-  }, [accessToken]) */
+  const toLogin = () => {
+    history.push('/login')
+  }
+
+  const toSignup = () => {
+    history.push('/signup')
+  }
 
   return (
-    <div>
+    <CartWrapper>
       {cartItems.length > 0 && (
         <Cart>
           {cartItems.map((item) => (
             <CartItem _id={item._id} name={item.name} price={item.price} />
           ))}
-          <Button title="Clear Cart" onClick={clearAll} />
-          {accessToken && <Button title="To Checkout" onClick={toCheckout} />}
-          {!accessToken && (
-            <>
-              <Link to="/login">
-                <Button title="Log in" />
-              </Link>
-              <Link to="/signup">
-                <Button title="Sign up" />
-              </Link>
-            </>
-          )}
+          <ButtonWrapper>
+            {accessToken && <Button title="To checkout" onClick={toCheckout} background="#1a1a1a" color="#fff" />}
+            {!accessToken && (
+              <>
+                <Button title="Log in" onClick={toLogin} background="#d3d3d3" />
+                <Button title="Sign up" onClick={toSignup} background="#1a1a1a" color="#fff" />
+              </>
+            )}
+            <Button title="Clear Cart" onClick={clearAll} />
+          </ButtonWrapper>
         </Cart>
       )}
-    </div>
+      {cartItems.length === 0 && (
+        <Text>Hi! Your cart is empty!</Text>
+      )}
+    </CartWrapper>
   )
 }

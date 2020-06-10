@@ -2,19 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledButton = styled.button`
-  font-family: "Josefin Sans", sans-serif;
-  background: #fcfaf1;
-  color: #254b62;
-  border: 2px solid #cff532;
-  text-transform: uppercase;
+  font-family: 'Nunito Sans', sans-serif;
+  border: 1px solid #1a1a1a;
   cursor: pointer;
+  margin-top: 15px;
   padding: 8px 14px;
-  border-radius: 6px;
-  font-size: 22px;
+  background: ${(props) => (props.background || '#fff')};
+  color: ${(props) => (props.color || '#1a1a1a')};
+  font-size: 16px;
+  text-transform: uppercase;
   display: block;
-  margin: 25px 0 0 10px;
 `
 
-export const Button = ({ title, onClick }) => (
-  <StyledButton onClick={onClick}>{title}</StyledButton>
+export const Button = ({ background, color, title, onClick }) => (
+  <StyledButton onClick={onClick} background={background} color={color}>{title}</StyledButton>
 )

@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Provider } from 'react-redux'
 import {
   createStore,
@@ -55,45 +56,59 @@ const store = createStore(
 )
 store.subscribe(() => savetoLocal(store.getState()))
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`
+
+const MainContent = styled.div`
+  flex: 1;
+`
+
 export const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Header />
-        <Switch>
-          <Route path="/" exact>
-            <LandingPage />
-          </Route>
+        <Wrapper>
+          <Header />
+          <MainContent>
+            <Switch>
+              <Route path="/" exact>
+                <LandingPage />
+              </Route>
 
-          <Route path="/products" exact>
-            <ProductPage />
-          </Route>
+              <Route path="/products" exact>
+                <ProductPage />
+              </Route>
 
-          <Route path="/products/:productId">
-            <ProductDetails />
-          </Route>
+              <Route path="/products/:productId">
+                <ProductDetails />
+              </Route>
 
-          <Route path="/login">
-            <Login />
-          </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
 
-          <Route path="/signup">
-            <Signup />
-          </Route>
+              <Route path="/signup">
+                <Signup />
+              </Route>
 
-          <Route path="/profilepage">
-            <ProfilePage />
-          </Route>
+              <Route path="/profilepage">
+                <ProfilePage />
+              </Route>
 
-          <Route path="/cart">
-            <CartPage />
-          </Route>
+              <Route path="/cart">
+                <CartPage />
+              </Route>
 
-          <Route path="/checkout">
-            <Checkout />
-          </Route>
-        </Switch>
-        <Footer />
+              <Route path="/checkout">
+                <Checkout />
+              </Route>
+            </Switch>
+          </MainContent>
+          <Footer />
+        </Wrapper>
       </BrowserRouter>
     </Provider>
   )

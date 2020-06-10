@@ -9,15 +9,22 @@ import { products } from 'reducers/products'
 const Article = styled.article`
   position: relative;
   width: 100%;
-  background: #d8dadc;
+  background: #fff;
 `
 const Img = styled.img`
   width: 100%;
 `
 const Details = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 0px;
+  font-size: 14px;
+  font-weight: bold;
+  p {
+    text-transform: uppercase;
+    margin: 0;
+  }
 `
 const ButtonWrapper = styled.div`
   display: flex;
@@ -54,7 +61,7 @@ export const ProductCard = ({ _id, imageUrl, name, price }) => {
         </Details>
       </Link>
       <ButtonWrapper>
-        <Button onClick={handleAddToCart} title="Add To Cart"></Button>
+        <Button onClick={handleAddToCart} title="Add to cart"></Button>
       </ButtonWrapper>
     </Article>
   )

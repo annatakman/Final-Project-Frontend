@@ -5,32 +5,49 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons'
 
 const FooterWrapper = styled.footer`
-  display: grid;
-  grid-template-columns: 100%;
-  grid-row-gap: 20px;
-  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 20px;
   padding: 20px;
-  background: #d8dadc;
-
+  background: #d3d3d3;
   @media (min-width: 768px) {
-    grid-template-columns: 32% 32% 32%;
-    grid-column-gap: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: left;
   }
 `
 const FooterSection = styled.section`
   display: flex;
   flex-direction: column;
+  
+  @media (min-width: 768px) {
+    width: 20%;
+  }
 `
-const FooterTitle = styled.h3``
+const FooterTitle = styled.h3`
+  font-size: 15px;
+`
 const FooterP = styled.p`
   margin: 0;
+  font-size: 14px;
 `
 const FooterAnchor = styled.a`
-  margin-right: 15px;
   cursor: pointer;
+  font-size: 14px;
 `
 const Social = styled.div`
-  font-size: 30px;
+  a {
+    font-size: 30px;
+    margin: 6px;
+  }
+  
+  @media (min-width: 768px) {
+    a {
+    margin-right: 15px;
+    }
+  }
 `
 
 export const Footer = () => {

@@ -15,9 +15,8 @@ const Grid = styled.div`
   grid-row-gap: 20px;
 
   @media (min-width: 768px) {
-    grid-template-columns: 32% 32% 32%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 2%;
-    width: 100vw;
   }
 `
 
