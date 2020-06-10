@@ -69,6 +69,7 @@ export const ProductDetails = () => {
   const { productId } = useParams()
   const [product, setProduct] = useState({})
   const [_id, set_id] = useState('')
+  const [imageUrl, setImageURL] = useState('')
   const [name, setName] = useState('')
   const [price, setPrice] = useState()
   const PRODUCT_URL = `http://localhost:8080/products/${productId}`
@@ -79,13 +80,14 @@ export const ProductDetails = () => {
       .then((json) => {
         setProduct(json)
         set_id(json._id)
+        setImageURL(json.imageUrl)
         setName(json.name)
         setPrice(json.price)
       })
   }, [PRODUCT_URL])
 
   const handleAddToCart = () => {
-    dispatch(cart.actions.addProduct({ _id, name, quantity: 1, price }))
+    dispatch(cart.actions.addProduct({ _id, imageUrl, name, quantity: 1, price }))
   }
 
   const toAllProducts = () => {

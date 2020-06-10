@@ -48,7 +48,7 @@ export const ProductCard = ({ _id, imageUrl, name, price }) => {
   const history = useHistory()
 
   const handleAddToCart = () => {
-    dispatch(cart.actions.addProduct({ _id, name, quantity: 1, price }))
+    dispatch(cart.actions.addProduct({ _id, imageUrl, name, quantity: 1, price }))
   }
 
   return (

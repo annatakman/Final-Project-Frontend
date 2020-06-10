@@ -32,7 +32,7 @@ export const Checkout = () => {
           {cartItems.length > 0 && (
             <Cart>
               {cartItems.map((item) => (
-                <CartItem _id={item._id} name={item.name} price={item.price} />
+                <CartItem _id={item._id} imageUrl={item.imageUrl} name={item.name} price={item.price} />
               ))}
               <h2>Ship to</h2>
               <p>{name}</p>

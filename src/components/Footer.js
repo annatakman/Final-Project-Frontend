@@ -8,9 +8,10 @@ const FooterWrapper = styled.footer`
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-top: 20px;
+/*   margin-top: 20px; */
   padding: 20px;
   background: #d3d3d3;
+
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
