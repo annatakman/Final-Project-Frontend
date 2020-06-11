@@ -18,6 +18,9 @@ const Cart = styled.section`
   display: grid;
   
   @media (min-width: 1025px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 60vw;
   }
 `
