@@ -5,7 +5,42 @@ import styled from 'styled-components'
 import { Button } from '../components/Button'
 import { user } from '../reducers/user'
 
-const ProfileDetails = styled.section``
+const ProfileDetails = styled.section`
+  padding: 20px;
+`
+
+const Profile = styled.section``
+
+const Div = styled.div`
+  display: grid;
+  grid-template-columns: 5fr 5fr 5fr 5fr 5fr 5fr 5fr 5fr 5fr;
+  grid-gap: 6px;
+  margin-top: -23px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 2fr 2fr 5fr 5fr 5fr 5fr 5fr 5fr 5fr;
+    font-size: 18px;
+  }
+`
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 100%;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    justify-items: center;
+  }
+`
+
+const Titel = styled.h1``
+
+const Text = styled.h4`
+  font-weight: bold;
+  margin-top: 16px;
+`
+
+const Content = styled.p``
 
 export const ProfilePage = () => {
   const history = useHistory()
@@ -24,19 +59,45 @@ export const ProfilePage = () => {
   return (
     <ProfileDetails>
       {accessToken && (
-        <div>
-          <h4>Your profile</h4>
-          <h4>{userName}</h4>
-          <h4>{userEmail}</h4>
-          <h4>{userStreet}</h4>
-          <h4>{userPostcode}</h4>
-          <h4>{userCity}</h4>
-          <h4>{userTelephone}</h4>
-        </div>
+        <Profile>
+          <Titel>Your profile</Titel>
+
+          <Div>
+            <Text>Name:</Text>
+            <Content>{userName} </Content>
+          </Div>
+
+          <Div>
+            <Text>Email: </Text>
+            <Content>{userEmail} </Content>
+          </Div>
+
+          <Div>
+            <Text>Street: </Text>
+            <Content>{userStreet} </Content>
+          </Div>
+
+          <Div>
+            <Text>PostCode: </Text>
+            <Content>{userPostcode} </Content>
+          </Div>
+
+          <Div>
+            <Text>City: </Text>
+            <Content>{userCity} </Content>
+          </Div>
+
+          <Div>
+            <Text>Phone: </Text>
+            <Content>{userTelephone} </Content>
+          </Div>
+        </Profile>
       )}
       {!accessToken && history.push('/login')}
 
-      <Button title="Signout" onClick={handleSignOut} />
+      <Wrapper>
+        <Button title="Signout" onClick={handleSignOut} />
+      </Wrapper>
     </ProfileDetails>
   )
 }
