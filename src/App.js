@@ -103,7 +103,7 @@ export const App = () => {
               </Route>
 
               <Route path="/checkout">
-                <Checkout />
+                <CartPage />
               </Route>
             </Switch>
           </MainContent>
