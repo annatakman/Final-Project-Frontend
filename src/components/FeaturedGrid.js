@@ -42,6 +42,7 @@ export const FeatureGrid = () => {
         <Grid>
           {filteredProducts.map((product) => (
             <ProductCard
+              key={product._id}
               _id={product._id}
               imageUrl={product.imageUrl}
               name={product.name}

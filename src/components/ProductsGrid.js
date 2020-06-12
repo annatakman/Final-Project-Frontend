@@ -57,6 +57,7 @@ export const ProductsGrid = () => {
         <Grid>
           {products.map((product) => (
             <ProductCard
+              key={product._id}
               _id={product._id}
               imageUrl={product.imageUrl}
               name={product.name}

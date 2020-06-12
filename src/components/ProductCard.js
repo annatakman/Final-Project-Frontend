@@ -43,7 +43,7 @@ const ButtonWrapper = styled.div`
     opacity: 1;
   }
 
-  ${Button} {
+  Button {
     width: 100%;
   }
 `
