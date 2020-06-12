@@ -30,7 +30,7 @@ const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: 150px;
   justify-content: center;
-  box-sizing: border-box
+  box-sizing: border-box;
   transition: 0.5s ease;
   opacity: 0;
   position: absolute;
