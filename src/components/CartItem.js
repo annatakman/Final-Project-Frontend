@@ -38,7 +38,7 @@ export const CartItem = ({ _id, imageUrl, name, price }) => {
   }
 
   return (
-    <Article key={_id}>
+    <Article>
       <Image src={imageUrl} />
       <Text>{name}</Text>
       <Text>{price} €</Text>
