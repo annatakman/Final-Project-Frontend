@@ -72,6 +72,7 @@ export const ProductDetails = () => {
   const [imageUrl, setImageURL] = useState('')
   const [name, setName] = useState('')
   const [price, setPrice] = useState()
+  const [sold, setSold] = useState(false)
   const PRODUCT_URL = `http://localhost:8080/products/${productId}`
 
   useEffect(() => {
@@ -83,8 +84,12 @@ export const ProductDetails = () => {
         setImageURL(json.imageUrl)
         setName(json.name)
         setPrice(json.price)
+        setSold(json.sold)
+        console.log(json.sold)
       })
   }, [PRODUCT_URL])
+
+
 
   const handleAddToCart = () => {
     dispatch(cart.actions.addProduct({ _id, imageUrl, name, quantity: 1, price }))
@@ -105,7 +110,8 @@ export const ProductDetails = () => {
           <p>{product.price} €</p>
         </Specification>
         <Wrapper>
-          <Button onClick={handleAddToCart} title="Add to cart" background="#1a1a1a" color="#fff" />
+          {!product.sold && <Button onClick={handleAddToCart} title="Add to cart" background="#1a1a1a" color="#fff" />}
+          {product.sold && <Button title="Sold" border="#d3d3d3" color="#d3d3d3" disabled />}
           <Button onClick={toAllProducts} title="Back to all products" />
         </Wrapper>
       </Details>

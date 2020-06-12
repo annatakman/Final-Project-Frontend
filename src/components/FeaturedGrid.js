@@ -46,6 +46,7 @@ export const FeatureGrid = () => {
               imageUrl={product.imageUrl}
               name={product.name}
               price={product.price}
+              sold={product.sold}
             />
           ))}
         </Grid>

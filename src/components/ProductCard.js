@@ -27,9 +27,10 @@ const Details = styled.div`
   }
 `
 const ButtonWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 150px;
   justify-content: center;
-  width: 100%;
+  box-sizing: border-box
   transition: 0.5s ease;
   opacity: 0;
   position: absolute;
@@ -41,9 +42,13 @@ const ButtonWrapper = styled.div`
   ${Article}:hover & {
     opacity: 1;
   }
+
+  ${Button} {
+    width: 100%;
+  }
 `
 
-export const ProductCard = ({ _id, imageUrl, name, price }) => {
+export const ProductCard = ({ _id, imageUrl, name, price, sold }) => {
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -61,7 +66,8 @@ export const ProductCard = ({ _id, imageUrl, name, price }) => {
         </Details>
       </Link>
       <ButtonWrapper>
-        <Button onClick={handleAddToCart} title="Add to cart"></Button>
+        {!sold && <Button onClick={handleAddToCart} title="Add to cart" />}
+        {sold && <Button title="Sold" border="#d3d3d3" color="#d3d3d3" disabled />}
       </ButtonWrapper>
     </Article>
   )
