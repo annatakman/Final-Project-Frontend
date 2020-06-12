@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const StyledButton = styled.button`
   font-family: 'Nunito Sans', sans-serif;
-  border: 1px solid #1a1a1a;
+  border: 1px solid ${(props) => (props.border || '#1a1a1a')};
   cursor: pointer;
   margin-top: 15px;
   padding: 8px 14px;
@@ -14,6 +14,6 @@ const StyledButton = styled.button`
   display: block;
 `
 
-export const Button = ({ background, color, title, onClick }) => (
-  <StyledButton onClick={onClick} background={background} color={color}>{title}</StyledButton>
+export const Button = ({ border, background, color, title, onClick }) => (
+  <StyledButton onClick={onClick} border={border} background={background} color={color}>{title}</StyledButton>
 )
