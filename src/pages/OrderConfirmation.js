@@ -49,7 +49,6 @@ export const OrderConfirmation = () => {
     <ConfirmationWrapper>
       <Confirmation>
         <ConfirmationTitle>Thank you!</ConfirmationTitle>
-        <ConfirmationMessage> </ConfirmationMessage>
         <ConfirmationMessage>
           Your order will be processed and shipped when payment has been received. Please follow the payment instructions in your confirmation email.
         </ConfirmationMessage>
