@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  items: [],
+  items: []
 }
 
 export const cart = createSlice({
@@ -33,8 +33,8 @@ export const cart = createSlice({
     },
     clearCart: () => {
       return initialState
-    },
-  },
+    }
+  }
 })
 
 export const submitOrder = (

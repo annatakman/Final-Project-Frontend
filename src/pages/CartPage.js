@@ -9,10 +9,10 @@ import { ShippingInfo } from '../components/ShippingInfo'
 //import { Modal } from "react-bootstrap";
 
 const CartWrapper = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 `
 const Cart = styled.section`
   display: grid;
@@ -34,8 +34,7 @@ const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr /* 1fr */;
   grid-column-gap: 20px;
-  margin: auto;
-  margin-top: 30px;
+  margin: 30px auto;
   width: 40vw;
 }
 `
@@ -72,6 +71,7 @@ export const CartPage = () => {
   const toProducts = () => history.push('/products')
   const handleSubmit = () => {
     dispatch(submitOrder(items, userId, name, street, postcode, city, telephone, accessToken))
+    history.push('/confirmation')
   }
 
   /*  const toSignup = () => {
@@ -108,7 +108,6 @@ export const CartPage = () => {
           </Cart>
 
           <ButtonWrapper>
-
             {accessToken &&
               <>
                 <Route path="/cart" exact>
@@ -129,7 +128,6 @@ export const CartPage = () => {
             ) */}
 
             <Button title="Clear cart" onClick={clearAll} />
-
           </ButtonWrapper>
         </>
       )}

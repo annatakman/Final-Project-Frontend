@@ -21,6 +21,7 @@ import { ProductDetails } from 'pages/ProductDetails'
 import { Footer } from 'components/Footer'
 import { CartPage } from 'pages/CartPage'
 import { Checkout } from 'pages/Checkout'
+import { OrderConfirmation } from 'pages/OrderConfirmation'
 
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const savetoLocal = (state) => {
@@ -104,6 +105,10 @@ export const App = () => {
 
               <Route path="/checkout">
                 <CartPage />
+              </Route>
+
+              <Route path="/confirmation">
+                <OrderConfirmation />
               </Route>
             </Switch>
           </MainContent>
