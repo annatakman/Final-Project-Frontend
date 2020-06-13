@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { Button } from '../components/Button'
 import { user } from '../reducers/user'
+import { Checkout } from './Checkout'
 
 const ProfileDetails = styled.section`
   padding: 20px;
@@ -43,8 +44,16 @@ const Text = styled.h4`
 const Content = styled.p``
 
 export const ProfilePage = () => {
+  //const { userId } = useParams() // lagt till
+  const [orders, setOrders] = useState([]) // lagt till
+  //const [_id, set_id] = useState('') // lagt till
+  // const [product, setProduct] = useState({}) // lagt till
   const history = useHistory()
+  //const ORDERS_URL = `http://localhost:8080/orders/${orderId}` // lagt till
+  // user url
+
   const dispatch = useDispatch()
+
   const handleSignOut = () => {
     dispatch(user.actions.logout())
   }
@@ -55,9 +64,43 @@ export const ProfilePage = () => {
   const userPostcode = useSelector((store) => store.user.login.postcode)
   const userCity = useSelector((store) => store.user.login.city)
   const userTelephone = useSelector((store) => store.user.login.telephone)
+  const userId = useSelector((store) => store.user.login.userId)
+  const user = useSelector((store) => store.user.login)
+
+  console.log(user)
+
+  const USERS_URL = `http://localhost:8080/users/${userId}` // lagt till
+
+  useEffect(() => {
+    // lagt till
+    fetch(USERS_URL, {
+      method: 'GET', // behöver jag denna?
+      headers: {
+        Authorization: accessToken,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        setOrders(json.orderHistory)
+        //console.log(userID)
+      })
+  }, [accessToken, USERS_URL]) // lagt till
+
+  console.log(userId)
 
   return (
     <ProfileDetails>
+      <Div>
+        <Text>Orders: </Text>
+
+        {orders && (
+          <Content>
+            {orders.map((order) => (
+              <h4 key={order._id}> {order._id} </h4>
+            ))}
+          </Content>
+        )}
+      </Div>
       {accessToken && (
         <Profile>
           <Titel>Your profile</Titel>

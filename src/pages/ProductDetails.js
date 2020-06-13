@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux'
 import { cart } from '../reducers/cart'
 
 const DetailPage = styled.section`
-  
   @media (min-width: 1025px) {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -19,7 +18,7 @@ const Image = styled.img`
   @media (min-width: 1025px) {
     height: 90vh;
     width: auto;
-}
+  }
 `
 
 const Details = styled.div`
@@ -28,8 +27,7 @@ const Details = styled.div`
   justify-content: flex-end;
   /* justify-content: space-between; */
   padding: 0 20px;
-  
-  `
+`
 const Title = styled.h3`
   margin: 5px 0 2px 0;
 `
@@ -89,10 +87,10 @@ export const ProductDetails = () => {
       })
   }, [PRODUCT_URL])
 
-
-
   const handleAddToCart = () => {
-    dispatch(cart.actions.addProduct({ _id, imageUrl, name, quantity: 1, price }))
+    dispatch(
+      cart.actions.addProduct({ _id, imageUrl, name, quantity: 1, price })
+    )
   }
 
   const toAllProducts = () => {
@@ -110,11 +108,20 @@ export const ProductDetails = () => {
           <p>{product.price} €</p>
         </Specification>
         <Wrapper>
-          {!product.sold && <Button onClick={handleAddToCart} title="Add to cart" background="#1a1a1a" color="#fff" />}
-          {product.sold && <Button title="Sold" border="#d3d3d3" color="#d3d3d3" disabled />}
+          {!product.sold && (
+            <Button
+              onClick={handleAddToCart}
+              title="Add to cart"
+              background="#1a1a1a"
+              color="#fff"
+            />
+          )}
+          {product.sold && (
+            <Button title="Sold" border="#d3d3d3" color="#d3d3d3" disabled />
+          )}
           <Button onClick={toAllProducts} title="Back to all products" />
         </Wrapper>
       </Details>
-    </DetailPage >
+    </DetailPage>
   )
 }
