@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import styled from 'styled-components/macro'
 import { ProductCard } from './ProductCard'
 import { Pagination } from './Pagination'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button } from '../components/Button'
@@ -7,10 +7,10 @@ import { CartItem } from '../components/CartItem'
 import { submitOrder } from '../reducers/cart'
 
 const CheckoutWrapper = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 `
 const Cart = styled.section`
   display: grid;

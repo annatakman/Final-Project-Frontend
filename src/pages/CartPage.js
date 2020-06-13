@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, Route } from 'react-router-dom'
 import { cart, submitOrder } from '../reducers/cart'

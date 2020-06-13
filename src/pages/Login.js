@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { user, login } from '../reducers/user'
-import { ProfilePage } from './ProfilePage'
+import { login } from '../reducers/user'
 import { Button } from '../components/Button'
 
 const Section = styled.section`
@@ -85,7 +84,7 @@ export const Login = () => {
     if (accessToken) {
       history.push('/profilepage')
     }
-  }, [accessToken])
+  }, [accessToken, history])
 
   return (
     <Section>
@@ -99,6 +98,7 @@ export const Login = () => {
             onChange={(event) => setEmail(event.target.value)}
           />
         </label>
+
         <label htmlFor="password">
           <Label>Password</Label>
           <Input

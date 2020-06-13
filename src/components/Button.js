@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const StyledButton = styled.button`
   font-family: 'Nunito Sans', sans-serif;

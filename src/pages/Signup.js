@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import styled from 'styled-components'
-import { user, login, signup } from '../reducers/user'
+import { useDispatch } from 'react-redux'
+import styled from 'styled-components/macro'
+import { signup } from '../reducers/user'
 import { Link } from "react-router-dom";
 import { Button } from '../components/Button'
 
@@ -77,6 +77,7 @@ export const Signup = () => {
   const [postcode, setPostcode] = useState('')
   const [city, setCity] = useState('')
   const [telephone, setTelephone] = useState('')
+
   // To sign up a user.
   const handleSignup = (event) => {
     event.preventDefault()
@@ -89,6 +90,7 @@ export const Signup = () => {
     setCity('')
     setTelephone('')
   }
+
   return (
     <Section>
       <Form onSubmit={handleSignup}>

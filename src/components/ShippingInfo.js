@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const Section = styled.section`
   display: flex;
@@ -50,15 +50,6 @@ const Input = styled.input`
     font-size: 8px;
   }
 `
-const Text = styled.p`
-  margin-top: 40px;
-  font-size: 10px;
-  text-transform: uppercase;
-
-  a {
-    font-weight: 700;
-  }
-`
 
 export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPostcode, city, setCity, telephone, setTelephone }) => {
 
@@ -84,6 +75,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
             onChange={(event) => setStreet(event.target.value)}
           />
         </label>
+
         <label htmlFor="postcode">
           <Label>Postal code</Label>
           <Input
@@ -93,6 +85,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
             onChange={(event) => setPostcode(event.target.value)}
           />
         </label>
+
         <label htmlFor="city">
           <Label>City</Label>
           <Input
@@ -102,6 +95,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
             onChange={(event) => setCity(event.target.value)}
           />
         </label>
+
         <label htmlFor="telephone">
           <Label>Telephone</Label>
           <Input

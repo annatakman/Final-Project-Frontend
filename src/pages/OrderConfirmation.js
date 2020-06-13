@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { useHistory, Route } from 'react-router-dom'
+import React from 'react'
+import styled from 'styled-components/macro'
+import { useHistory } from 'react-router-dom'
 import { Button } from '../components/Button'
-import { useSelector } from 'react-redux'
 
 const ConfirmationWrapper = styled.section`
     display: flex;
@@ -43,7 +42,6 @@ export const OrderConfirmation = () => {
   const history = useHistory()
   const toProfile = () => history.push('/profilepage')
   const toHome = () => history.push('/')
-  const orderId = useSelector((store) => store.cart.orderId)
 
   return (
     <ConfirmationWrapper>

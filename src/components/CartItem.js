@@ -1,10 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
-import { useSelector, useDispatch } from 'react-redux'
+import styled from 'styled-components/macro'
+import { useDispatch } from 'react-redux'
 import { cart } from 'reducers/cart'
 import { Button } from './Button'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 
 //   const item = useSelector((state) =>
 //     state.cart.items.find((e) => e._id === _id)
