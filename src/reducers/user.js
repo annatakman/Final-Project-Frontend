@@ -76,6 +76,7 @@ export const login = (email, password) => {
         throw new Error('Unable to sign in.')
       })
       .then((json) => {
+        console.log(json)
         dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }))
         dispatch(user.actions.setUserId({ userId: json._id }))
         dispatch(user.actions.setName({ name: json.name }))

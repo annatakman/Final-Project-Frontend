@@ -12,15 +12,14 @@ const DetailPage = styled.section`
     padding: 0 20px 20px 20px;
   }
 `
-
 const Image = styled.img`
   width: 100%;
+
   @media (min-width: 1025px) {
     height: 90vh;
     width: auto;
   }
 `
-
 const Details = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,7 +30,6 @@ const Details = styled.div`
 const Title = styled.h3`
   margin: 5px 0 2px 0;
 `
-
 const SubTitle = styled.h4`
   margin: 5px 0 2px 0;
 
@@ -39,7 +37,6 @@ const SubTitle = styled.h4`
     margin-top: 20px;
   }
 `
-
 const Specification = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -48,16 +45,17 @@ const Specification = styled.div`
     margin-top: 10px;
   }
 `
-
-const Wrapper = styled.div`
+const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  margin-bottom: 20px;
 
   @media (min-width: 1025px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
     margin-top: 30px;
+    margin-bottom: 0;
   }
 `
 
@@ -70,7 +68,6 @@ export const ProductDetails = () => {
   const [imageUrl, setImageURL] = useState('')
   const [name, setName] = useState('')
   const [price, setPrice] = useState()
-  const [sold, setSold] = useState(false)
   const PRODUCT_URL = `http://localhost:8080/products/${productId}`
 
   useEffect(() => {
@@ -82,8 +79,6 @@ export const ProductDetails = () => {
         setImageURL(json.imageUrl)
         setName(json.name)
         setPrice(json.price)
-        setSold(json.sold)
-        console.log(json.sold)
       })
   }, [PRODUCT_URL])
 
@@ -107,7 +102,7 @@ export const ProductDetails = () => {
           <p>Size: {product.size}</p>
           <p>{product.price} €</p>
         </Specification>
-        <Wrapper>
+        <ButtonWrapper>
           {!product.sold && (
             <Button
               onClick={handleAddToCart}
@@ -120,7 +115,7 @@ export const ProductDetails = () => {
             <Button title="Sold" border="#d3d3d3" color="#d3d3d3" disabled />
           )}
           <Button onClick={toAllProducts} title="Back to all products" />
-        </Wrapper>
+        </ButtonWrapper>
       </Details>
     </DetailPage>
   )

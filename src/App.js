@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { Provider } from 'react-redux'
 import {
   createStore,
@@ -20,7 +20,7 @@ import { ProductPage } from 'pages/ProductPage'
 import { ProductDetails } from 'pages/ProductDetails'
 import { Footer } from 'components/Footer'
 import { CartPage } from 'pages/CartPage'
-import { Checkout } from 'pages/Checkout'
+import { OrderConfirmation } from 'pages/OrderConfirmation'
 
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const savetoLocal = (state) => {
@@ -28,7 +28,7 @@ const savetoLocal = (state) => {
     const serializedState = JSON.stringify(state)
     localStorage.setItem('finalProjectState', serializedState)
   } catch (err) {
-    throw 'Could not save to local storage.'
+    throw new Error('Could not save to local storage.')
   }
 }
 
@@ -38,8 +38,7 @@ const loadFromLocal = () => {
     if (serializedState === null) return undefined
     return JSON.parse(serializedState)
   } catch (err) {
-    throw 'Could not load from local storage.'
-    return undefined
+    throw new Error('Could not load from local storage.')
   }
 }
 
@@ -103,7 +102,11 @@ export const App = () => {
               </Route>
 
               <Route path="/checkout">
-                <Checkout />
+                <CartPage />
+              </Route>
+
+              <Route path="/confirmation">
+                <OrderConfirmation />
               </Route>
             </Switch>
           </MainContent>

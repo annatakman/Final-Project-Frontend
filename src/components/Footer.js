@@ -1,6 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import styled from 'styled-components/macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons'
 
@@ -8,7 +7,6 @@ const FooterWrapper = styled.footer`
   display: flex;
   flex-direction: column;
   text-align: center;
-/*   margin-top: 20px; */
   padding: 20px;
   background: #d3d3d3;
 
@@ -56,8 +54,11 @@ export const Footer = () => {
     <FooterWrapper>
       <FooterSection>
         <FooterTitle>About us</FooterTitle>
-        <FooterP>This is a fictional webshop. The shop was created for the Technigo Bootcamp's final project.</FooterP>
+        <FooterP>
+          This is a fictional webshop. The shop was created for the Technigo Bootcamp's final project.
+        </FooterP>
       </FooterSection>
+
       <FooterSection>
         <FooterTitle>Services</FooterTitle>
         <FooterAnchor>Shipping</FooterAnchor>
@@ -66,6 +67,7 @@ export const Footer = () => {
         <FooterAnchor>Terms & Conditions</FooterAnchor>
         <FooterAnchor>Privacy Policy</FooterAnchor>
       </FooterSection>
+
       <FooterSection>
         <FooterTitle>Contact</FooterTitle>
         <FooterAnchor>Email</FooterAnchor>

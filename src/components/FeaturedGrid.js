@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import styled from 'styled-components/macro'
 import { ProductCard } from './ProductCard'
-import { useDispatch } from 'react-redux'
-import { cart } from '../reducers/cart'
 
 const FeaturedContainer = styled.section`
   display: flex;
@@ -42,6 +39,7 @@ export const FeatureGrid = () => {
         <Grid>
           {filteredProducts.map((product) => (
             <ProductCard
+              key={product._id}
               _id={product._id}
               imageUrl={product.imageUrl}
               name={product.name}

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { FeatureGrid } from 'components/FeaturedGrid'
 import { Button } from 'components/Button'
 import { Link } from 'react-router-dom'

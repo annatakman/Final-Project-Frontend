@@ -1,10 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Link, useHistory } from 'react-router-dom'
+import styled from 'styled-components/macro'
+import { Link } from 'react-router-dom'
 import { Button } from './Button'
 import { useDispatch } from 'react-redux'
 import { cart } from '../reducers/cart'
-import { products } from 'reducers/products'
 
 const Article = styled.article`
   position: relative;
@@ -21,6 +20,7 @@ const Details = styled.div`
   padding: 5px 0px;
   font-size: 14px;
   font-weight: bold;
+
   p {
     text-transform: uppercase;
     margin: 0;
@@ -30,7 +30,7 @@ const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: 150px;
   justify-content: center;
-  box-sizing: border-box
+  box-sizing: border-box;
   transition: 0.5s ease;
   opacity: 0;
   position: absolute;
@@ -43,14 +43,13 @@ const ButtonWrapper = styled.div`
     opacity: 1;
   }
 
-  ${Button} {
+  Button {
     width: 100%;
   }
 `
 
 export const ProductCard = ({ _id, imageUrl, name, price, sold }) => {
   const dispatch = useDispatch()
-  const history = useHistory()
 
   const handleAddToCart = () => {
     dispatch(cart.actions.addProduct({ _id, imageUrl, name, quantity: 1, price }))
@@ -62,7 +61,7 @@ export const ProductCard = ({ _id, imageUrl, name, price, sold }) => {
         <Img src={imageUrl} />
         <Details>
           <p>{name}</p>
-          <p>{price} EUR</p>
+          <p>{price} €</p>
         </Details>
       </Link>
       <ButtonWrapper>
