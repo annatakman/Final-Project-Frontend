@@ -63,15 +63,12 @@ export const ProfilePage = () => {
   const userCity = useSelector((store) => store.user.login.city)
   const userTelephone = useSelector((store) => store.user.login.telephone)
   const userId = useSelector((store) => store.user.login.userId)
-  //const user = useSelector((store) => store.user.login) //behöver jag denna?
-
-  //console.log(user)
 
   const USERS_URL = `http://localhost:8080/users/${userId}`
 
   useEffect(() => {
     fetch(USERS_URL, {
-      method: 'GET', // behöver jag denna?
+      method: 'GET',
       headers: {
         Authorization: accessToken,
       },
