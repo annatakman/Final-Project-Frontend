@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
+import { Sort } from './Sort'
 import { ProductCard } from './ProductCard'
 import { Pagination } from './Pagination'
 
@@ -23,16 +24,17 @@ export const ProductsGrid = () => {
   const [products, setProducts] = useState([])
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
+  const [sort, setSort] = useState('')
 
   useEffect(() => {
-    fetch(`http://localhost:8080/products?page=${page}`)
+    fetch(`http://localhost:8080/products?page=${page}&sort=${sort}&featured=true;false`)
       .then((res) => res.json())
       .then((json) => {
         setProducts(json.products)
         setPage(json.page)
         setTotalPages(json.total_pages)
       })
-  }, [page])
+  }, [page, sort])
 
   const previousPage = () => {
     window.scrollTo({
@@ -52,6 +54,7 @@ export const ProductsGrid = () => {
 
   return (
     <FeaturedContainer>
+      <Sort onChange={(e) => setSort(e.target.value)} />
       {products.length > 0 && (
         <Grid>
           {products.map((product) => (
