@@ -24,7 +24,7 @@ export const ProductsGrid = () => {
   const [products, setProducts] = useState([])
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
-  const [sort, setSort] = useState('')
+  const [sort, setSort] = useState('newest')
 
   useEffect(() => {
     fetch(`http://localhost:8080/products?page=${page}&sort=${sort}&featured=true;false`)

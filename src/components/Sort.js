@@ -19,7 +19,6 @@ export const Sort = ({ onChange }) => {
     <SortContainer>
       <SortTitle>Sort by</SortTitle>
       <select onChange={onChange}>
-        <option value="">Sort</option>
         <option value="newest">New in</option>
         <option value="high">Price high to low</option>
         <option value="low">Price low to high</option>
