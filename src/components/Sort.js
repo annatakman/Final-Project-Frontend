@@ -6,8 +6,6 @@ const SortContainer = styled.div`
   
   margin: 0 20px 20px 20px;
   padding: 1px 15px;
-  border: 1px solid #000;
-  background: #ffe6e6;
 `
 const SortTitle = styled.h4`
   margin: 0 5px;
