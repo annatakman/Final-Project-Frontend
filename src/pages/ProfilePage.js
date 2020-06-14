@@ -30,7 +30,9 @@ const Wrapper = styled.div`
   width: 100%;
 
   @media (min-width: 768px) {
-    justify-items: center;
+    //justify-items: center;
+    grid-template-columns: 25%;
+    justify-content: center;
   }
 `
 
@@ -44,19 +46,15 @@ const Text = styled.h4`
 const Content = styled.p``
 
 export const ProfilePage = () => {
-  //const { userId } = useParams() // lagt till
-  const [orders, setOrders] = useState([]) // lagt till
-  //const [_id, set_id] = useState('') // lagt till
-  // const [product, setProduct] = useState({}) // lagt till
+  const [orders, setOrders] = useState([])
+  //const [status, setStatus] = useState() // behöver jag denna?
   const history = useHistory()
-  //const ORDERS_URL = `http://localhost:8080/orders/${orderId}` // lagt till
-  // user url
-
   const dispatch = useDispatch()
 
   const handleSignOut = () => {
     dispatch(user.actions.logout())
   }
+
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userName = useSelector((store) => store.user.login.name)
   const userEmail = useSelector((store) => store.user.login.email)
@@ -65,14 +63,13 @@ export const ProfilePage = () => {
   const userCity = useSelector((store) => store.user.login.city)
   const userTelephone = useSelector((store) => store.user.login.telephone)
   const userId = useSelector((store) => store.user.login.userId)
-  const user = useSelector((store) => store.user.login)
+  //const user = useSelector((store) => store.user.login) //behöver jag denna?
 
-  console.log(user)
+  //console.log(user)
 
-  const USERS_URL = `http://localhost:8080/users/${userId}` // lagt till
+  const USERS_URL = `http://localhost:8080/users/${userId}`
 
   useEffect(() => {
-    // lagt till
     fetch(USERS_URL, {
       method: 'GET', // behöver jag denna?
       headers: {
@@ -84,7 +81,7 @@ export const ProfilePage = () => {
         setOrders(json.orderHistory)
         //console.log(userID)
       })
-  }, [accessToken, USERS_URL]) // lagt till
+  }, [accessToken, USERS_URL])
 
   console.log(userId)
 
@@ -94,11 +91,13 @@ export const ProfilePage = () => {
         <Text>Orders: </Text>
 
         {orders && (
-          <Content>
+          <div>
             {orders.map((order) => (
-              <h4 key={order._id}> {order._id} </h4>
+              <Content key={order._id}>
+                {order._id} Status: {order.status}
+              </Content>
             ))}
-          </Content>
+          </div>
         )}
       </Div>
       {accessToken && (
