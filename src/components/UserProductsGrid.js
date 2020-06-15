@@ -34,7 +34,7 @@ const EmptyState = styled.h2`
   text-align: center;
 `
 
-export const ProductsGrid = () => {
+export const UserProductsGrid = () => {
   const history = useHistory()
   const [products, setProducts] = useState([])
   const [page, setPage] = useState(1)
@@ -42,7 +42,7 @@ export const ProductsGrid = () => {
   const [sort, setSort] = useState('newest')
 
   useEffect(() => {
-    fetch(`http://localhost:8080/products?page=${page}&sort=${sort}&featured=false&featured=true&createdByAdmin=true`)
+    fetch(`http://localhost:8080/products?page=${page}&sort=${sort}&featured=true&featured=false&createdByAdmin=false`)
       .then((res) => res.json())
       .then((json) => {
         setProducts(json.products)
@@ -75,8 +75,7 @@ export const ProductsGrid = () => {
     <FeaturedContainer>
       <Sort onChange={(e) => setSort(e.target.value)} />
       <Grid>
-
-        {products.length > 0 && (
+        {products && (
           <>
             {products.map((product) => (
               <ProductCard
@@ -86,15 +85,16 @@ export const ProductsGrid = () => {
                 name={product.name}
                 price={product.price}
                 sold={product.sold}
+                email={product.seller.email}
               />
             ))}
           </>
         )}
       </Grid>
 
-      {products.length === 0 &&
+      {!products &&
         <EmptyWrapper>
-          <EmptyState>There are no products listed for sale yet.</EmptyState>
+          <EmptyState>Our community has not listed any products for sale yet.</EmptyState>
           <EmptyState>Start selling your preloved items.</EmptyState>
           <Button
             onClick={toListing}

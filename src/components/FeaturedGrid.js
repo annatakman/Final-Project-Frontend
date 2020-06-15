@@ -18,7 +18,7 @@ const Grid = styled.div`
 `
 
 export const FeatureGrid = () => {
-  const PRODUCTS_URL = 'http://localhost:8080/products'
+  const PRODUCTS_URL = `http://localhost:8080/products?featured=true&createdByAdmin=true`
   const [products, setProducts] = useState([])
 
   useEffect(() => {
