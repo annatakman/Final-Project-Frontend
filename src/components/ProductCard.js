@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import { Button } from './Button'
 import { useDispatch } from 'react-redux'
 import { cart } from '../reducers/cart'
@@ -48,11 +48,15 @@ const ButtonWrapper = styled.div`
   }
 `
 
-export const ProductCard = ({ _id, imageUrl, name, price, sold }) => {
+export const ProductCard = ({ _id, imageUrl, name, price, sold, email }) => {
   const dispatch = useDispatch()
 
   const handleAddToCart = () => {
     dispatch(cart.actions.addProduct({ _id, imageUrl, name, quantity: 1, price }))
+  }
+
+  const handleMailTo = () => {
+    window.location.assign(`mailto:${email}?subject=Product: ${name} ${_id}`)
   }
 
   return (
@@ -65,7 +69,16 @@ export const ProductCard = ({ _id, imageUrl, name, price, sold }) => {
         </Details>
       </Link>
       <ButtonWrapper>
-        {!sold && <Button onClick={handleAddToCart} title="Add to cart" />}
+        {!sold &&
+          <>
+            <Route path="/products" exact>
+              <Button onClick={handleAddToCart} title="Add to cart" />
+            </Route>
+            <Route path="/market" exact>
+              <Button onClick={handleMailTo} title="Contact seller" />
+            </Route>
+          </>
+        }
         {sold && <Button title="Sold" border="#d3d3d3" color="#d3d3d3" disabled />}
       </ButtonWrapper>
     </Article>

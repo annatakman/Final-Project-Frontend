@@ -24,7 +24,7 @@ const Form = styled.form`
   width: 100%;
   max-width: 400px;
 `
-const Label = styled.p`
+const Label = styled.span`
   color: transparent;
   font-size: 0;
 `

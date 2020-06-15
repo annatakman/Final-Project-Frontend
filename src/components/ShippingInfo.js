@@ -16,7 +16,7 @@ const Form = styled.div`
     max-width: 40vw;
   }
 `
-const Label = styled.p`
+const Label = styled.label`
   margin: 0;
   font-size: 10px;
   text-transform: uppercase;
@@ -56,55 +56,55 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
   return (
     <Section>
       <Form>
-        <label htmlFor="name">
-          <Label>Name</Label>
+        <Label htmlFor="name">
+          Name
           <Input
             placeholder="NAME"
             required
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
-        </label>
+        </Label>
 
-        <label htmlFor="street">
-          <Label>Street</Label>
+        <Label htmlFor="street">
+          Street
           <Input
             placeholder="STREET"
             required
             value={street}
             onChange={(event) => setStreet(event.target.value)}
           />
-        </label>
+        </Label>
 
-        <label htmlFor="postcode">
-          <Label>Postal code</Label>
+        <Label htmlFor="postcode">
+          Postal code
           <Input
             placeholder="POSTAL CODE"
             required
             value={postcode}
             onChange={(event) => setPostcode(event.target.value)}
           />
-        </label>
+        </Label>
 
-        <label htmlFor="city">
-          <Label>City</Label>
+        <Label htmlFor="city">
+          City
           <Input
             placeholder="CITY"
             required
             value={city}
             onChange={(event) => setCity(event.target.value)}
           />
-        </label>
+        </Label>
 
-        <label htmlFor="telephone">
-          <Label>Telephone</Label>
+        <Label htmlFor="telephone">
+          Telephone
           <Input
             placeholder="TELEPHONE"
             required
             value={telephone}
             onChange={(event) => setTelephone(event.target.value)}
           />
-        </label>
+        </Label>
       </Form>
     </Section>
   )

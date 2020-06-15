@@ -51,11 +51,6 @@ export const CartPage = () => {
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
   const cartItems = useSelector((store) => store.cart.items)
-  /* const name = useSelector((store) => store.user.login.name)
-  const street = useSelector((store) => store.user.login.street)
-  const postcode = useSelector((store) => store.user.login.postcode)
-  const city = useSelector((store) => store.user.login.city)
-  const telephone = useSelector((store) => store.user.login.telephone) */
   const [name, setName] = useState(useSelector((store) => store.user.login.name))
   const [street, setStreet] = useState(useSelector((store) => store.user.login.street))
   const [postcode, setPostcode] = useState(useSelector((store) => store.user.login.postcode))
