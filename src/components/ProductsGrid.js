@@ -93,11 +93,10 @@ export const ProductsGrid = () => {
             ))}
           </Route>
         )}
+        {userProducts.length === 0 && <h2>There are no products to display yet.</h2>}
       </Grid>
 
-      {userProducts.length === 0 && (
-        <h2>There are no products to display yet.</h2>
-      )}
+
       <Route path="/products" exact>
         <Pagination
           page={page}
