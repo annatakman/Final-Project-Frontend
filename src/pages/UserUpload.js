@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 import { Button } from '../components/Button'
 
@@ -67,10 +67,7 @@ const Img = styled.img`
   max-width: 200px;
   justify-self: center;
 `
-
-
 export const UserUpload = () => {
-  const dispatch = useDispatch()
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
   const [name, setName] = useState('')
