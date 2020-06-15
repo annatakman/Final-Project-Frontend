@@ -14,7 +14,6 @@ const Grid = styled.div`
   grid-template-columns: 100%;
   margin: 0 20px 20px 20px;
   grid-row-gap: 20px;
-
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 2%;
@@ -26,11 +25,17 @@ export const ProductsGrid = () => {
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [sort, setSort] = useState('newest')
-  const adminProducts = products.filter((product) => product.createdByAdmin === true)
-  const userProducts = products.filter((product) => product.createdByAdmin === false)
+  const adminProducts = products.filter(
+    (product) => product.createdByAdmin === true
+  )
+  const userProducts = products.filter(
+    (product) => product.createdByAdmin === false
+  )
 
   useEffect(() => {
-    fetch(`http://localhost:8080/products?page=${page}&sort=${sort}&featured=true;false`)
+    fetch(
+      `http://localhost:8080/products?page=${page}&sort=${sort}&featured=true;false`
+    )
       .then((res) => res.json())
       .then((json) => {
         setProducts(json.products)
@@ -42,7 +47,7 @@ export const ProductsGrid = () => {
   const previousPage = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     })
     setPage(page - 1)
   }
@@ -50,7 +55,7 @@ export const ProductsGrid = () => {
   const nextPage = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     })
     setPage(page + 1)
   }
@@ -58,8 +63,8 @@ export const ProductsGrid = () => {
   return (
     <FeaturedContainer>
       <Sort onChange={(e) => setSort(e.target.value)} />
-      {products.length > 0 && (
-        <Grid>
+      <Grid>
+        {adminProducts.length > 0 && (
           <Route path="/products" exact>
             {adminProducts.map((product) => (
               <ProductCard
@@ -72,6 +77,8 @@ export const ProductsGrid = () => {
               />
             ))}
           </Route>
+        )}
+        {userProducts.length > 0 && (
           <Route path="/market" exact>
             {userProducts.map((product) => (
               <ProductCard
@@ -85,17 +92,19 @@ export const ProductsGrid = () => {
               />
             ))}
           </Route>
-        </Grid>
-      )}
-      {products.length === 0 &&
+        )}
+      </Grid>
+
+      {userProducts.length === 0 && (
         <h2>There are no products to display yet.</h2>
-      }
+      )}
       <Route path="/products" exact>
         <Pagination
           page={page}
           totalPages={totalPages}
           back={previousPage}
-          next={nextPage} />
+          next={nextPage}
+        />
       </Route>
     </FeaturedContainer>
   )

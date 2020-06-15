@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/macro'
 import { Button } from '../components/Button'
+import { ShowLoader } from '../components/ShowLoader'
+import { ui } from '../reducers/ui'
 
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   padding: 20px;
   min-height: 80vh;
@@ -37,7 +39,7 @@ const Input = styled.input`
     border: 1px solid #1a1a1a;
   }
 
-  ::-webkit-input-placeholder { 
+  ::-webkit-input-placeholder {
     color: #747474;
     font-size: 8px;
   }
@@ -59,8 +61,7 @@ const Text = styled.p`
   font-size: 10px;
   text-transform: uppercase;
 `
-const ImageInput = styled.input`
-`
+const ImageInput = styled.input``
 const Img = styled.img`
   margin: 10px;
   width: 30%;
@@ -68,8 +69,10 @@ const Img = styled.img`
   justify-self: center;
 `
 export const UserUpload = () => {
+  const dispatch = useDispatch()
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
+  const isLoading = useSelector((store) => store.ui.isLoading) /// lagt till
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
@@ -77,7 +80,21 @@ export const UserUpload = () => {
   const [size, setSize] = useState('')
   const [selectedFile, setSelectedFile] = useState()
   const [preview, setPreview] = useState()
-  const categories = ['Category', 'Coats', 'Dresses', 'Jackets', 'Jumpsuits', 'Knitwear', 'Pants', 'Shorts', 'Skirts', 'Tops', 'Jeans', 'Accessories', 'Shoes']
+  const categories = [
+    'Category',
+    'Coats',
+    'Dresses',
+    'Jackets',
+    'Jumpsuits',
+    'Knitwear',
+    'Pants',
+    'Shorts',
+    'Skirts',
+    'Tops',
+    'Jeans',
+    'Accessories',
+    'Shoes',
+  ]
   const clothingSizes = ['XS', 'S', 'M', 'L', 'XL']
   const jeansSizes = [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]
   const shoeSizes = [36, 37, 38, 39, 40, 41, 42]
@@ -107,6 +124,7 @@ export const UserUpload = () => {
   // To list product for sale, can be moved to thunk if we want to
   const handleListing = (event) => {
     event.preventDefault()
+    dispatch(ui.actions.setLoading(true)) // denna har jag lagt in
     const formData = new FormData()
     formData.append('image', selectedFile)
     formData.append('name', name)
@@ -120,11 +138,12 @@ export const UserUpload = () => {
       method: 'POST',
       body: formData,
       headers: {
-        Authorization: accessToken
+        Authorization: accessToken,
       },
     })
       .then((res) => res.json())
       .then((json) => {
+        dispatch(ui.actions.setLoading(false)) // denna har jag lagt in
         console.log(json)
         setName('')
         setDescription('')
@@ -139,9 +158,11 @@ export const UserUpload = () => {
   return (
     <Section>
       <h2>Sell an item</h2>
-      <p>Give your wardrobe a second life. Sell what you don't wear to someone in our community by listing it below.</p>
+      <p>
+        Give your wardrobe a second life. Sell what you don't wear to someone in
+        our community by listing it below.
+      </p>
       <Form onSubmit={handleListing}>
-
         <Label htmlFor="name">
           Product name
           <Input
@@ -174,32 +195,50 @@ export const UserUpload = () => {
         </Label>
         <Label htmlFor="category">
           Category
-          <select id="category" required onChange={(event) => setCategory(event.target.value)}>
+          <select
+            id="category"
+            required
+            onChange={(event) => setCategory(event.target.value)}
+          >
             {categories.map((category) => (
-              <option key={category} value={category}>{category}</option>
+              <option key={category} value={category}>
+                {category}
+              </option>
             ))}
           </select>
         </Label>
         <Label htmlFor="size">
           Size
-          <select id="size" required onChange={(event) => setSize(event.target.value)}>
+          <select
+            id="size"
+            required
+            onChange={(event) => setSize(event.target.value)}
+          >
             <optgroup label="Clothing">
               {clothingSizes.map((size) => (
-                <option key={size} value={size}>{size}</option>
+                <option key={size} value={size}>
+                  {size}
+                </option>
               ))}
             </optgroup>
             <optgroup label="Jeans">
               {jeansSizes.map((size) => (
-                <option key={size} value={size}>{size}</option>
+                <option key={size} value={size}>
+                  {size}
+                </option>
               ))}
             </optgroup>
             <optgroup label="Shoes">
               {shoeSizes.map((size) => (
-                <option key={size} value={size}>{size}</option>
+                <option key={size} value={size}>
+                  {size}
+                </option>
               ))}
             </optgroup>
             <optgroup label="Accessories">
-              <option key='n/a' value=''>N/A</option>
+              <option key="n/a" value="">
+                N/A
+              </option>
             </optgroup>
           </select>
         </Label>
@@ -215,7 +254,13 @@ export const UserUpload = () => {
         </Label>
         {preview && <Img src={preview} />}
 
-        <Button type="submit" title="List product" background="#1a1a1a" color="#fff" />
+        <Button
+          type="submit"
+          title="List product"
+          background="#1a1a1a"
+          color="#fff"
+        />
+        {isLoading && <ShowLoader />}
       </Form>
     </Section>
   )

@@ -23,6 +23,7 @@ import { CartPage } from 'pages/CartPage'
 import { OrderConfirmation } from 'pages/OrderConfirmation'
 import { UserUpload } from 'pages/UserUpload'
 import { Market } from 'pages/Market'
+import { ui } from 'reducers/ui'
 
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const savetoLocal = (state) => {
@@ -47,6 +48,7 @@ const loadFromLocal = () => {
 const reducer = combineReducers({
   cart: cart.reducer,
   user: user.reducer,
+  ui: ui.reducer,
 })
 
 const persistedState = loadFromLocal()

@@ -47,7 +47,6 @@ const Content = styled.p``
 
 export const ProfilePage = () => {
   const [orders, setOrders] = useState([])
-  //const [status, setStatus] = useState() // behöver jag denna?
   const history = useHistory()
   const dispatch = useDispatch()
 
