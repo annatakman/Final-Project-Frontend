@@ -86,6 +86,7 @@ export const UserUpload = () => {
   const shoeSizes = [36, 37, 38, 39, 40, 41, 42]
   const LIST_URL = 'http://localhost:8080/products'
 
+  console.log(userId)
   useEffect(() => {
     if (!selectedFile) {
       setPreview(undefined)
@@ -116,7 +117,7 @@ export const UserUpload = () => {
     formData.append('price', price)
     formData.append('category', category)
     formData.append('size', size)
-    formData.append('seller', userId)
+    formData.append('userId', userId)
 
     fetch(LIST_URL, {
       method: 'POST',
@@ -133,6 +134,8 @@ export const UserUpload = () => {
         setPrice('')
         setCategory('')
         setSize('')
+        setSelectedFile()
+        setPreview()
       })
   }
 
