@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
-import { Route } from 'react-router-dom'
+import { Route, useHistory } from 'react-router-dom'
 import { Sort } from './Sort'
 import { ProductCard } from './ProductCard'
 import { Pagination } from './Pagination'
+import { Button } from './Button'
 
 const FeaturedContainer = styled.section`
   display: flex;
@@ -20,8 +21,21 @@ const Grid = styled.div`
     grid-column-gap: 2%;
   }
 `
+const EmptyWrapper = styled.div`
+  display: grid;
+  align-self: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+`
+const EmptyState = styled.h2`
+  font-size: 14px;
+  text-align: center;
+`
 
 export const ProductsGrid = () => {
+  const history = useHistory()
   const [products, setProducts] = useState([])
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
@@ -38,6 +52,10 @@ export const ProductsGrid = () => {
         setTotalPages(json.total_pages)
       })
   }, [page, sort])
+
+  const toListing = () => {
+    history.push('/sell')
+  }
 
   const previousPage = () => {
     window.scrollTo({
@@ -91,8 +109,18 @@ export const ProductsGrid = () => {
       </Grid>
 
       {userProducts.length === 0 &&
-        <h2>There are no products to display yet.</h2>
+        <EmptyWrapper>
+          <EmptyState>Our community has not listed any products for sale yet.</EmptyState>
+          <EmptyState>Start selling your preloved items.</EmptyState>
+          <Button
+            onClick={toListing}
+            title="List product"
+            background="#1a1a1a"
+            color="#fff"
+          />
+        </EmptyWrapper>
       }
+
       <Route path="/products" exact>
         <Pagination
           page={page}
