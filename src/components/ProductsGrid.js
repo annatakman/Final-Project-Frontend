@@ -58,8 +58,8 @@ export const ProductsGrid = () => {
   return (
     <FeaturedContainer>
       <Sort onChange={(e) => setSort(e.target.value)} />
-      {products.length > 0 && (
-        <Grid>
+      <Grid>
+        {adminProducts.length > 0 && (
           <Route path="/products" exact>
             {adminProducts.map((product) => (
               <ProductCard
@@ -72,6 +72,8 @@ export const ProductsGrid = () => {
               />
             ))}
           </Route>
+        )}
+        {userProducts.length > 0 && (
           <Route path="/market" exact>
             {userProducts.map((product) => (
               <ProductCard
@@ -85,9 +87,10 @@ export const ProductsGrid = () => {
               />
             ))}
           </Route>
-        </Grid>
-      )}
-      {products.length === 0 &&
+        )}
+      </Grid>
+
+      {userProducts.length === 0 &&
         <h2>There are no products to display yet.</h2>
       }
       <Route path="/products" exact>
