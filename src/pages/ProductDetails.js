@@ -104,12 +104,23 @@ export const ProductDetails = () => {
         </Specification>
         <ButtonWrapper>
           {!product.sold && (
-            <Button
-              onClick={handleAddToCart}
-              title="Add to cart"
-              background="#1a1a1a"
-              color="#fff"
-            />
+            <>
+              {product.createdByAdmin &&
+                <Button
+                  onClick={handleAddToCart}
+                  title="Add to cart"
+                  background="#1a1a1a"
+                  color="#fff"
+                />
+              }
+              {!product.createdByAdmin &&
+                <Button
+                  title="Contact seller"
+                  background="#1a1a1a"
+                  color="#fff"
+                />
+              }
+            </>
           )}
           {product.sold && (
             <Button title="Sold" border="#d3d3d3" color="#d3d3d3" disabled />
@@ -117,6 +128,6 @@ export const ProductDetails = () => {
           <Button onClick={toAllProducts} title="Back to all products" />
         </ButtonWrapper>
       </Details>
-    </DetailPage>
+    </DetailPage >
   )
 }

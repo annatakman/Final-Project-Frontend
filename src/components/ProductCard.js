@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import { Button } from './Button'
 import { useDispatch } from 'react-redux'
 import { cart } from '../reducers/cart'
@@ -65,7 +65,16 @@ export const ProductCard = ({ _id, imageUrl, name, price, sold }) => {
         </Details>
       </Link>
       <ButtonWrapper>
-        {!sold && <Button onClick={handleAddToCart} title="Add to cart" />}
+        {!sold &&
+          <>
+            <Route path="/products" exact>
+              <Button onClick={handleAddToCart} title="Add to cart" />
+            </Route>
+            <Route path="/market" exact>
+              <Button title="Contact seller" />
+            </Route>
+          </>
+        }
         {sold && <Button title="Sold" border="#d3d3d3" color="#d3d3d3" disabled />}
       </ButtonWrapper>
     </Article>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
+import { Route } from 'react-router-dom'
 import { Sort } from './Sort'
 import { ProductCard } from './ProductCard'
 import { Pagination } from './Pagination'
@@ -25,6 +26,8 @@ export const ProductsGrid = () => {
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [sort, setSort] = useState('newest')
+  const adminProducts = products.filter((product) => product.createdByAdmin === true)
+  const userProducts = products.filter((product) => product.createdByAdmin === false)
 
   useEffect(() => {
     fetch(`http://localhost:8080/products?page=${page}&sort=${sort}&featured=true;false`)
@@ -57,23 +60,42 @@ export const ProductsGrid = () => {
       <Sort onChange={(e) => setSort(e.target.value)} />
       {products.length > 0 && (
         <Grid>
-          {products.map((product) => (
-            <ProductCard
-              key={product._id}
-              _id={product._id}
-              imageUrl={product.imageUrl}
-              name={product.name}
-              price={product.price}
-              sold={product.sold}
-            />
-          ))}
+          <Route path="/products" exact>
+            {adminProducts.map((product) => (
+              <ProductCard
+                key={product._id}
+                _id={product._id}
+                imageUrl={product.imageUrl}
+                name={product.name}
+                price={product.price}
+                sold={product.sold}
+              />
+            ))}
+          </Route>
+          <Route path="/market" exact>
+            {userProducts.map((product) => (
+              <ProductCard
+                key={product._id}
+                _id={product._id}
+                imageUrl={product.imageUrl}
+                name={product.name}
+                price={product.price}
+                sold={product.sold}
+              />
+            ))}
+          </Route>
         </Grid>
       )}
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        back={previousPage}
-        next={nextPage} />
+      {products.length === 0 &&
+        <h2>There are no products to display yet.</h2>
+      }
+      <Route path="/products" exact>
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          back={previousPage}
+          next={nextPage} />
+      </Route>
     </FeaturedContainer>
   )
 }

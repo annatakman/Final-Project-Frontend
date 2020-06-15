@@ -85,6 +85,12 @@ export const Header = () => {
 
         {accessToken && (
           <>
+            <Link to="/market">
+              <ListItem>Market</ListItem>
+            </Link>
+            <Link to="/sell">
+              <ListItem>List product</ListItem>
+            </Link>
             <Link to="/profilepage">
               <ListItem>Profile</ListItem>
             </Link>
