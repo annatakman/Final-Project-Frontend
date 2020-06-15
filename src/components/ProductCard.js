@@ -48,11 +48,15 @@ const ButtonWrapper = styled.div`
   }
 `
 
-export const ProductCard = ({ _id, imageUrl, name, price, sold }) => {
+export const ProductCard = ({ _id, imageUrl, name, price, sold, email }) => {
   const dispatch = useDispatch()
 
   const handleAddToCart = () => {
     dispatch(cart.actions.addProduct({ _id, imageUrl, name, quantity: 1, price }))
+  }
+
+  const handleMailTo = () => {
+    window.location.assign(`mailto:${email}?subject=Product: ${name} ${_id}`)
   }
 
   return (
@@ -71,7 +75,7 @@ export const ProductCard = ({ _id, imageUrl, name, price, sold }) => {
               <Button onClick={handleAddToCart} title="Add to cart" />
             </Route>
             <Route path="/market" exact>
-              <Button title="Contact seller" />
+              <Button onClick={handleMailTo} title="Contact seller" />
             </Route>
           </>
         }

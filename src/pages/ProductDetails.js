@@ -88,6 +88,10 @@ export const ProductDetails = () => {
     )
   }
 
+  const handleMailTo = () => {
+    window.location.assign(`mailto:${product.seller.email}?subject=Product: ${product.name} ${product._id}`)
+  }
+
   const toAllProducts = () => {
     history.push('/products')
   }
@@ -115,6 +119,7 @@ export const ProductDetails = () => {
               }
               {!product.createdByAdmin &&
                 <Button
+                  onClick={handleMailTo}
                   title="Contact seller"
                   background="#1a1a1a"
                   color="#fff"

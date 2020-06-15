@@ -81,6 +81,7 @@ export const ProductsGrid = () => {
                 name={product.name}
                 price={product.price}
                 sold={product.sold}
+                email={product.seller.email}
               />
             ))}
           </Route>
