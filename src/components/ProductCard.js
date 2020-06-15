@@ -71,6 +71,9 @@ export const ProductCard = ({ _id, imageUrl, name, price, sold, email }) => {
       <ButtonWrapper>
         {!sold &&
           <>
+            <Route path="/" exact>
+              <Button onClick={handleAddToCart} title="Add to cart" />
+            </Route>
             <Route path="/products" exact>
               <Button onClick={handleAddToCart} title="Add to cart" />
             </Route>
