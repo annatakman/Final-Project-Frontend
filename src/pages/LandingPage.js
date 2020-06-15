@@ -16,7 +16,6 @@ const HeroImage = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   @media (min-width: 768px) {
     height: 70vh;
   }
@@ -29,11 +28,9 @@ const HeroTextContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   @media (max-width: 768px) {
     width: 100%;
   }
-
   @media (min-width: 768px) {
     align-items: flex-end;
     left: 80%;
