@@ -73,6 +73,7 @@ export const login = (email, password) => {
         if (res.ok) {
           return res.json()
         }
+        //console.log(res)
         throw new Error('Unable to sign in.')
       })
       .then((json) => {
@@ -87,7 +88,13 @@ export const login = (email, password) => {
         dispatch(user.actions.setTelephone({ telephone: json.telephone }))
       })
       .catch((err) => {
-        dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+        //dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+        dispatch(
+          user.actions.setErrorMessage({
+            errorMessage: { message: 'Unable to sign in' },
+          })
+        )
+        console.log(err)
       })
   }
 }

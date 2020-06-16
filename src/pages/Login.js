@@ -8,9 +8,14 @@ import { Button } from '../components/Button'
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8)), url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
   position: relative;
   background-size: cover;
   background-position: center;
@@ -41,7 +46,7 @@ const Input = styled.input`
     border: 1px solid #1a1a1a;
   }
 
-  ::-webkit-input-placeholder { 
+  ::-webkit-input-placeholder {
     color: #747474;
     font-size: 8px;
   }
@@ -72,6 +77,8 @@ export const Login = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const accessToken = useSelector((store) => store.user.login.accessToken)
+  const error = useSelector((store) => store.user.login.errorMessage)
+  const user = useSelector((store) => store.user)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -80,14 +87,22 @@ export const Login = () => {
     dispatch(login(email, password))
   }
 
+  console.log(error)
+
   useEffect(() => {
     if (accessToken) {
       history.push('/profilepage')
+      //console.log(user.errorMessage)
     }
   }, [accessToken, history])
 
+  //{`${error}`}
+
+  //{error && error.message}
+
   return (
     <Section>
+      {error && error.message}
       <Form onSubmit={handleLogin}>
         <label htmlFor="email">
           <Label>Email</Label>
@@ -109,9 +124,17 @@ export const Login = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-        <Button type="submit" title="Log in" background="#1a1a1a" color="#fff" />
+        <Button
+          type="submit"
+          title="Log in"
+          background="#1a1a1a"
+          color="#fff"
+        />
       </Form>
-      <Text>Don't have an account? <Link to="/signup">Sign up</Link></Text>
+
+      <Text>
+        Don't have an account? <Link to="/signup">Sign up</Link>
+      </Text>
     </Section>
   )
 }

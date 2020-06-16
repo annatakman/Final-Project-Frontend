@@ -81,7 +81,7 @@ export const ProfilePage = () => {
       })
   }, [accessToken, USERS_URL])
 
-  console.log(userId)
+  //console.log(userId)
 
   return (
     <ProfileDetails>
