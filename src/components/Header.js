@@ -33,11 +33,16 @@ const Nav = styled.nav`
 const Title = styled.h1`
   margin: 0;
   font-size: 15px;
+  text-align: center;
 
   @media (min-width: 768px) {
     font-size: 24px;
   }
 
+  @media (min-width: 1024px) {
+    padding-left: 1rem;
+    text-align: left;
+  }
 `
 const NavList = styled.ul`
   justify-self: flex-end;

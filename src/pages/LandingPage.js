@@ -30,11 +30,11 @@ const HeroTextContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 100%;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1025px) {
     align-items: flex-end;
     left: 80%;
   }
