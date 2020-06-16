@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -56,12 +56,12 @@ const Span = styled.span`
     transform-origin: 0% 100%;
   }
 `
-const Ul = styled.ul`
+const MobileNav = styled.ul`
   position: absolute;
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   margin: -100px 0 0 -50px;
-  padding: 50px;
+  padding: 50px 50px 0 50px;
   padding-top: 100px;
   
   background: #ededed;
@@ -108,31 +108,48 @@ const Input = styled.input`
     transform: rotate(-45deg) translate(0, -1px);
   }
 
-  &:checked ~ ${Ul} {
+  &:checked ~ ${MobileNav} {
     transform: none;
   }
 `
 
 
 export const Hamburger = () => {
+  const dispatch = useDispatch()
+  const accessToken = useSelector((store) => store.user.login.accessToken)
+  const [check, setCheck] = useState(false)
+
+  const menuClick = () => setCheck(!check)
+  const handleSignOut = () => dispatch(user.actions.logout())
 
   return (
     <nav>
       <MenuToggle>
-        <Input type="checkbox" />
+        <Input type="checkbox" checked={check} onClick={menuClick} />
         <Span></Span>
         <Span></Span>
         <Span></Span>
 
-        <Ul>
-          <Li>Home</Li>
-          <Li>Cart</Li>
-          <Li>Products</Li>
-          <Li>Market</Li>
-          <Li>List product</Li>
-          <Li>Profile</Li>
-          <Li>Sign out</Li>
-        </Ul>
+        <MobileNav>
+          <Link to="/" onClick={menuClick}><Li>Home</Li></Link>
+          <Link to="/cart" onClick={menuClick}><Li>Cart</Li></Link>
+          <Link to="/products" onClick={menuClick}><Li>Products</Li></Link>
+          <Link to="/market" onClick={menuClick}><Li>Market</Li></Link>
+          {!accessToken &&
+            <>
+              <Link to="/login" onClick={menuClick}><Li>Log in</Li></Link>
+              <Link to="/signup" onClick={menuClick}><Li>Sign up</Li></Link>
+            </>
+          }
+          {accessToken &&
+            <>
+              <Link to="/sell" onClick={menuClick}><Li>List product</Li></Link>
+              <Link to="/profile" onClick={menuClick}><Li>Profile</Li></Link>
+              <Link to="/" onClick={menuClick}><Li onClick={handleSignOut}>Sign out</Li></Link>
+            </>
+          }
+
+        </MobileNav>
       </MenuToggle>
     </nav>
   )
