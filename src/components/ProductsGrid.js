@@ -89,6 +89,7 @@ export const ProductsGrid = () => {
             ))}
           </>
         )}
+<<<<<<< HEAD
         {products.length === 0 && <h2>There are no products to display yet.</h2>}
       </Grid>
 
@@ -111,6 +112,20 @@ export const ProductsGrid = () => {
         back={previousPage}
         next={nextPage} />
 
+=======
+        {userProducts.length === 0 && <h2>There are no products to display yet.</h2>}
+      </Grid>
+
+
+      <Route path="/products" exact>
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          back={previousPage}
+          next={nextPage}
+        />
+      </Route>
+>>>>>>> 438eeca642955eddbc4892dfc6901923d2c747f9
     </FeaturedContainer>
   )
 }

@@ -16,7 +16,6 @@ const HeroImage = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   @media (min-width: 768px) {
     height: 70vh;
   }
