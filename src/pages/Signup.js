@@ -104,7 +104,7 @@ export const Signup = () => {
     } else {
       dispatch(user.actions.setErrorMessage(''))
     }
-  }, [accessToken, history])
+  }, [accessToken, history, dispatch])
 
   return (
     <Section>

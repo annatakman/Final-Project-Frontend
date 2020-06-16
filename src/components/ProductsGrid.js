@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
-import { Route, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Sort } from './Sort'
 import { ProductCard } from './ProductCard'
 import { Pagination } from './Pagination'
@@ -50,8 +50,8 @@ export const ProductsGrid = () => {
       })
   }, [page, sort])
 
-  const toListing = () => {
-    history.push('/sell')
+  const toMarket = () => {
+    history.push('/market')
   }
 
   const previousPage = () => {
@@ -93,11 +93,11 @@ export const ProductsGrid = () => {
 
       {products.length === 0 &&
         <EmptyWrapper>
-          <EmptyState>There are no products listed for sale yet.</EmptyState>
-          <EmptyState>Start selling your preloved items.</EmptyState>
+          <EmptyState>We have no products for sale at the moment.</EmptyState>
+          <EmptyState>Go to the market page to see what our community has listed for sale.</EmptyState>
           <Button
-            onClick={toListing}
-            title="List product"
+            onClick={toMarket}
+            title="To market"
             background="#1a1a1a"
             color="#fff"
           />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
-import { Route, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Sort } from './Sort'
 import { ProductCard } from './ProductCard'
 import { Pagination } from './Pagination'
@@ -75,7 +75,7 @@ export const UserProductsGrid = () => {
     <FeaturedContainer>
       <Sort onChange={(e) => setSort(e.target.value)} />
       <Grid>
-        {products && (
+        {products.length > 0 && (
           <>
             {products.map((product) => (
               <ProductCard
@@ -92,7 +92,7 @@ export const UserProductsGrid = () => {
         )}
       </Grid>
 
-      {!products &&
+      {products.length === 0 &&
         <EmptyWrapper>
           <EmptyState>Our community has not listed any products for sale yet.</EmptyState>
           <EmptyState>Start selling your preloved items.</EmptyState>

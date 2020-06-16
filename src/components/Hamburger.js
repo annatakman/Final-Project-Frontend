@@ -3,8 +3,6 @@ import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { user } from '../reducers/user'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 const MenuToggle = styled.div`
   display: block;
