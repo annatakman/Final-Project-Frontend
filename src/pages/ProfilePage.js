@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Button } from '../components/Button'
 import { user } from '../reducers/user'
 import { Checkout } from './Checkout'
+import { UserProfileProducts } from '../components/UserProfileProducts'
 
 const ProfileDetails = styled.section`
   padding: 20px;
@@ -99,39 +100,43 @@ export const ProfilePage = () => {
         )}
       </Div>
       {accessToken && (
-        <Profile>
-          <Titel>Your profile</Titel>
+        <>
+          <Profile>
+            <Titel>Your profile</Titel>
 
-          <Div>
-            <Text>Name:</Text>
-            <Content>{userName} </Content>
-          </Div>
+            <Div>
+              <Text>Name:</Text>
+              <Content>{userName} </Content>
+            </Div>
 
-          <Div>
-            <Text>Email: </Text>
-            <Content>{userEmail} </Content>
-          </Div>
+            <Div>
+              <Text>Email: </Text>
+              <Content>{userEmail} </Content>
+            </Div>
 
-          <Div>
-            <Text>Street: </Text>
-            <Content>{userStreet} </Content>
-          </Div>
+            <Div>
+              <Text>Street: </Text>
+              <Content>{userStreet} </Content>
+            </Div>
 
-          <Div>
-            <Text>PostCode: </Text>
-            <Content>{userPostcode} </Content>
-          </Div>
+            <Div>
+              <Text>PostCode: </Text>
+              <Content>{userPostcode} </Content>
+            </Div>
 
-          <Div>
-            <Text>City: </Text>
-            <Content>{userCity} </Content>
-          </Div>
+            <Div>
+              <Text>City: </Text>
+              <Content>{userCity} </Content>
+            </Div>
 
-          <Div>
-            <Text>Phone: </Text>
-            <Content>{userTelephone} </Content>
-          </Div>
-        </Profile>
+            <Div>
+              <Text>Phone: </Text>
+              <Content>{userTelephone} </Content>
+            </Div>
+          </Profile>
+
+          <UserProfileProducts />
+        </>
       )}
       {!accessToken && history.push('/login')}
 
