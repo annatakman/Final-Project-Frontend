@@ -86,7 +86,9 @@ export const Header = () => {
     <Nav>
       <Hamburger />
 
-      <Link to="/"><Title>FINAL PROJECT</Title></Link>
+      <Link to="/">
+        <Title>FINAL PROJECT</Title>
+      </Link>
 
       <NavList>
         <Link to="/cart">
@@ -96,20 +98,36 @@ export const Header = () => {
         </Link>
 
         <DesktopNav>
-          <Link to="/products"><ListItem>Products</ListItem></Link>
-          <Link to="/market"><ListItem>Market</ListItem></Link>
+          <Link to="/products">
+            <ListItem>Products</ListItem>
+          </Link>
+          <Link to="/market">
+            <ListItem>Market</ListItem>
+          </Link>
+
           {!accessToken && (
             <>
-              <Link to="/login"><ListItem>Log in</ListItem></Link>
-              <Link to="/signup"><ListItem>Sign up</ListItem></Link>
+              <Link to="/login">
+                <ListItem>Log in</ListItem>
+              </Link>
+              <Link to="/signup">
+                <ListItem>Sign up</ListItem>
+              </Link>
             </>
           )}
+
           {accessToken && (
             <>
 
-              <Link to="/sell"><ListItem>List product</ListItem></Link>
-              <Link to="/profilepage"><ListItem>Profile</ListItem></Link>
-              <Link to="/"><ListItem onClick={handleSignOut}>Sign out</ListItem></Link>
+              <Link to="/sell">
+                <ListItem>List product</ListItem>
+              </Link>
+              <Link to="/profilepage">
+                <ListItem>Profile</ListItem>
+              </Link>
+              <Link to="/">
+                <ListItem onClick={handleSignOut}>Sign out</ListItem>
+              </Link>
             </>
           )}
         </DesktopNav>

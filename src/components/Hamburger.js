@@ -113,7 +113,6 @@ const Input = styled.input`
   }
 `
 
-
 export const Hamburger = () => {
   const dispatch = useDispatch()
   const accessToken = useSelector((store) => store.user.login.accessToken)
@@ -131,24 +130,43 @@ export const Hamburger = () => {
         <Span></Span>
 
         <MobileNav>
-          <Link to="/" onClick={menuClick}><Li>Home</Li></Link>
-          <Link to="/cart" onClick={menuClick}><Li>Cart</Li></Link>
-          <Link to="/products" onClick={menuClick}><Li>Products</Li></Link>
-          <Link to="/market" onClick={menuClick}><Li>Market</Li></Link>
+          <Link to="/" onClick={menuClick}>
+            <Li>Home</Li>
+          </Link>
+          <Link to="/cart" onClick={menuClick}>
+            <Li>Cart</Li>
+          </Link>
+          <Link to="/products" onClick={menuClick}>
+            <Li>Products</Li>
+          </Link>
+          <Link to="/market" onClick={menuClick}>
+            <Li>Market</Li>
+          </Link>
+
           {!accessToken &&
             <>
-              <Link to="/login" onClick={menuClick}><Li>Log in</Li></Link>
-              <Link to="/signup" onClick={menuClick}><Li>Sign up</Li></Link>
-            </>
-          }
-          {accessToken &&
-            <>
-              <Link to="/sell" onClick={menuClick}><Li>List product</Li></Link>
-              <Link to="/profile" onClick={menuClick}><Li>Profile</Li></Link>
-              <Link to="/" onClick={menuClick}><Li onClick={handleSignOut}>Sign out</Li></Link>
+              <Link to="/login" onClick={menuClick}>
+                <Li>Log in</Li>
+              </Link>
+              <Link to="/signup" onClick={menuClick}>
+                <Li>Sign up</Li>
+              </Link>
             </>
           }
 
+          {accessToken &&
+            <>
+              <Link to="/sell" onClick={menuClick}>
+                <Li>List product</Li>
+              </Link>
+              <Link to="/profile" onClick={menuClick}>
+                <Li>Profile</Li>
+              </Link>
+              <Link to="/" onClick={menuClick}>
+                <Li onClick={handleSignOut}>Sign out</Li>
+              </Link>
+            </>
+          }
         </MobileNav>
       </MenuToggle>
     </nav>
