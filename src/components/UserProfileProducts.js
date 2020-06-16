@@ -10,8 +10,8 @@ const ProductsTitle = styled.h2`
 const ProductsWrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-row-gap: 20px;
-  grid-column-gap: 20px;
+  grid-row-gap: 15px;
+  grid-column-gap: 15px;
   
   @media (min-width: 1025px) {
     width: 60vw;
@@ -22,7 +22,6 @@ const Product = styled.div`
   display: grid;
   width: 150px;
   padding: 5px;
-  margin-bottom: 10px;
   border: 1px solid #d3d3d3;
   background: #fff;
 `
@@ -63,7 +62,7 @@ export const UserProfileProducts = () => {
               <Text>{product.name}</Text>
               <TextSmall>ID: {product._id}</TextSmall>
               <Button
-                title={product.sold ? 'Relist' : 'Mark as sold'}
+                title={product.sold ? 'Re-list' : 'Mark as sold'}
                 background="#1a1a1a"
                 color="#fff"
               />
