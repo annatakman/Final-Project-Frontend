@@ -1,16 +1,21 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
-import { signup } from '../reducers/user'
-import { Link } from "react-router-dom";
+import { signup, user } from '../reducers/user'
+import { Link, useHistory } from "react-router-dom";
 import { Button } from '../components/Button'
 
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8)), url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
   position: relative;
   background-size: cover;
   background-position: center;
@@ -69,7 +74,8 @@ const Text = styled.p`
 
 export const Signup = () => {
   const dispatch = useDispatch()
-  // const accessToken = useSelector((store) => store.user.login.accessToken);
+  const history = useHistory()
+  const accessToken = useSelector((store) => store.user.login.accessToken);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -77,6 +83,7 @@ export const Signup = () => {
   const [postcode, setPostcode] = useState('')
   const [city, setCity] = useState('')
   const [telephone, setTelephone] = useState('')
+  const error = useSelector((store) => store.user.login.errorMessage)
 
   // To sign up a user.
   const handleSignup = (event) => {
@@ -91,8 +98,17 @@ export const Signup = () => {
     setTelephone('')
   }
 
+  useEffect(() => {
+    if (accessToken) {
+      history.push('/')
+    } else {
+      dispatch(user.actions.setErrorMessage(''))
+    }
+  }, [accessToken, history])
+
   return (
     <Section>
+      {error && error.message}
       <Form onSubmit={handleSignup}>
 
         <label htmlFor="name">
