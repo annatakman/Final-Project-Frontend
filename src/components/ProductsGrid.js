@@ -89,7 +89,7 @@ export const ProductsGrid = () => {
             ))}
           </>
         )}
-        {userProducts.length === 0 && <h2>There are no products to display yet.</h2>}
+        {products.length === 0 && <h2>There are no products to display yet.</h2>}
       </Grid>
 
       {products.length === 0 &&

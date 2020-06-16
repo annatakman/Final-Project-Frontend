@@ -25,7 +25,7 @@ const Form = styled.form`
   width: 100%;
   max-width: 400px;
 `
-const Label = styled.span`
+const Label = styled.label`
   color: transparent;
   font-size: 0;
 `
@@ -82,33 +82,33 @@ export const Login = () => {
 
   useEffect(() => {
     if (accessToken) {
-      history.push('/profilepage')
+      history.push('/')
     }
   }, [accessToken, history])
 
   return (
     <Section>
       <Form onSubmit={handleLogin}>
-        <label htmlFor="email">
-          <Label>Email</Label>
+        <Label htmlFor="email">Email
           <Input
+            id="email"
             placeholder="EMAIL"
             required
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
-        </label>
+        </Label>
 
-        <label htmlFor="password">
-          <Label>Password</Label>
+        <Label htmlFor="password">Password
           <Input
+            id="password"
             placeholder="PASSWORD"
             type="password"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
+        </Label>
         <Button type="submit" title="Log in" background="#1a1a1a" color="#fff" />
       </Form>
       <Text>Don't have an account? <Link to="/signup">Sign up</Link></Text>
