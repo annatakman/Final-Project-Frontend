@@ -124,7 +124,7 @@ export const Hamburger = () => {
   return (
     <nav>
       <MenuToggle>
-        <Input type="checkbox" checked={check} onClick={menuClick} />
+        <Input type="checkbox" checked={check} onChange={menuClick} />
         <Span></Span>
         <Span></Span>
         <Span></Span>
@@ -159,7 +159,7 @@ export const Hamburger = () => {
               <Link to="/sell" onClick={menuClick}>
                 <Li>List product</Li>
               </Link>
-              <Link to="/profile" onClick={menuClick}>
+              <Link to="/profilepage" onClick={menuClick}>
                 <Li>Profile</Li>
               </Link>
               <Link to="/" onClick={menuClick}>

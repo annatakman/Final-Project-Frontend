@@ -183,7 +183,7 @@ export const UserUpload = () => {
             onChange={(event) => setDescription(event.target.value)}
           />
         </Label>
-        <Label htmlFor="password">
+        <Label htmlFor="price">
           Price
           <Input
             placeholder="PRICE"
