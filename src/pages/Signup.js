@@ -23,6 +23,9 @@ const Section = styled.section`
   padding: 20px;
   min-height: 80vh;
 `
+const ErrorWrapper = styled.div`
+  height: 20px;
+`
 const Form = styled.form`
   display: grid;
   margin: 10px;
@@ -108,7 +111,7 @@ export const Signup = () => {
 
   return (
     <Section>
-      {error && error.message}
+      <ErrorWrapper>{error && error.message}</ErrorWrapper>
       <Form onSubmit={handleSignup}>
 
         <label htmlFor="name">
