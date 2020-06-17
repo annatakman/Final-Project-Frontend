@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, Route } from 'react-router-dom'
 import { Button } from '../components/Button'
 
+const UserProducts = styled.div`
+  margin: 10px;
+`
 const ProductsTitle = styled.h2`
   font-size: 18px;
 `
@@ -13,23 +16,25 @@ const ProductsWrapper = styled.section`
   grid-row-gap: 15px;
   grid-column-gap: 15px;
   
-  @media (min-width: 1025px) {
-    width: 60vw;
+  /* @media (min-width: 1025px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
+  } */
 `
 const Product = styled.div`
   display: grid;
-  width: 150px;
-  padding: 5px;
-  border: 1px solid #d3d3d3;
+  width: 170px;
+  padding: 10px;
+  /* border: 1px solid #1a1a1a; */
   background: #fff;
 `
 const Img = styled.img`
-  height: 150px;
-  width: 150px;
+  height: 170px;
+  width: 100%;
   object-fit: cover;
-  object-position: 0 30%;
+  object-position: 0 30%; 
+`
+const InfoWrapper = styled.div`
+  padding: 10px;
 `
 const Text = styled.p`
   margin-top: 15px;
@@ -52,20 +57,22 @@ export const UserProfileProducts = () => {
   }
 
   return (
-    <>
+    <UserProducts>
       <ProductsTitle>My listed items ({products.length})</ProductsTitle>
       {products.length > 0 && (
         <ProductsWrapper>
           {products.map((product) => (
             <Product key={product._id}>
               <Img src={product.imageUrl} />
-              <Text>{product.name}</Text>
-              <TextSmall>ID: {product._id}</TextSmall>
-              <Button
-                title={product.sold ? 'Re-list' : 'Mark as sold'}
-                background="#1a1a1a"
-                color="#fff"
-              />
+              <InfoWrapper>
+                <Text>{product.name}</Text>
+                <TextSmall>ID: {product._id}</TextSmall>
+                <Button
+                  title={product.sold ? 'Re-list' : 'Mark as sold'}
+                  background="#1a1a1a"
+                  color="#fff"
+                />
+              </InfoWrapper>
             </Product>
           ))}
         </ProductsWrapper>
@@ -81,6 +88,6 @@ export const UserProfileProducts = () => {
           />
         </>
       )}
-    </>
+    </UserProducts>
   )
 }
