@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/macro'
-import { useHistory } from 'react-router-dom'
 import { edit } from '../reducers/user'
 import { Button } from '../components/Button'
 import { Orders } from '../components/Orders'
-import { user } from '../reducers/user'
-import { Checkout } from './Checkout'
 import { UserProfileProducts } from '../components/UserProfileProducts'
 
 const Section = styled.section`
@@ -72,7 +69,6 @@ const Input = styled.input`
 
 export const ProfilePage = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
   const [name, setName] = useState(
