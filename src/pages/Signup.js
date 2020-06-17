@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 import { signup, user } from '../reducers/user'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom'
 import { Button } from '../components/Button'
 
 const Section = styled.section`
@@ -48,7 +48,7 @@ const Input = styled.input`
     border: 1px solid #1a1a1a;
   }
 
-  ::-webkit-input-placeholder { 
+  ::-webkit-input-placeholder {
     color: #747474;
     font-size: 8px;
   }
@@ -78,7 +78,7 @@ const Text = styled.p`
 export const Signup = () => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const accessToken = useSelector((store) => store.user.login.accessToken);
+  const accessToken = useSelector((store) => store.user.login.accessToken)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -113,7 +113,6 @@ export const Signup = () => {
     <Section>
       <ErrorWrapper>{error && error.message}</ErrorWrapper>
       <Form onSubmit={handleSignup}>
-
         <label htmlFor="name">
           <Label>Name</Label>
           <Input
@@ -178,9 +177,16 @@ export const Signup = () => {
             onChange={(event) => setTelephone(event.target.value)}
           />
         </label>
-        <Button type="submit" title="Sign up" background="#1a1a1a" color="#fff" />
+        <Button
+          type="submit"
+          title="Sign up"
+          background="#1a1a1a"
+          color="#fff"
+        />
       </Form>
-      <Text>Already have an account? <Link to="/login">Log in</Link></Text>
+      <Text>
+        Already have an account? <Link to="/login">Log in</Link>
+      </Text>
     </Section>
   )
 }

@@ -11,7 +11,6 @@ const initialState = {
     postcode: null,
     city: null,
     telephone: null,
-    products: []
   },
 }
 
@@ -55,10 +54,6 @@ export const user = createSlice({
       const { errorMessage } = action.payload
       state.login.errorMessage = errorMessage
     },
-    setProducts: (state, action) => {
-      const { products } = action.payload
-      state.login.products = products
-    },
     logout: () => {
       return initialState
     },
@@ -78,7 +73,6 @@ export const login = (email, password) => {
         if (res.ok) {
           return res.json()
         }
-        //console.log(res)
         throw new Error('Unable to sign in.')
       })
       .then((json) => {
@@ -91,16 +85,9 @@ export const login = (email, password) => {
         dispatch(user.actions.setPostcode({ postcode: json.postcode }))
         dispatch(user.actions.setCity({ city: json.city }))
         dispatch(user.actions.setTelephone({ telephone: json.telephone }))
-        dispatch(user.actions.setProducts({ products: json.products }))
       })
       .catch((err) => {
-        //dispatch(user.actions.setErrorMessage({ errorMessage: err }))
-        dispatch(
-          user.actions.setErrorMessage({
-            errorMessage: { message: 'Unable to sign in' },
-          })
-        )
-        console.log(err)
+        dispatch(user.actions.setErrorMessage({ errorMessage: err }))
       })
   }
 }

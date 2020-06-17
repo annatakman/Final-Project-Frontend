@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../reducers/user'
+import { login, user } from '../reducers/user'
 import { Button } from '../components/Button'
 
 const Section = styled.section`
@@ -30,6 +30,10 @@ const Form = styled.form`
   width: 100%;
   max-width: 400px;
 `
+const ErrorWrapper = styled.div`
+  height: 20px;
+`
+
 const Label = styled.span`
   color: transparent;
   font-size: 0;
@@ -78,7 +82,6 @@ export const Login = () => {
   const history = useHistory()
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const error = useSelector((store) => store.user.login.errorMessage)
-  const user = useSelector((store) => store.user)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -87,22 +90,17 @@ export const Login = () => {
     dispatch(login(email, password))
   }
 
-  console.log(error)
-
   useEffect(() => {
     if (accessToken) {
       history.push('/profilepage')
-      //console.log(user.errorMessage)
+    } else {
+      dispatch(user.actions.setErrorMessage(''))
     }
-  }, [accessToken, history])
-
-  //{`${error}`}
-
-  //{error && error.message}
+  }, [accessToken, history, dispatch])
 
   return (
     <Section>
-      {error && error.message}
+      <ErrorWrapper>{error && error.message}</ErrorWrapper>
       <Form onSubmit={handleLogin}>
         <label htmlFor="email">
           <Label>Email</Label>
