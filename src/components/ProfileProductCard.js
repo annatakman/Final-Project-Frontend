@@ -5,21 +5,21 @@ import { Button } from '../components/Button'
 import { editSold } from '../reducers/user'
 
 const Product = styled.div`
+  position: relative;
   display: grid;
   width: 100%;
   height: 280px;
-  /* padding: 10px; */
   background: #fff;
-  position: relative;
 `
 const Img = styled.img`
-  height: 170px;
   width: 100%;
+  height: 170px;
   object-fit: cover;
   object-position: 0 30%; 
 `
 const InfoWrapper = styled.div`
   display: grid;
+  width: 100%;
   padding: 10px;
 `
 const Text = styled.p`
@@ -42,8 +42,8 @@ const CardOverlay = styled.div`
   justify-content: center;
   transform: translate(-50%, -50%);
   width: 100%;
-  border: 1px solid #1a1a1a;
   height: 280px;
+  border: 1px solid #1a1a1a;
 `
 
 export const ProfileProductCard = ({ productId, product }) => {
