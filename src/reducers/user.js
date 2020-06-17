@@ -200,6 +200,38 @@ export const edit = (
   }
 }
 
+// Thunk to edit user product status
+export const editSold = (
+  accessToken,
+  productId,
+  userId,
+  sold
+) => {
+  const SOLD_URL = `http://localhost:8080/users/${userId}/products/${productId}`
+  return (dispatch) => {
+    fetch(SOLD_URL, {
+      method: 'PUT',
+      body: JSON.stringify({
+        sold
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: accessToken
+      }
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Could not update product.')
+        }
+        return res.json()
+      })
+      .then((json) => {
+        dispatch(user.actions.setProducts({ products: json.userProducts }))
+      })
+  }
+}
+
+
 // // Thunk to logout user
 // export const logout = () => {
 //   return (dispatch) => {
