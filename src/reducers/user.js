@@ -12,6 +12,7 @@ const initialState = {
     city: null,
     telephone: null,
     products: [],
+    orders: [],
   },
 }
 
@@ -59,6 +60,10 @@ export const user = createSlice({
       const { products } = action.payload
       state.login.products = products
     },
+    setOrders: (state, action) => {
+      const { orders } = action.payload
+      state.login.orders = orders
+    },
     logout: () => {
       return initialState
     },
@@ -90,6 +95,7 @@ export const login = (email, password) => {
         dispatch(user.actions.setCity({ city: json.city }))
         dispatch(user.actions.setTelephone({ telephone: json.telephone }))
         dispatch(user.actions.setProducts({ products: json.products }))
+        dispatch(user.actions.setOrders({ orders: json.orderHistory }))
       })
       .catch((err) => {
         dispatch(user.actions.setErrorMessage({ errorMessage: err }))

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/macro'
+import { useHistory } from 'react-router-dom'
 import { edit } from '../reducers/user'
 import { Button } from '../components/Button'
+import { Orders } from '../components/Orders'
 import { user } from '../reducers/user'
 import { Checkout } from './Checkout'
 import { UserProfileProducts } from '../components/UserProfileProducts'
@@ -68,24 +70,9 @@ const Input = styled.input`
   }
 `
 
-const Orders = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const Text = styled.h3`
-  margin-top: 40px;
-  text-transform: uppercase;
-`
-
-const Details = styled.p`
-  font-size: 14px;
-`
-
 export const ProfilePage = () => {
   const dispatch = useDispatch()
-  const [orders, setOrders] = useState([])
+  const history = useHistory()
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
   const [name, setName] = useState(
@@ -115,21 +102,6 @@ export const ProfilePage = () => {
       edit(accessToken, userId, name, email, street, postcode, city, telephone)
     )
   }
-
-  // To get users order history
-  const USERS_URL = `http://localhost:8080/users/${userId}`
-  useEffect(() => {
-    fetch(USERS_URL, {
-      method: 'GET',
-      headers: {
-        Authorization: accessToken,
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        setOrders(json.orderHistory)
-      })
-  }, [accessToken, USERS_URL])
 
   return (
     <Section>
@@ -214,19 +186,8 @@ export const ProfilePage = () => {
         />
       </Form>
 
-      <Orders>
-        {orders && (
-          <div>
-            <Text>Your order history: </Text>
-            {orders.map((order) => (
-              <div key={order._id}>
-                <Details>Order number: {order._id}</Details>
-                <Details> Status: {order.status}</Details>
-              </div>
-            ))}
-          </div>
-        )}
-      </Orders>
+      <Orders />
+
       <UserProfileProducts />
     </Section>
   )

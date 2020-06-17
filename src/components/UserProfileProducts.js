@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, Route } from 'react-router-dom'
 import { Button } from '../components/Button'
 
-const ProductsTitle = styled.h2`
+const ProductsTitle = styled.h3`
+  margin-top: 40px;
   font-size: 18px;
+  text-transform: uppercase;
 `
 const ProductsWrapper = styled.section`
   display: grid;
@@ -32,8 +34,8 @@ const Img = styled.img`
   object-position: 0 30%;
 `
 const Text = styled.p`
-  margin-top: 15px;
-  margin-bottom: 0;
+  margin-top: 7px;
+  margin-bottom: 7px;
   font-size: 12px;
   font-weight: 700;
   text-align: center;
@@ -53,7 +55,7 @@ export const UserProfileProducts = () => {
 
   return (
     <>
-      <ProductsTitle>My listed items ({products.length})</ProductsTitle>
+      <ProductsTitle>Your listed items ({products.length}):</ProductsTitle>
       {products.length > 0 && (
         <ProductsWrapper>
           {products.map((product) => (
