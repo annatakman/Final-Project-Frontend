@@ -159,7 +159,7 @@ export const Hamburger = () => {
               <Link to="/sell" onClick={menuClick}>
                 <Li>List product</Li>
               </Link>
-              <Link to="/profile" onClick={menuClick}>
+              <Link to="/profilepage" onClick={menuClick}>
                 <Li>Profile</Li>
               </Link>
               <Link to="/" onClick={menuClick}>

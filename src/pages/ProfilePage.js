@@ -96,7 +96,7 @@ export const ProfilePage = () => {
     dispatch(edit(accessToken, userId, name, email, street, postcode, city, telephone))
   }
 
-  // // To get users order history
+  // To get users order history
   const USERS_URL = `http://localhost:8080/users/${userId}`
   useEffect(() => {
     fetch(USERS_URL, {
@@ -188,16 +188,16 @@ export const ProfilePage = () => {
           <div>
             <Text>Your order history: </Text>
             {orders.map((order) => (
-              < >
-                <Details key={order._id}>Order number: {order._id}</Details>
+              < div key={order._id} >
+                <Details>Order number: {order._id}</Details>
                 <Details> Status: {order.status}</Details>
-              </>
+              </div>
             ))}
           </div>
         )
         }
       </Orders>
-    </Section>
+    </Section >
   )
 }
 

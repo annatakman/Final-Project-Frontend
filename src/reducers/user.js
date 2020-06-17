@@ -170,13 +170,11 @@ export const edit = (
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error('Could not edit account.')
+          throw new Error('Could not edit profile.')
         }
         return res.json()
       })
       .then((json) => {
-        dispatch(user.actions.setAccessToken({ accessToken: json.user.accessToken }))
-        dispatch(user.actions.setUserId({ userId: json.user.userId }))
         dispatch(user.actions.setName({ name: json.user.name }))
         dispatch(user.actions.setEmail({ email: json.user.email }))
         dispatch(user.actions.setStreet({ street: json.user.street }))
