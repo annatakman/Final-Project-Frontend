@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 import { signup, user } from '../reducers/user'
-=======
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import styled from 'styled-components/macro'
-import { signup } from '../reducers/user'
->>>>>>> Anna_development
 import { Link, useHistory } from "react-router-dom";
 import { Button } from '../components/Button'
 
@@ -85,10 +78,6 @@ const Text = styled.p`
 export const Signup = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-<<<<<<< HEAD
-  const history = useHistory()
-=======
->>>>>>> Anna_development
   const accessToken = useSelector((store) => store.user.login.accessToken);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -115,15 +104,10 @@ export const Signup = () => {
   useEffect(() => {
     if (accessToken) {
       history.push('/')
-<<<<<<< HEAD
     } else {
       dispatch(user.actions.setErrorMessage(''))
     }
   }, [accessToken, history, dispatch])
-=======
-    }
-  }, [accessToken, history])
->>>>>>> Anna_development
 
   return (
     <Section>
