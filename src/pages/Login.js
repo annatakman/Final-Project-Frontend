@@ -30,13 +30,12 @@ const Form = styled.form`
   width: 100%;
   max-width: 400px;
 `
-const ErrorWrapper = styled.div`
-  height: 20px;
-`
-
-const Label = styled.span`
+const Label = styled.label`
   color: transparent;
   font-size: 0;
+`
+const ErrorWrapper = styled.div`
+  height: 20px;
 `
 const Input = styled.input`
   margin: 5px 0 5px 0;
@@ -45,11 +44,9 @@ const Input = styled.input`
   box-sizing: border-box;
   border: 1px solid #fff;
   outline: none;
-
   &:focus {
     border: 1px solid #1a1a1a;
   }
-
   ::-webkit-input-placeholder {
     color: #747474;
     font-size: 8px;
@@ -71,7 +68,6 @@ const Text = styled.p`
   margin-top: 40px;
   font-size: 10px;
   text-transform: uppercase;
-
   a {
     font-weight: 700;
   }
@@ -92,7 +88,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (accessToken) {
-      history.push('/profilepage')
+      history.push('/')
     } else {
       dispatch(user.actions.setErrorMessage(''))
     }
@@ -123,7 +119,7 @@ export const Login = () => {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
+        </Label>
         <Button
           type="submit"
           title="Log in"
@@ -131,7 +127,6 @@ export const Login = () => {
           color="#fff"
         />
       </Form>
-
       <Text>
         Don't have an account? <Link to="/signup">Sign up</Link>
       </Text>
