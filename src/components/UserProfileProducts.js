@@ -12,7 +12,7 @@ const ProductsWrapper = styled.section`
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 15px;
   grid-column-gap: 15px;
-  
+
   @media (min-width: 1025px) {
     width: 60vw;
     grid-template-columns: 1fr 1fr 1fr 1fr;
