@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
-import { useSelector, useDispatch } from 'react-redux'
-import { useHistory, Route } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { Button } from '../components/Button'
+import { ProfileProductCard } from './ProfileProductCard'
 
-const UserProducts = styled.div`
-  margin: 10px;
-`
+const UserProducts = styled.div``
 const ProductsTitle = styled.h2`
   font-size: 18px;
 `
@@ -15,26 +14,12 @@ const ProductsWrapper = styled.section`
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 15px;
   grid-column-gap: 15px;
+  width: 100%;
+  max-width: 400px;
   
   /* @media (min-width: 1025px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   } */
-`
-const Product = styled.div`
-  display: grid;
-  width: 170px;
-  padding: 10px;
-  /* border: 1px solid #1a1a1a; */
-  background: #fff;
-`
-const Img = styled.img`
-  height: 170px;
-  width: 100%;
-  object-fit: cover;
-  object-position: 0 30%; 
-`
-const InfoWrapper = styled.div`
-  padding: 10px;
 `
 const Text = styled.p`
   margin-top: 15px;
@@ -43,15 +28,11 @@ const Text = styled.p`
   font-weight: 700;
   text-align: center;
 `
-const TextSmall = styled(Text)`
-  font-size: 8px;
-  margin-top: 5px;
-`
 
 export const UserProfileProducts = () => {
   const history = useHistory()
   const products = useSelector((store) => store.user.login.products)
-  console.log(products)
+
   const toListing = () => {
     history.push('/sell')
   }
@@ -62,18 +43,11 @@ export const UserProfileProducts = () => {
       {products.length > 0 && (
         <ProductsWrapper>
           {products.map((product) => (
-            <Product key={product._id}>
-              <Img src={product.imageUrl} />
-              <InfoWrapper>
-                <Text>{product.name}</Text>
-                <TextSmall>ID: {product._id}</TextSmall>
-                <Button
-                  title={product.sold ? 'Re-list' : 'Mark as sold'}
-                  background="#1a1a1a"
-                  color="#fff"
-                />
-              </InfoWrapper>
-            </Product>
+            <ProfileProductCard
+              key={product._id}
+              productId={product._id}
+              product={product}
+            />
           ))}
         </ProductsWrapper>
       )}
