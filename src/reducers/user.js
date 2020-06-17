@@ -76,7 +76,6 @@ export const login = (email, password) => {
         throw new Error('Unable to sign in.')
       })
       .then((json) => {
-        console.log(json)
         dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }))
         dispatch(user.actions.setUserId({ userId: json._id }))
         dispatch(user.actions.setName({ name: json.name }))
@@ -140,6 +139,55 @@ export const signup = (
       })
   }
 }
+
+// Thunk to edit profile
+export const edit = (
+  accessToken,
+  userId,
+  name,
+  email,
+  street,
+  postcode,
+  city,
+  telephone
+) => {
+  const EDIT_URL = `http://localhost:8080/users/${userId}`
+  return (dispatch) => {
+    fetch(EDIT_URL, {
+      method: 'PUT',
+      body: JSON.stringify({
+        name,
+        email,
+        street,
+        postcode,
+        city,
+        telephone
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: accessToken
+      }
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Could not edit profile.')
+        }
+        return res.json()
+      })
+      .then((json) => {
+        dispatch(user.actions.setName({ name: json.user.name }))
+        dispatch(user.actions.setEmail({ email: json.user.email }))
+        dispatch(user.actions.setStreet({ street: json.user.street }))
+        dispatch(user.actions.setPostcode({ postcode: json.user.postcode }))
+        dispatch(user.actions.setCity({ city: json.user.city }))
+        dispatch(user.actions.setTelephone({ telephone: json.user.telephone }))
+      })
+      .catch((err) => {
+        dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+      })
+  }
+}
+
 
 // // Thunk to logout user
 // export const logout = () => {

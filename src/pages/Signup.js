@@ -1,8 +1,19 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 import { signup, user } from '../reducers/user'
+<<<<<<< HEAD
 import { Link, useHistory } from 'react-router-dom'
+=======
+=======
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components/macro'
+import { signup } from '../reducers/user'
+>>>>>>> Anna_development
+import { Link, useHistory } from "react-router-dom";
+>>>>>>> a3f8a9aea68018f9e69d7bb9443c14349a92812d
 import { Button } from '../components/Button'
 
 const Section = styled.section`
@@ -32,7 +43,7 @@ const Form = styled.form`
   width: 100%;
   max-width: 400px;
 `
-const Label = styled.span`
+const Label = styled.label`
   color: transparent;
   font-size: 0;
 `
@@ -76,9 +87,17 @@ const Text = styled.p`
 `
 
 export const Signup = () => {
-  const dispatch = useDispatch()
   const history = useHistory()
+  const dispatch = useDispatch()
+<<<<<<< HEAD
+  const history = useHistory()
+<<<<<<< HEAD
   const accessToken = useSelector((store) => store.user.login.accessToken)
+=======
+=======
+>>>>>>> Anna_development
+  const accessToken = useSelector((store) => store.user.login.accessToken);
+>>>>>>> a3f8a9aea68018f9e69d7bb9443c14349a92812d
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -104,78 +123,89 @@ export const Signup = () => {
   useEffect(() => {
     if (accessToken) {
       history.push('/')
+<<<<<<< HEAD
     } else {
       dispatch(user.actions.setErrorMessage(''))
     }
   }, [accessToken, history, dispatch])
+=======
+    }
+  }, [accessToken, history])
+>>>>>>> Anna_development
 
   return (
     <Section>
       <ErrorWrapper>{error && error.message}</ErrorWrapper>
       <Form onSubmit={handleSignup}>
+<<<<<<< HEAD
         <label htmlFor="name">
           <Label>Name</Label>
+=======
+        <Label htmlFor="name">Name
+>>>>>>> a3f8a9aea68018f9e69d7bb9443c14349a92812d
           <Input
+            id="name"
             placeholder="NAME"
             required
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
-        </label>
-        <label htmlFor="email">
-          <Label>Email</Label>
+        </Label>
+        <Label htmlFor="email">Email
           <Input
+            id="email"
             placeholder="EMAIL"
             required
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
-        </label>
-        <label htmlFor="password">
-          <Label>Password</Label>
+        </Label>
+        <Label htmlFor="password">Password
           <Input
+            id="password"
             placeholder="PASSWORD"
             type="password"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
-        <label htmlFor="street">
-          <Label>Street</Label>
+        </Label>
+        <Label htmlFor="street">Street
           <Input
+            id="street"
             placeholder="STREET"
             required
             value={street}
             onChange={(event) => setStreet(event.target.value)}
           />
-        </label>
-        <label htmlFor="postcode">
-          <Label>Postal code</Label>
+        </Label>
+        <Label htmlFor="postcode">Postal code
           <Input
+            id="postcode"
             placeholder="POSTAL CODE"
             required
             value={postcode}
             onChange={(event) => setPostcode(event.target.value)}
           />
-        </label>
-        <label htmlFor="city">
-          <Label>City</Label>
+        </Label>
+        <Label htmlFor="city">City
           <Input
+            id="city"
             placeholder="CITY"
             required
             value={city}
             onChange={(event) => setCity(event.target.value)}
           />
-        </label>
-        <label htmlFor="telephone">
-          <Label>Telephone</Label>
+        </Label>
+        <Label htmlFor="telephone">Telephone
           <Input
+            id="telephone"
             placeholder="TELEPHONE"
             required
             value={telephone}
             onChange={(event) => setTelephone(event.target.value)}
           />
+<<<<<<< HEAD
         </label>
         <Button
           type="submit"
@@ -183,6 +213,10 @@ export const Signup = () => {
           background="#1a1a1a"
           color="#fff"
         />
+=======
+        </Label>
+        <Button type="submit" title="Sign up" background="#1a1a1a" color="#fff" />
+>>>>>>> a3f8a9aea68018f9e69d7bb9443c14349a92812d
       </Form>
       <Text>
         Already have an account? <Link to="/login">Log in</Link>

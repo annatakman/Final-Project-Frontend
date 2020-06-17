@@ -102,19 +102,21 @@ export const Login = () => {
     <Section>
       <ErrorWrapper>{error && error.message}</ErrorWrapper>
       <Form onSubmit={handleLogin}>
-        <label htmlFor="email">
-          <Label>Email</Label>
+        <Label htmlFor="email">
+          Email
           <Input
+            id="email"
             placeholder="EMAIL"
             required
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
-        </label>
+        </Label>
 
-        <label htmlFor="password">
-          <Label>Password</Label>
+        <Label htmlFor="password">
+          Password
           <Input
+            id="password"
             placeholder="PASSWORD"
             type="password"
             required

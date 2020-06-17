@@ -59,6 +59,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
         <Label htmlFor="name">
           Name
           <Input
+            id="name"
             placeholder="NAME"
             required
             value={name}
@@ -69,6 +70,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
         <Label htmlFor="street">
           Street
           <Input
+            id="street"
             placeholder="STREET"
             required
             value={street}
@@ -79,6 +81,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
         <Label htmlFor="postcode">
           Postal code
           <Input
+            id="postcode"
             placeholder="POSTAL CODE"
             required
             value={postcode}
@@ -89,6 +92,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
         <Label htmlFor="city">
           City
           <Input
+            id="city"
             placeholder="CITY"
             required
             value={city}
@@ -99,6 +103,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
         <Label htmlFor="telephone">
           Telephone
           <Input
+            id="telephone"
             placeholder="TELEPHONE"
             required
             value={telephone}
