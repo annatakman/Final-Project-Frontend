@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 import { signup, user } from '../reducers/user'
+=======
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components/macro'
+import { signup } from '../reducers/user'
+>>>>>>> Anna_development
 import { Link, useHistory } from "react-router-dom";
 import { Button } from '../components/Button'
 
@@ -32,7 +39,7 @@ const Form = styled.form`
   width: 100%;
   max-width: 400px;
 `
-const Label = styled.span`
+const Label = styled.label`
   color: transparent;
   font-size: 0;
 `
@@ -76,8 +83,12 @@ const Text = styled.p`
 `
 
 export const Signup = () => {
-  const dispatch = useDispatch()
   const history = useHistory()
+  const dispatch = useDispatch()
+<<<<<<< HEAD
+  const history = useHistory()
+=======
+>>>>>>> Anna_development
   const accessToken = useSelector((store) => store.user.login.accessToken);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -104,80 +115,84 @@ export const Signup = () => {
   useEffect(() => {
     if (accessToken) {
       history.push('/')
+<<<<<<< HEAD
     } else {
       dispatch(user.actions.setErrorMessage(''))
     }
   }, [accessToken, history, dispatch])
+=======
+    }
+  }, [accessToken, history])
+>>>>>>> Anna_development
 
   return (
     <Section>
       <ErrorWrapper>{error && error.message}</ErrorWrapper>
       <Form onSubmit={handleSignup}>
-
-        <label htmlFor="name">
-          <Label>Name</Label>
+        <Label htmlFor="name">Name
           <Input
+            id="name"
             placeholder="NAME"
             required
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
-        </label>
-        <label htmlFor="email">
-          <Label>Email</Label>
+        </Label>
+        <Label htmlFor="email">Email
           <Input
+            id="email"
             placeholder="EMAIL"
             required
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
-        </label>
-        <label htmlFor="password">
-          <Label>Password</Label>
+        </Label>
+        <Label htmlFor="password">Password
           <Input
+            id="password"
             placeholder="PASSWORD"
             type="password"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
-        <label htmlFor="street">
-          <Label>Street</Label>
+        </Label>
+        <Label htmlFor="street">Street
           <Input
+            id="street"
             placeholder="STREET"
             required
             value={street}
             onChange={(event) => setStreet(event.target.value)}
           />
-        </label>
-        <label htmlFor="postcode">
-          <Label>Postal code</Label>
+        </Label>
+        <Label htmlFor="postcode">Postal code
           <Input
+            id="postcode"
             placeholder="POSTAL CODE"
             required
             value={postcode}
             onChange={(event) => setPostcode(event.target.value)}
           />
-        </label>
-        <label htmlFor="city">
-          <Label>City</Label>
+        </Label>
+        <Label htmlFor="city">City
           <Input
+            id="city"
             placeholder="CITY"
             required
             value={city}
             onChange={(event) => setCity(event.target.value)}
           />
-        </label>
-        <label htmlFor="telephone">
-          <Label>Telephone</Label>
+        </Label>
+        <Label htmlFor="telephone">Telephone
           <Input
+            id="telephone"
             placeholder="TELEPHONE"
             required
             value={telephone}
             onChange={(event) => setTelephone(event.target.value)}
           />
-        </label>
+        </Label>
         <Button type="submit" title="Sign up" background="#1a1a1a" color="#fff" />
       </Form>
       <Text>Already have an account? <Link to="/login">Log in</Link></Text>
