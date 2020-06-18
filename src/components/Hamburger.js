@@ -7,8 +7,14 @@ import { user } from '../reducers/user'
 const MenuToggle = styled.div`
   display: block;
   position: fixed;
-  top: 20px;
-  left: 26px;
+  top: 10px;
+  left: 18px;
+  width: 26px;
+  height: 20px;
+  padding-top: 10px;
+  padding-left: 4px;
+  border-radius: 50px;
+  background: rgba(255,255,255, 0.4);
   
   z-index: 2;
   
@@ -36,7 +42,6 @@ const Span = styled.span`
   margin-bottom: 3px;
   border-radius: 1px;
   position: relative;
-  
   background: #1a1a1a;
   
   z-index: 1;
@@ -78,8 +83,8 @@ const Li = styled.li`
 `
 const Input = styled.input`
   display: block;
-  width: 21px;
-  height: 31px;
+  width: 25px;
+  height: 25px;
   position: absolute;
   top: -7px;
   left: -5px;
