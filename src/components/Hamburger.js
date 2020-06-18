@@ -66,11 +66,10 @@ const MobileNav = styled.ul`
   margin: -100px 0 0 -50px;
   padding: 50px 50px 0 50px;
   padding-top: 100px;
-  
   background: #ededed;
+
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
   
   transform-origin: 0% 0%;
   transform: translate(-100%, 0%);
@@ -91,8 +90,8 @@ const Input = styled.input`
 
   cursor: pointer;
 
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  opacity: 0;
+  z-index: 2;
 
   -webkit-touch-callout: none;
 
@@ -125,7 +124,6 @@ export const Hamburger = () => {
   const handleSignOut = () => dispatch(user.actions.logout())
 
   return (
-
     <nav>
       <MenuToggle>
         <Input type="checkbox" checked={check} onChange={menuClick} />
@@ -173,6 +171,5 @@ export const Hamburger = () => {
         </MobileNav>
       </MenuToggle>
     </nav>
-
   )
 }

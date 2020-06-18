@@ -47,8 +47,7 @@ export const UserProfileProducts = () => {
             <ProfileProductCard
               key={product._id}
               productId={product._id}
-              product={product}
-            />
+              product={product} />
           ))}
         </ProductsWrapper>
       )}
@@ -59,8 +58,7 @@ export const UserProfileProducts = () => {
             onClick={toListing}
             title="List product"
             background="#1a1a1a"
-            color="#fff"
-          />
+            color="#fff" />
         </>
       )}
     </UserProducts>

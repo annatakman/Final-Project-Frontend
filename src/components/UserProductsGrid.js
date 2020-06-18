@@ -93,9 +93,10 @@ export const UserProductsGrid = () => {
         <Radio setState={setSort} state={sort} value="high" text="€ high to low" />
         <Radio setState={setSort} state={sort} value="low" text="€ low to high" />
       </SortOptions>
-      <Grid>
-        {products.length > 0 && (
-          <>
+
+      {products.length > 0 &&
+        <>
+          <Grid>
             {products.map((product) => (
               <ProductCard
                 key={product._id}
@@ -104,12 +105,16 @@ export const UserProductsGrid = () => {
                 name={product.name}
                 price={product.price}
                 sold={product.sold}
-                email={product.seller.email}
-              />
+                email={product.seller.email} />
             ))}
-          </>
-        )}
-      </Grid>
+          </Grid>
+          <Pagination
+            page={page}
+            totalPages={totalPages}
+            back={previousPage}
+            next={nextPage} />
+        </>
+      }
 
       {products.length === 0 &&
         <EmptyWrapper>
@@ -119,16 +124,9 @@ export const UserProductsGrid = () => {
             onClick={toListing}
             title="List product"
             background="#1a1a1a"
-            color="#fff"
-          />
+            color="#fff" />
         </EmptyWrapper>
       }
-
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        back={previousPage}
-        next={nextPage} />
 
     </FeaturedContainer>
   )

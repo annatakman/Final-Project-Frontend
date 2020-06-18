@@ -9,8 +9,8 @@ const Section = styled.section`
 `
 const Form = styled.div`
   display: grid;
-  margin: 10px;
   width: 100%;
+  margin: 10px;
 
   @media (min-width: 1025px) {
     max-width: 40vw;
@@ -22,9 +22,9 @@ const Label = styled.label`
   text-transform: uppercase;
 `
 const Input = styled.input`
+  width: 100%;
   margin: 5px 0 5px 0;
   padding: 10px 15px;
-  width: 100%;
   box-sizing: border-box;
   border: 1px solid #d3d3d3;
   outline: none;
@@ -63,8 +63,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
             placeholder="NAME"
             required
             value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
+            onChange={(event) => setName(event.target.value)} />
         </Label>
 
         <Label htmlFor="street">
@@ -74,8 +73,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
             placeholder="STREET"
             required
             value={street}
-            onChange={(event) => setStreet(event.target.value)}
-          />
+            onChange={(event) => setStreet(event.target.value)} />
         </Label>
 
         <Label htmlFor="postcode">
@@ -85,8 +83,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
             placeholder="POSTAL CODE"
             required
             value={postcode}
-            onChange={(event) => setPostcode(event.target.value)}
-          />
+            onChange={(event) => setPostcode(event.target.value)} />
         </Label>
 
         <Label htmlFor="city">
@@ -96,8 +93,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
             placeholder="CITY"
             required
             value={city}
-            onChange={(event) => setCity(event.target.value)}
-          />
+            onChange={(event) => setCity(event.target.value)} />
         </Label>
 
         <Label htmlFor="telephone">
@@ -107,8 +103,7 @@ export const ShippingInfo = ({ name, setName, street, setStreet, postcode, setPo
             placeholder="TELEPHONE"
             required
             value={telephone}
-            onChange={(event) => setTelephone(event.target.value)}
-          />
+            onChange={(event) => setTelephone(event.target.value)} />
         </Label>
       </Form>
     </Section>

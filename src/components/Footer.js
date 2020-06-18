@@ -6,9 +6,9 @@ import { faFacebook, faInstagram, faPinterest } from '@fortawesome/free-brands-s
 const FooterWrapper = styled.footer`
   display: flex;
   flex-direction: column;
-  text-align: center;
   padding: 20px;
   background: #d3d3d3;
+  text-align: center;
 
   @media (min-width: 768px) {
     display: flex;

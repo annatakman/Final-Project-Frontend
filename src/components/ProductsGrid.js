@@ -89,10 +89,10 @@ export const ProductsGrid = () => {
         <Radio setState={setSort} state={sort} value="high" text="€ high to low" />
         <Radio setState={setSort} state={sort} value="low" text="€ low to high" />
       </SortOptions>
-      <Grid>
 
-        {products.length > 0 && (
-          <>
+      {products.length > 0 &&
+        <>
+          <Grid>
             {products.map((product) => (
               <ProductCard
                 key={product._id}
@@ -100,13 +100,18 @@ export const ProductsGrid = () => {
                 imageUrl={product.imageUrl}
                 name={product.name}
                 price={product.price}
-                sold={product.sold}
-              />
+                sold={product.sold} />
             ))}
-          </>
-        )}
-        {products.length === 0 && <h2>There are no products to display yet.</h2>}
-      </Grid>
+          </Grid>
+
+          <Pagination
+            page={page}
+            totalPages={totalPages}
+            back={previousPage}
+            next={nextPage} />
+        </>
+      }
+
 
       {products.length === 0 &&
         <EmptyWrapper>
@@ -116,17 +121,10 @@ export const ProductsGrid = () => {
             onClick={toMarket}
             title="To market"
             background="#1a1a1a"
-            color="#fff"
-          />
+            color="#fff" />
         </EmptyWrapper>
       }
 
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        back={previousPage}
-        next={nextPage} />
-
-    </FeaturedContainer>
+    </FeaturedContainer >
   )
 }

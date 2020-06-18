@@ -24,8 +24,7 @@ export const Button = ({ border, background, color, title, onClick, fontSize }) 
     border={border}
     background={background}
     color={color}
-    fontSize={fontSize}
-  >
+    fontSize={fontSize}>
     {title}
   </StyledButton>
 )

@@ -3,7 +3,6 @@ import styled from 'styled-components/macro'
 
 const SortContainer = styled.div`
   display: flex;
-  
   margin: 0 20px 20px 20px;
   padding: 1px 15px;
 `

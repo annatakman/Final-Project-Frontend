@@ -66,10 +66,10 @@ const NavList = styled.ul`
   }
 `
 const ListItem = styled.li`
+  position: relative;
   display: block;
   float: left;
   padding: 0;
-  position: relative;
   font-weight: bold;
 
   @media (min-width: 768px) {
@@ -87,8 +87,8 @@ const DesktopNav = styled.div`
 export const Header = () => {
   const dispatch = useDispatch()
   const accessToken = useSelector((store) => store.user.login.accessToken)
-  const cartItems = useSelector((store) => store.cart.items) //denna la jag till
-  const totalProducts = cartItems.length //denna la jag till
+  const cartItems = useSelector((store) => store.cart.items)
+  const totalProducts = cartItems.length
 
   const handleSignOut = () => {
     dispatch(user.actions.logout())

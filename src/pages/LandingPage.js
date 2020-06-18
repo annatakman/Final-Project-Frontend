@@ -10,23 +10,25 @@ const Container = styled.div`
   }
 `
 const HeroImage = styled.div`
-  background-image: url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
-  height: 80vh;
   position: relative;
+  height: 80vh;
+  background-image: url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
   @media (min-width: 768px) {
     height: 70vh;
   }
 `
 const HeroTextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
   transform: translate(-50%, -50%);
 
   @media (max-width: 1024px) {
@@ -34,8 +36,8 @@ const HeroTextContainer = styled.div`
   }
 
   @media (min-width: 1025px) {
-    align-items: flex-end;
     left: 80%;
+    align-items: flex-end;
   }
 `
 const HeroTitle = styled.h2`

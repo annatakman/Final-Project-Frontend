@@ -33,8 +33,8 @@ const NewRadio = styled.span`
     left: 1px;
     width: 15px;
     height: 15px;
-    font-size: 16px;
     color: #fff;
+    font-size: 16px;
   }
 `
 const HiddenRadio = styled.input`

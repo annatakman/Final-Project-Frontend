@@ -4,9 +4,6 @@ import { useDispatch } from 'react-redux'
 import { cart } from 'reducers/cart'
 import { Button } from '../lib/Button'
 
-//   const item = useSelector((state) =>
-//     state.cart.items.find((e) => e._id === _id)
-
 const Article = styled.section`
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr 0.5fr;

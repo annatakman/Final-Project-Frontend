@@ -54,8 +54,7 @@ export const Orders = () => {
             onClick={toProducts}
             title="All products"
             background="#1a1a1a"
-            color="#fff"
-          />
+            color="#fff" />
         </>
       )}
     </>

@@ -24,7 +24,6 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* justify-content: space-between; */
   padding: 0 20px;
 `
 const Title = styled.h3`
@@ -107,29 +106,27 @@ export const ProductDetails = () => {
           <p>{product.price} €</p>
         </Specification>
         <ButtonWrapper>
-          {!product.sold && (
+          {!product.sold &&
             <>
               {product.createdByAdmin &&
                 <Button
                   onClick={handleAddToCart}
                   title="Add to cart"
                   background="#1a1a1a"
-                  color="#fff"
-                />
+                  color="#fff" />
               }
               {!product.createdByAdmin &&
                 <Button
                   onClick={handleMailTo}
                   title="Contact seller"
                   background="#1a1a1a"
-                  color="#fff"
-                />
+                  color="#fff" />
               }
             </>
-          )}
-          {product.sold && (
+          }
+          {product.sold &&
             <Button title="Sold" border="#d3d3d3" color="#d3d3d3" disabled />
-          )}
+          }
           <Button onClick={toAllProducts} title="Back to all products" />
         </ButtonWrapper>
       </Details>

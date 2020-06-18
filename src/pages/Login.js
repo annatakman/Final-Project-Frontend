@@ -6,22 +6,22 @@ import { login, user } from '../reducers/user'
 import { Button } from '../lib/Button'
 
 const Section = styled.section`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 80vh;
+  padding: 20px;
   background-image: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 0.8)
     ),
     url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
-  position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 20px;
-  min-height: 80vh;
 `
 
 const Form = styled.form`
@@ -44,21 +44,26 @@ const Input = styled.input`
   box-sizing: border-box;
   border: 1px solid #fff;
   outline: none;
+
   &:focus {
     border: 1px solid #1a1a1a;
   }
+
   ::-webkit-input-placeholder {
     color: #747474;
     font-size: 8px;
   }
+
   ::-moz-placeholder {
     color: #747474;
     font-size: 8px;
   }
+
   :-ms-input-placeholder {
     color: #747474;
     font-size: 8px;
   }
+
   :-moz-placeholder {
     color: #747474;
     font-size: 8px;
@@ -68,6 +73,7 @@ const Text = styled.p`
   margin-top: 40px;
   font-size: 10px;
   text-transform: uppercase;
+
   a {
     font-weight: 700;
   }
@@ -105,8 +111,7 @@ export const Login = () => {
             placeholder="EMAIL"
             required
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
+            onChange={(event) => setEmail(event.target.value)} />
         </Label>
 
         <Label htmlFor="password">
@@ -117,15 +122,13 @@ export const Login = () => {
             type="password"
             required
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
+            onChange={(event) => setPassword(event.target.value)} />
         </Label>
         <Button
           type="submit"
           title="Log in"
           background="#1a1a1a"
-          color="#fff"
-        />
+          color="#fff" />
       </Form>
       <Text>
         Don't have an account? <Link to="/signup">Sign up</Link>

@@ -27,15 +27,16 @@ const Details = styled.div`
   }
 `
 const ButtonWrapper = styled.div`
+  position: absolute;
+  top: 75%;
+  left: 50%;
   display: grid;
   grid-template-columns: 180px;
   justify-content: center;
   box-sizing: border-box;
-  transition: 0.5s ease;
   opacity: 0;
-  position: absolute;
-  top: 75%;
-  left: 50%;
+  
+  transition: 0.5s ease;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 
