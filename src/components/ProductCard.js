@@ -28,7 +28,7 @@ const Details = styled.div`
 `
 const ButtonWrapper = styled.div`
   display: grid;
-  grid-template-columns: 150px;
+  grid-template-columns: 180px;
   justify-content: center;
   box-sizing: border-box;
   transition: 0.5s ease;

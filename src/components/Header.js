@@ -123,7 +123,6 @@ export const Header = () => {
 
           {accessToken && (
             <>
-
               <Link to="/sell">
                 <ListItem>List product</ListItem>
               </Link>

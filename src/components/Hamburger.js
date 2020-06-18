@@ -6,11 +6,11 @@ import { user } from '../reducers/user'
 
 const MenuToggle = styled.div`
   display: block;
-  position: relative;
-  top: 2px;
-  left: 0;
+  position: fixed;
+  top: 20px;
+  left: 26px;
   
-  z-index: 1;
+  z-index: 2;
   
   -webkit-user-select: none;
   user-select: none;
@@ -22,7 +22,7 @@ const MenuToggle = styled.div`
   }
 
   a:hover {
-    color: tomato;
+    color: #fb958b;
   }
 
   @media (min-width: 1024px) {
@@ -55,8 +55,8 @@ const Span = styled.span`
   }
 `
 const MobileNav = styled.ul`
-  position: absolute;
-  width: 100vw;
+  position: fixed;
+  width: 150px;
   height: 100vh;
   margin: -100px 0 0 -50px;
   padding: 50px 50px 0 50px;
@@ -120,13 +120,13 @@ export const Hamburger = () => {
   const handleSignOut = () => dispatch(user.actions.logout())
 
   return (
+
     <nav>
       <MenuToggle>
         <Input type="checkbox" checked={check} onChange={menuClick} />
         <Span></Span>
         <Span></Span>
         <Span></Span>
-
         <MobileNav>
           <Link to="/" onClick={menuClick}>
             <Li>Home</Li>
@@ -168,5 +168,6 @@ export const Hamburger = () => {
         </MobileNav>
       </MenuToggle>
     </nav>
+
   )
 }

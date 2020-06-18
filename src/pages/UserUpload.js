@@ -81,6 +81,7 @@ const ImageInput = styled.input`
   ::-webkit-file-upload-button {
     opacity: 0;
   }
+  
   ::before {
     content: 'Select';
     display: inline-block;
