@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, user } from '../reducers/user'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 
 const Section = styled.section`
   display: flex;

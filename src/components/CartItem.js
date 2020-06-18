@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { useDispatch } from 'react-redux'
 import { cart } from 'reducers/cart'
-import { Button } from './Button'
+import { Button } from '../lib/Button'
 
 //   const item = useSelector((state) =>
 //     state.cart.items.find((e) => e._id === _id)

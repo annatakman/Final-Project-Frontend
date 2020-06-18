@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 import { ProfileProductCard } from './ProfileProductCard'
 
 const UserProducts = styled.div``

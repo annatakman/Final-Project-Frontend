@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { Button } from 'components/Button'
+import { Button } from 'lib/Button'
 import { useDispatch } from 'react-redux'
 import { cart } from '../reducers/cart'
 

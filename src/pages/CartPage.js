@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, Route } from 'react-router-dom'
 import { cart, submitOrder } from '../reducers/cart'
 import { CartItem } from '../components/CartItem'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 import { ShippingInfo } from '../components/ShippingInfo'
 //import { Modal } from "react-bootstrap";
 

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { Hamburger } from './Hamburger'
 
-const Nav = styled.nav`
+const HeaderContainer = styled.header`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
@@ -42,6 +42,10 @@ const Title = styled.h1`
   @media (min-width: 1024px) {
     padding-left: 1rem;
     text-align: left;
+  }
+
+  @media (max-width: 370px) {
+    font-size: 12px;
   }
 `
 const NavList = styled.ul`
@@ -88,7 +92,7 @@ export const Header = () => {
   }
 
   return (
-    <Nav>
+    <HeaderContainer>
       <Hamburger />
 
       <Link to="/">
@@ -136,6 +140,6 @@ export const Header = () => {
           )}
         </DesktopNav>
       </NavList>
-    </Nav>
+    </HeaderContainer>
   )
 }

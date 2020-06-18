@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 import { useHistory } from 'react-router-dom'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 
 const OrdersWrapper = styled.div`
   display: flex;

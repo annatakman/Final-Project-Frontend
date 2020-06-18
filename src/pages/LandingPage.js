@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { FeatureGrid } from 'components/FeaturedGrid'
-import { Button } from 'components/Button'
+import { Button } from 'lib/Button'
 import { Link } from 'react-router-dom'
 
 const Container = styled.div`

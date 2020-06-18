@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { useSelector, useDispatch } from 'react-redux'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 import { editSold } from '../reducers/user'
 
 const Product = styled.div`

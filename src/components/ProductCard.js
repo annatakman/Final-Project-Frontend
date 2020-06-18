@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { Link, Route } from 'react-router-dom'
-import { Button } from './Button'
+import { Button } from '../lib/Button'
 import { useDispatch } from 'react-redux'
 import { cart } from '../reducers/cart'
 

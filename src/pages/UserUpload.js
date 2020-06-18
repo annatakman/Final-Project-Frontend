@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/macro'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 import { ShowLoader } from '../components/ShowLoader'
 import { ui } from '../reducers/ui'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

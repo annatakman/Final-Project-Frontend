@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/macro'
 import { edit } from '../reducers/user'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 import { Orders } from '../components/Orders'
 import { UserProfileProducts } from '../components/UserProfileProducts'
 
