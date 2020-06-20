@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { useHistory } from 'react-router-dom'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 
 const ConfirmationWrapper = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 `
 const Confirmation = styled.section`
   display: grid;
@@ -29,13 +29,13 @@ const ButtonWrapper = styled.div`
   grid-template-columns: 100%;
   width: 100%;
 
-@media (min-width: 1025px) {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 20px;
-  margin: 30px auto;
-  width: 40vw;
-}
+  @media (min-width: 1025px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    width: 40vw;
+    margin: 30px auto;
+  }
 `
 
 export const OrderConfirmation = () => {

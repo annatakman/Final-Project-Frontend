@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { Link, Route } from 'react-router-dom'
-import { Button } from './Button'
+import { Button } from '../lib/Button'
 import { useDispatch } from 'react-redux'
 import { cart } from '../reducers/cart'
 
@@ -27,15 +27,16 @@ const Details = styled.div`
   }
 `
 const ButtonWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 150px;
-  justify-content: center;
-  box-sizing: border-box;
-  transition: 0.5s ease;
-  opacity: 0;
   position: absolute;
   top: 75%;
   left: 50%;
+  display: grid;
+  grid-template-columns: 180px;
+  justify-content: center;
+  box-sizing: border-box;
+  opacity: 0;
+  
+  transition: 0.5s ease;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 
@@ -62,7 +63,7 @@ export const ProductCard = ({ _id, imageUrl, name, price, sold, email }) => {
   return (
     <Article key={_id}>
       <Link to={`/products/${_id}`}>
-        <Img src={imageUrl} />
+        <Img src={imageUrl} alt={name} />
         <Details>
           <p>{name}</p>
           <p>{price} €</p>

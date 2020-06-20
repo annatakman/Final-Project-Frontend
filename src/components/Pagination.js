@@ -6,11 +6,11 @@ const Pages = styled.p`
   text-align: center;
 `
 const Arrow = styled.button`
-margin: 0 5px;
-background: none;
-border: none;
-font-size: 18px;
-cursor: pointer;
+  margin: 0 5px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
 `
 
 export const Pagination = ({ page, totalPages, back, next }) => {

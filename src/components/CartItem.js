@@ -2,10 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { useDispatch } from 'react-redux'
 import { cart } from 'reducers/cart'
-import { Button } from './Button'
-
-//   const item = useSelector((state) =>
-//     state.cart.items.find((e) => e._id === _id)
+import { Button } from '../lib/Button'
 
 const Article = styled.section`
   display: grid;

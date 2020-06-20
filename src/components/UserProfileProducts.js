@@ -2,10 +2,9 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 import { ProfileProductCard } from './ProfileProductCard'
 
-const UserProducts = styled.div``
 const ProductsTitle = styled.h3`
   font-size: 18px;
   text-transform: uppercase;
@@ -39,7 +38,7 @@ export const UserProfileProducts = () => {
   }
 
   return (
-    <UserProducts>
+    <>
       <ProductsTitle>Your listed items ({products.length}):</ProductsTitle>
       {products.length > 0 && (
         <ProductsWrapper>
@@ -47,8 +46,7 @@ export const UserProfileProducts = () => {
             <ProfileProductCard
               key={product._id}
               productId={product._id}
-              product={product}
-            />
+              product={product} />
           ))}
         </ProductsWrapper>
       )}
@@ -59,10 +57,9 @@ export const UserProfileProducts = () => {
             onClick={toListing}
             title="List product"
             background="#1a1a1a"
-            color="#fff"
-          />
+            color="#fff" />
         </>
       )}
-    </UserProducts>
+    </>
   )
 }

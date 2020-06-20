@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/macro'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 import { ShowLoader } from '../components/ShowLoader'
 import { ui } from '../reducers/ui'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -51,14 +51,17 @@ const Input = styled.input`
     color: #747474;
     font-size: 10px;
   }
+
   ::-moz-placeholder {
     color: #747474;
     font-size: 10px;
   }
+
   :-ms-input-placeholder {
     color: #747474;
     font-size: 10px;
   }
+
   :-moz-placeholder {
     color: #747474;
     font-size: 10px;
@@ -81,6 +84,7 @@ const ImageInput = styled.input`
   ::-webkit-file-upload-button {
     opacity: 0;
   }
+  
   ::before {
     content: 'Select';
     display: inline-block;
@@ -118,21 +122,21 @@ const Select = styled.div`
   box-sizing: border-box;
 `
 const SelectButton = styled.button`
+  position: relative;
   -webkit-appearance: none;
-  width: 100%;
-  height: 37px;
-  text-align: left;
-  cursor: pointer;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  position: relative;
-  background: #fff;
+  width: 100%;
+  height: 37px;
+  padding: 12px 18px;
   border: 1px solid #1a1a1a;
   border-radius: 0;
-  padding: 12px 18px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
 
   &:focus {
     outline: none;
@@ -143,60 +147,57 @@ const SelectArrow = styled.span`
   transition: transform 0.2s linear;
 `
 const SelectText = styled.div`
+  margin-right: 8px;
+  color: #1a1a1a;
   font-size: 12px;
   line-height: 24px;
-  color: #333;
   text-transform: uppercase;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin-right: 8px;
-  overflow: hidden;
 `
 const List = styled.ul`
-  opacity: ${props => props.open ? 1 : 0};
-  display: ${props => props.open ? 'block' : 'none'};
-  transform: none;
-  list-style: none;
   position: absolute;
+  top: 37px;
+  display: ${props => props.open ? 'block' : 'none'};
   width: 100%;
   height: 350px;
-  top: 37px;
-  border: 1px solid #1a1a1a;
-  border-top: none;
-  border-image: initial;
   margin: 0;
   padding: 10px 0;
   box-sizing: border-box;
+  border: 1px solid #1a1a1a;
+  border-top: none;
   background: #fff;
   font-size: 12px;
+  text-align: justify;
+  opacity: ${props => props.open ? 1 : 0};
+  
+  transform: none;
+  list-style: none;
   overflow: auto; 
-  text-align:justify;
 `
 const SizeList = styled(List)`
 `
 const SubList = styled.ul`
-  transform: none;
-  list-style: none;
   width: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background: #fff;
+  transform: none;
+  list-style: none;
 `
 const ListItem = styled.li`
-  cursor: pointer;
-  background: #fff;
-  padding: 3px;
   margin: 5px 18px;
+  padding: 3px;
   box-sizing: border-box;
+  background: #fff;
+  cursor: pointer;
 
   &:hover {
     color: #fb958b;
   }
 `
 const MainListItem = styled.li`
-  padding: 3px;
   margin: 5px 18px 5px 18px;
+  padding: 3px;
   box-sizing: border-box;
 `
 const ButtonWrapper = styled.div`
@@ -272,7 +273,7 @@ export const UserUpload = () => {
   // To list product for sale, can be moved to thunk if we want to
   const handleListing = (event) => {
     event.preventDefault()
-    dispatch(ui.actions.setLoading(true)) // denna har jag lagt in
+    dispatch(ui.actions.setLoading(true))
     const formData = new FormData()
     formData.append('image', selectedFile)
     formData.append('name', name)
@@ -291,7 +292,7 @@ export const UserUpload = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        dispatch(ui.actions.setLoading(false)) // denna har jag lagt in
+        dispatch(ui.actions.setLoading(false))
         console.log(json)
         setName('')
         setDescription('')
@@ -403,8 +404,7 @@ export const UserUpload = () => {
             id="name"
             onChange={(event) => setName(event.target.value)}
             minLength="3"
-            maxLength="30"
-          />
+            maxLength="30" />
         </Label>
         <Label htmlFor="description">
           Description
@@ -415,8 +415,7 @@ export const UserUpload = () => {
             id="description"
             onChange={(event) => setDescription(event.target.value)}
             minLength="3"
-            maxLength="70"
-          />
+            maxLength="70" />
         </Label>
         <Label htmlFor="price">
           Price €
@@ -427,8 +426,7 @@ export const UserUpload = () => {
             id="price"
             onChange={(event) => setPrice(event.target.value)}
             minLength="1"
-            maxLength="6"
-          />
+            maxLength="6" />
         </Label>
         <Label htmlFor="image">
           Select image
@@ -439,8 +437,7 @@ export const UserUpload = () => {
               type="file"
               id="image"
               onChange={onSelectFile}
-              alt={name}
-            />
+              alt={name} />
           </ImageSelect>
         </Label>
         {preview && <Img src={preview} />}
@@ -451,8 +448,7 @@ export const UserUpload = () => {
               type="submit"
               title="List product"
               background="#1a1a1a"
-              color="#fff"
-            />
+              color="#fff" />
           }
           {isLoading && <ShowLoader />}
         </ButtonWrapper>

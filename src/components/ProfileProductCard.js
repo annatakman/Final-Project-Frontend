@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { useSelector, useDispatch } from 'react-redux'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 import { editSold } from '../reducers/user'
 
 const Product = styled.div`
@@ -30,8 +30,8 @@ const Text = styled.p`
   text-align: center;
 `
 const TextSmall = styled(Text)`
-  font-size: 8px;
   margin-top: 5px;
+  font-size: 8px;
 `
 const CardOverlay = styled.div`
   position: absolute;
@@ -40,10 +40,10 @@ const CardOverlay = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  transform: translate(-50%, -50%);
   width: 100%;
   height: 280px;
   border: 1px solid #1a1a1a;
+  transform: translate(-50%, -50%);
 `
 
 export const ProfileProductCard = ({ productId, product }) => {
@@ -58,8 +58,7 @@ export const ProfileProductCard = ({ productId, product }) => {
 
   return (
     <Product>
-
-      <Img src={product.imageUrl} />
+      <Img src={product.imageUrl} alt={product.name} />
       <CardOverlay>
         <InfoWrapper>
           <Text>{product.name}</Text>
@@ -68,8 +67,7 @@ export const ProfileProductCard = ({ productId, product }) => {
             onClick={toggleSold}
             title={product.sold ? 'Re-list' : 'Mark as sold'}
             background="#1a1a1a"
-            color="#fff"
-          />
+            color="#fff" />
         </InfoWrapper>
       </CardOverlay>
     </Product>

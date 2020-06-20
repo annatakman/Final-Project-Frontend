@@ -6,11 +6,17 @@ import { user } from '../reducers/user'
 
 const MenuToggle = styled.div`
   display: block;
-  position: relative;
-  top: 2px;
-  left: 0;
+  position: fixed;
+  top: 10px;
+  left: 18px;
+  width: 26px;
+  height: 20px;
+  padding-top: 10px;
+  padding-left: 4px;
+  border-radius: 50px;
+  background: rgba(255,255,255, 0.4);
   
-  z-index: 1;
+  z-index: 2;
   
   -webkit-user-select: none;
   user-select: none;
@@ -22,7 +28,7 @@ const MenuToggle = styled.div`
   }
 
   a:hover {
-    color: tomato;
+    color: #fb958b;
   }
 
   @media (min-width: 1024px) {
@@ -36,7 +42,6 @@ const Span = styled.span`
   margin-bottom: 3px;
   border-radius: 1px;
   position: relative;
-  
   background: #1a1a1a;
   
   z-index: 1;
@@ -55,17 +60,16 @@ const Span = styled.span`
   }
 `
 const MobileNav = styled.ul`
-  position: absolute;
-  width: 100vw;
+  position: fixed;
+  width: 150px;
   height: 100vh;
   margin: -100px 0 0 -50px;
   padding: 50px 50px 0 50px;
   padding-top: 100px;
-  
   background: #ededed;
+
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
   
   transform-origin: 0% 0%;
   transform: translate(-100%, 0%);
@@ -78,16 +82,16 @@ const Li = styled.li`
 `
 const Input = styled.input`
   display: block;
-  width: 21px;
-  height: 31px;
+  width: 25px;
+  height: 25px;
   position: absolute;
   top: -7px;
   left: -5px;
 
   cursor: pointer;
 
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  opacity: 0;
+  z-index: 2;
 
   -webkit-touch-callout: none;
 
@@ -126,7 +130,6 @@ export const Hamburger = () => {
         <Span></Span>
         <Span></Span>
         <Span></Span>
-
         <MobileNav>
           <Link to="/" onClick={menuClick}>
             <Li>Home</Li>

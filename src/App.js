@@ -64,7 +64,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
 `
-
 const MainContent = styled.div`
   flex: 1;
 `

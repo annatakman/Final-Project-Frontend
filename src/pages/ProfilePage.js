@@ -2,27 +2,27 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/macro'
 import { edit } from '../reducers/user'
-import { Button } from '../components/Button'
+import { Button } from '../lib/Button'
 import { Orders } from '../components/Orders'
 import { UserProfileProducts } from '../components/UserProfileProducts'
 
 const Section = styled.section`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 80vh;
+  padding: 20px;
   background-image: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 0.8)
     ),
     url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
-  position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 20px;
-  min-height: 80vh;
 `
 
 const Title = styled.h1`
@@ -31,36 +31,41 @@ const Title = styled.h1`
 
 const Form = styled.form`
   display: grid;
-  margin: 10px;
   width: 100%;
   max-width: 400px;
+  margin: 10px;
 `
 const Label = styled.label`
   color: transparent;
   font-size: 0;
 `
 const Input = styled.input`
+  width: 100%;
   margin: 5px 0 5px 0;
   padding: 10px 15px;
-  width: 100%;
   box-sizing: border-box;
   border: 1px solid #fff;
   outline: none;
+
   &:focus {
     border: 1px solid #1a1a1a;
   }
+
   ::-webkit-input-placeholder {
     color: #747474;
     font-size: 8px;
   }
+
   ::-moz-placeholder {
     color: #747474;
     font-size: 8px;
   }
+
   :-ms-input-placeholder {
     color: #747474;
     font-size: 8px;
   }
+
   :-moz-placeholder {
     color: #747474;
     font-size: 8px;
@@ -110,8 +115,7 @@ export const ProfilePage = () => {
             placeholder="NAME"
             required
             value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
+            onChange={(event) => setName(event.target.value)} />
         </Label>
         <Label htmlFor="email">
           Email
@@ -120,8 +124,7 @@ export const ProfilePage = () => {
             placeholder="EMAIL"
             required
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
+            onChange={(event) => setEmail(event.target.value)} />
         </Label>
         {/* <Label htmlFor="password">Password
           <Input
@@ -140,8 +143,7 @@ export const ProfilePage = () => {
             placeholder="STREET"
             required
             value={street}
-            onChange={(event) => setStreet(event.target.value)}
-          />
+            onChange={(event) => setStreet(event.target.value)} />
         </Label>
         <Label htmlFor="postcode">
           Postal code
@@ -150,8 +152,7 @@ export const ProfilePage = () => {
             placeholder="POSTAL CODE"
             required
             value={postcode}
-            onChange={(event) => setPostcode(event.target.value)}
-          />
+            onChange={(event) => setPostcode(event.target.value)} />
         </Label>
         <Label htmlFor="city">
           City
@@ -160,8 +161,7 @@ export const ProfilePage = () => {
             placeholder="CITY"
             required
             value={city}
-            onChange={(event) => setCity(event.target.value)}
-          />
+            onChange={(event) => setCity(event.target.value)} />
         </Label>
         <Label htmlFor="telephone">
           Telephone
@@ -170,16 +170,14 @@ export const ProfilePage = () => {
             placeholder="TELEPHONE"
             required
             value={telephone}
-            onChange={(event) => setTelephone(event.target.value)}
-          />
+            onChange={(event) => setTelephone(event.target.value)} />
         </Label>
 
         <Button
           type="submit"
           title="Save changes"
           background="#1a1a1a"
-          color="#fff"
-        />
+          color="#fff" />
       </Form>
 
       <Orders />

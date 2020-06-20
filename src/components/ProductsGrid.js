@@ -1,24 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
 import { useHistory } from 'react-router-dom'
-import { Sort } from './Sort'
+// import { Sort } from './Sort'
 import { ProductCard } from './ProductCard'
 import { Pagination } from './Pagination'
-import { Button } from './Button'
+import { Button } from '../lib/Button'
+import { Radio } from '../lib/Radio'
 
 const FeaturedContainer = styled.section`
   display: flex;
   flex-direction: column;
+  margin: 0 20px 20px 20px;
 `
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 100%;
-  margin: 0 20px 20px 20px;
   grid-row-gap: 20px;
+
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 2%;
   }
+`
+const SortOptions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
 `
 const EmptyWrapper = styled.div`
   display: grid;
@@ -72,11 +83,16 @@ export const ProductsGrid = () => {
 
   return (
     <FeaturedContainer>
-      <Sort onChange={(e) => setSort(e.target.value)} />
-      <Grid>
+      {/* <Sort onChange={(e) => setSort(e.target.value)} /> */}
+      <SortOptions>
+        <Radio setState={setSort} state={sort} value="newest" text="New in" />
+        <Radio setState={setSort} state={sort} value="high" text="€ high to low" />
+        <Radio setState={setSort} state={sort} value="low" text="€ low to high" />
+      </SortOptions>
 
-        {products.length > 0 && (
-          <>
+      {products.length > 0 &&
+        <>
+          <Grid>
             {products.map((product) => (
               <ProductCard
                 key={product._id}
@@ -84,13 +100,18 @@ export const ProductsGrid = () => {
                 imageUrl={product.imageUrl}
                 name={product.name}
                 price={product.price}
-                sold={product.sold}
-              />
+                sold={product.sold} />
             ))}
-          </>
-        )}
-        {products.length === 0 && <h2>There are no products to display yet.</h2>}
-      </Grid>
+          </Grid>
+
+          <Pagination
+            page={page}
+            totalPages={totalPages}
+            back={previousPage}
+            next={nextPage} />
+        </>
+      }
+
 
       {products.length === 0 &&
         <EmptyWrapper>
@@ -100,17 +121,10 @@ export const ProductsGrid = () => {
             onClick={toMarket}
             title="To market"
             background="#1a1a1a"
-            color="#fff"
-          />
+            color="#fff" />
         </EmptyWrapper>
       }
 
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        back={previousPage}
-        next={nextPage} />
-
-    </FeaturedContainer>
+    </FeaturedContainer >
   )
 }
