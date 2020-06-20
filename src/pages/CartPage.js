@@ -82,7 +82,7 @@ export const CartPage = () => {
         <>
           <Cart>
             {cartItems.map((item) => (
-              <CartItem key={item._id} imageUrl={item.imageUrl} name={item.name} price={item.price} />
+              <CartItem key={item._id} _id={item._id} imageUrl={item.imageUrl} name={item.name} price={item.price} />
             ))}
 
             <OrderTotal>Total products: {totalProducts} | Order total: {totalPrice} €</OrderTotal>
