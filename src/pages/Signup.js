@@ -123,11 +123,14 @@ export const Signup = () => {
             placeholder="NAME"
             required
             value={name}
-            onChange={(event) => setName(event.target.value)} />
+            onChange={(event) => setName(event.target.value)}
+            minLength="1"
+            maxLength="40" />
         </Label>
         <Label htmlFor="email">
           Email
           <Input
+            type="email"
             id="email"
             placeholder="EMAIL"
             required
@@ -142,7 +145,8 @@ export const Signup = () => {
             type="password"
             required
             value={password}
-            onChange={(event) => setPassword(event.target.value)} />
+            onChange={(event) => setPassword(event.target.value)}
+            minLength="6" />
         </Label>
         <Label htmlFor="street">
           Street

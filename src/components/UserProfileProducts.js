@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom'
 import { Button } from '../lib/Button'
 import { ProfileProductCard } from './ProfileProductCard'
 
-const UserProducts = styled.div``
 const ProductsTitle = styled.h3`
   font-size: 18px;
   text-transform: uppercase;
@@ -39,7 +38,7 @@ export const UserProfileProducts = () => {
   }
 
   return (
-    <UserProducts>
+    <>
       <ProductsTitle>Your listed items ({products.length}):</ProductsTitle>
       {products.length > 0 && (
         <ProductsWrapper>
@@ -61,6 +60,6 @@ export const UserProfileProducts = () => {
             color="#fff" />
         </>
       )}
-    </UserProducts>
+    </>
   )
 }
