@@ -2,15 +2,20 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../reducers/user'
+import { login, user } from '../reducers/user'
 import { Button } from '../components/Button'
 
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8)), url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url('https://res.cloudinary.com/dciqrlzem/image/upload/v1591728323/products/karina-tess-H14pfhlfr24-unsplash_rn9vow.jpg');
   position: relative;
   background-size: cover;
   background-position: center;
@@ -29,6 +34,9 @@ const Label = styled.label`
   color: transparent;
   font-size: 0;
 `
+const ErrorWrapper = styled.div`
+  height: 20px;
+`
 const Input = styled.input`
   margin: 5px 0 5px 0;
   padding: 10px 15px;
@@ -36,12 +44,10 @@ const Input = styled.input`
   box-sizing: border-box;
   border: 1px solid #fff;
   outline: none;
-
   &:focus {
     border: 1px solid #1a1a1a;
   }
-
-  ::-webkit-input-placeholder { 
+  ::-webkit-input-placeholder {
     color: #747474;
     font-size: 8px;
   }
@@ -62,7 +68,6 @@ const Text = styled.p`
   margin-top: 40px;
   font-size: 10px;
   text-transform: uppercase;
-
   a {
     font-weight: 700;
   }
@@ -72,6 +77,7 @@ export const Login = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const accessToken = useSelector((store) => store.user.login.accessToken)
+  const error = useSelector((store) => store.user.login.errorMessage)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -83,13 +89,17 @@ export const Login = () => {
   useEffect(() => {
     if (accessToken) {
       history.push('/')
+    } else {
+      dispatch(user.actions.setErrorMessage(''))
     }
-  }, [accessToken, history])
+  }, [accessToken, history, dispatch])
 
   return (
     <Section>
+      <ErrorWrapper>{error && error.message}</ErrorWrapper>
       <Form onSubmit={handleLogin}>
-        <Label htmlFor="email">Email
+        <Label htmlFor="email">
+          Email
           <Input
             id="email"
             placeholder="EMAIL"
@@ -99,7 +109,8 @@ export const Login = () => {
           />
         </Label>
 
-        <Label htmlFor="password">Password
+        <Label htmlFor="password">
+          Password
           <Input
             id="password"
             placeholder="PASSWORD"
@@ -109,9 +120,16 @@ export const Login = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </Label>
-        <Button type="submit" title="Log in" background="#1a1a1a" color="#fff" />
+        <Button
+          type="submit"
+          title="Log in"
+          background="#1a1a1a"
+          color="#fff"
+        />
       </Form>
-      <Text>Don't have an account? <Link to="/signup">Sign up</Link></Text>
+      <Text>
+        Don't have an account? <Link to="/signup">Sign up</Link>
+      </Text>
     </Section>
   )
 }

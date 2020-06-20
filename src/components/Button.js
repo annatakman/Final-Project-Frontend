@@ -12,6 +12,10 @@ const StyledButton = styled.button`
   font-size: 16px;
   text-transform: uppercase;
   display: block;
+
+  @media (max-width: 400px) {
+    font-size: 12px;
+  }
 `
 
 export const Button = ({ border, background, color, title, onClick }) => (

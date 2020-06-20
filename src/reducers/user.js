@@ -11,7 +11,8 @@ const initialState = {
     postcode: null,
     city: null,
     telephone: null,
-    products: []
+    products: [],
+    orders: [],
   },
 }
 
@@ -59,6 +60,10 @@ export const user = createSlice({
       const { products } = action.payload
       state.login.products = products
     },
+    setOrders: (state, action) => {
+      const { orders } = action.payload
+      state.login.orders = orders
+    },
     logout: () => {
       return initialState
     },
@@ -90,6 +95,7 @@ export const login = (email, password) => {
         dispatch(user.actions.setCity({ city: json.city }))
         dispatch(user.actions.setTelephone({ telephone: json.telephone }))
         dispatch(user.actions.setProducts({ products: json.products }))
+        dispatch(user.actions.setOrders({ orders: json.orderHistory }))
       })
       .catch((err) => {
         dispatch(user.actions.setErrorMessage({ errorMessage: err }))
@@ -167,12 +173,12 @@ export const edit = (
         street,
         postcode,
         city,
-        telephone
+        telephone,
       }),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: accessToken
-      }
+        Authorization: accessToken,
+      },
     })
       .then((res) => {
         if (!res.ok) {
@@ -190,6 +196,37 @@ export const edit = (
       })
       .catch((err) => {
         dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+      })
+  }
+}
+
+// Thunk to edit user product status
+export const editSold = (
+  accessToken,
+  productId,
+  userId,
+  sold
+) => {
+  const SOLD_URL = `http://localhost:8080/users/${userId}/products/${productId}`
+  return (dispatch) => {
+    fetch(SOLD_URL, {
+      method: 'PUT',
+      body: JSON.stringify({
+        sold
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: accessToken
+      }
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Could not update product.')
+        }
+        return res.json()
+      })
+      .then((json) => {
+        dispatch(user.actions.setProducts({ products: json.userProducts }))
       })
   }
 }
