@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 import { signup, user } from '../reducers/user'
-=======
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import styled from 'styled-components/macro'
-import { signup } from '../reducers/user'
->>>>>>> Anna_development
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom'
 import { Button } from '../components/Button'
 
 const Section = styled.section`
@@ -50,12 +43,10 @@ const Input = styled.input`
   box-sizing: border-box;
   border: 1px solid #fff;
   outline: none;
-
   &:focus {
     border: 1px solid #1a1a1a;
   }
-
-  ::-webkit-input-placeholder { 
+  ::-webkit-input-placeholder {
     color: #747474;
     font-size: 8px;
   }
@@ -76,7 +67,6 @@ const Text = styled.p`
   margin-top: 40px;
   font-size: 10px;
   text-transform: uppercase;
-
   a {
     font-weight: 700;
   }
@@ -85,11 +75,7 @@ const Text = styled.p`
 export const Signup = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-<<<<<<< HEAD
-  const history = useHistory()
-=======
->>>>>>> Anna_development
-  const accessToken = useSelector((store) => store.user.login.accessToken);
+  const accessToken = useSelector((store) => store.user.login.accessToken)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -115,21 +101,17 @@ export const Signup = () => {
   useEffect(() => {
     if (accessToken) {
       history.push('/')
-<<<<<<< HEAD
     } else {
       dispatch(user.actions.setErrorMessage(''))
     }
   }, [accessToken, history, dispatch])
-=======
-    }
-  }, [accessToken, history])
->>>>>>> Anna_development
 
   return (
     <Section>
       <ErrorWrapper>{error && error.message}</ErrorWrapper>
       <Form onSubmit={handleSignup}>
-        <Label htmlFor="name">Name
+        <Label htmlFor="name">
+          Name
           <Input
             id="name"
             placeholder="NAME"
@@ -138,7 +120,8 @@ export const Signup = () => {
             onChange={(event) => setName(event.target.value)}
           />
         </Label>
-        <Label htmlFor="email">Email
+        <Label htmlFor="email">
+          Email
           <Input
             id="email"
             placeholder="EMAIL"
@@ -147,7 +130,8 @@ export const Signup = () => {
             onChange={(event) => setEmail(event.target.value)}
           />
         </Label>
-        <Label htmlFor="password">Password
+        <Label htmlFor="password">
+          Password
           <Input
             id="password"
             placeholder="PASSWORD"
@@ -157,7 +141,8 @@ export const Signup = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </Label>
-        <Label htmlFor="street">Street
+        <Label htmlFor="street">
+          Street
           <Input
             id="street"
             placeholder="STREET"
@@ -166,7 +151,8 @@ export const Signup = () => {
             onChange={(event) => setStreet(event.target.value)}
           />
         </Label>
-        <Label htmlFor="postcode">Postal code
+        <Label htmlFor="postcode">
+          Postal code
           <Input
             id="postcode"
             placeholder="POSTAL CODE"
@@ -175,7 +161,8 @@ export const Signup = () => {
             onChange={(event) => setPostcode(event.target.value)}
           />
         </Label>
-        <Label htmlFor="city">City
+        <Label htmlFor="city">
+          City
           <Input
             id="city"
             placeholder="CITY"
@@ -184,7 +171,8 @@ export const Signup = () => {
             onChange={(event) => setCity(event.target.value)}
           />
         </Label>
-        <Label htmlFor="telephone">Telephone
+        <Label htmlFor="telephone">
+          Telephone
           <Input
             id="telephone"
             placeholder="TELEPHONE"
@@ -193,9 +181,16 @@ export const Signup = () => {
             onChange={(event) => setTelephone(event.target.value)}
           />
         </Label>
-        <Button type="submit" title="Sign up" background="#1a1a1a" color="#fff" />
+        <Button
+          type="submit"
+          title="Sign up"
+          background="#1a1a1a"
+          color="#fff"
+        />
       </Form>
-      <Text>Already have an account? <Link to="/login">Log in</Link></Text>
+      <Text>
+        Already have an account? <Link to="/login">Log in</Link>
+      </Text>
     </Section>
   )
 }
