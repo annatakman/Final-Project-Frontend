@@ -55,7 +55,9 @@ export const ProductsGrid = () => {
     fetch(`https://final-technigo-project.herokuapp.com/products?page=${page}&sort=${sort}&featured=false&featured=true&createdByAdmin=true`)
       .then((res) => res.json())
       .then((json) => {
-        setProducts(json.products)
+        if (json.products) {
+          setProducts(json.products)
+        }
         setPage(json.page)
         setTotalPages(json.total_pages)
       })

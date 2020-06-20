@@ -100,7 +100,7 @@ export const Header = () => {
         <Hamburger />
 
         <Link to="/">
-          <Title>Final Project</Title>
+          <Title>Hippo Clothing</Title>
         </Link>
 
         <NavList>

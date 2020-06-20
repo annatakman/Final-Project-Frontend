@@ -25,7 +25,9 @@ export const FeatureGrid = () => {
     fetch(PRODUCTS_URL)
       .then((res) => res.json())
       .then((json) => {
-        setProducts(json.products)
+        if (json.products) {
+          setProducts(json.products)
+        }
       })
   }, [PRODUCTS_URL])
 
