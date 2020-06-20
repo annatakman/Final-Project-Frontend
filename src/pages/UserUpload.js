@@ -293,7 +293,6 @@ export const UserUpload = () => {
       .then((res) => res.json())
       .then((json) => {
         dispatch(ui.actions.setLoading(false))
-        console.log(json)
         setName('')
         setDescription('')
         setPrice('')
