@@ -54,10 +54,12 @@ export const MarketGrid = () => {
   const [sort, setSort] = useState('newest')
 
   useEffect(() => {
-    fetch(`http://localhost:8080/products?page=${page}&sort=${sort}&featured=true&featured=false&createdByAdmin=false`)
+    fetch(`https://final-technigo-project.herokuapp.com/products?page=${page}&sort=${sort}&featured=true&featured=false&createdByAdmin=false`)
       .then((res) => res.json())
       .then((json) => {
-        setProducts(json.products)
+        if (json.products) {
+          setProducts(json.products)
+        }
         setPage(json.page)
         setTotalPages(json.total_pages)
       })

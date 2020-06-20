@@ -52,7 +52,7 @@ export const ProductsGrid = () => {
   const [sort, setSort] = useState('newest')
 
   useEffect(() => {
-    fetch(`http://localhost:8080/products?page=${page}&sort=${sort}&featured=false&featured=true&createdByAdmin=true`)
+    fetch(`https://final-technigo-project.herokuapp.com/products?page=${page}&sort=${sort}&featured=false&featured=true&createdByAdmin=true`)
       .then((res) => res.json())
       .then((json) => {
         setProducts(json.products)

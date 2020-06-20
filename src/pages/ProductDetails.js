@@ -67,7 +67,7 @@ export const ProductDetails = () => {
   const [imageUrl, setImageURL] = useState('')
   const [name, setName] = useState('')
   const [price, setPrice] = useState()
-  const PRODUCT_URL = `http://localhost:8080/products/${productId}`
+  const PRODUCT_URL = `https://final-technigo-project.herokuapp.com/products/${productId}`
 
   useEffect(() => {
     fetch(PRODUCT_URL)

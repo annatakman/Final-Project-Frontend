@@ -72,7 +72,7 @@ export const user = createSlice({
 
 // Thunk to login user
 export const login = (email, password) => {
-  const LOGIN_URL = 'http://localhost:8080/sessions'
+  const LOGIN_URL = 'https://final-technigo-project.herokuapp.com/sessions'
   return (dispatch) => {
     fetch(LOGIN_URL, {
       method: 'POST',
@@ -113,7 +113,7 @@ export const signup = (
   city,
   telephone
 ) => {
-  const SIGNUP_URL = 'http://localhost:8080/users'
+  const SIGNUP_URL = 'https://final-technigo-project.herokuapp.com/users'
   return (dispatch) => {
     fetch(SIGNUP_URL, {
       method: 'POST',
@@ -163,7 +163,7 @@ export const edit = (
   city,
   telephone
 ) => {
-  const EDIT_URL = `http://localhost:8080/users/${userId}`
+  const EDIT_URL = `https://final-technigo-project.herokuapp.com/users/${userId}`
   return (dispatch) => {
     fetch(EDIT_URL, {
       method: 'PUT',
@@ -207,7 +207,7 @@ export const editSold = (
   userId,
   sold
 ) => {
-  const SOLD_URL = `http://localhost:8080/users/${userId}/products/${productId}`
+  const SOLD_URL = `https://final-technigo-project.herokuapp.com/users/${userId}/products/${productId}`
   return (dispatch) => {
     fetch(SOLD_URL, {
       method: 'PUT',
@@ -230,19 +230,3 @@ export const editSold = (
       })
   }
 }
-
-
-// // Thunk to logout user
-// export const logout = () => {
-//   return (dispatch) => {
-//     dispatch(user.actions.setErrorMessage({ errorMessage: null }));
-//     dispatch(user.actions.setAccessToken({ accessToken: null }));
-//     dispatch(user.actions.setUserId({ userId: 0 }))
-//     dispatch(user.actions.setName({ name: json.user.name }))
-//     dispatch(user.actions.setEmail({ email: json.user.email }))
-//     dispatch(user.actions.setStreet({ street: json.user.street }))
-//     dispatch(user.actions.setPostcode({ postcode: json.user.postcode }))
-//     dispatch(user.actions.setCity({ city: json.user.city }))
-//     dispatch(user.actions.setTelephone({ telephone: json.user.telephone }))
-//   };
-// };

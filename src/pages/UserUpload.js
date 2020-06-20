@@ -240,7 +240,7 @@ export const UserUpload = () => {
   const clothingSizes = ['XS', 'S', 'M', 'L', 'XL']
   const jeansSizes = [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]
   const shoeSizes = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]
-  const LIST_URL = 'http://localhost:8080/products'
+  const LIST_URL = 'https://final-technigo-project.herokuapp.com/products'
 
   useEffect(() => {
     if (!selectedFile) {

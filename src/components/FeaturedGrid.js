@@ -18,7 +18,7 @@ const Grid = styled.div`
 `
 
 export const FeatureGrid = () => {
-  const PRODUCTS_URL = `http://localhost:8080/products?featured=true&createdByAdmin=true`
+  const PRODUCTS_URL = `https://final-technigo-project.herokuapp.com/products?featured=true&createdByAdmin=true`
   const [products, setProducts] = useState([])
 
   useEffect(() => {

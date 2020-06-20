@@ -47,7 +47,7 @@ export const submitOrder = (
   telephone,
   accessToken
 ) => {
-  const SUBMIT_ORDER_URL = 'http://localhost:8080/orders'
+  const SUBMIT_ORDER_URL = 'https://final-technigo-project.herokuapp.com/orders'
   return (dispatch) => {
     fetch(SUBMIT_ORDER_URL, {
       method: 'POST',
