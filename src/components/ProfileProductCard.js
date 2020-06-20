@@ -58,7 +58,7 @@ export const ProfileProductCard = ({ productId, product }) => {
 
   return (
     <Product>
-      <Img src={product.imageUrl} />
+      <Img src={product.imageUrl} alt={product.name} />
       <CardOverlay>
         <InfoWrapper>
           <Text>{product.name}</Text>

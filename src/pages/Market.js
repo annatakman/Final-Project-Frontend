@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { UserProductsGrid } from 'components/UserProductsGrid'
+import { MarketGrid } from 'components/MarketGrid'
 
 const Container = styled.div``
 
 export const Market = () => {
   return (
     <Container>
-      <UserProductsGrid />
+      <MarketGrid />
     </Container>
   )
 }

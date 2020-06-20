@@ -46,7 +46,7 @@ const EmptyState = styled.h2`
   text-align: center;
 `
 
-export const UserProductsGrid = () => {
+export const MarketGrid = () => {
   const history = useHistory()
   const [products, setProducts] = useState([])
   const [page, setPage] = useState(1)

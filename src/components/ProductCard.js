@@ -63,7 +63,7 @@ export const ProductCard = ({ _id, imageUrl, name, price, sold, email }) => {
   return (
     <Article key={_id}>
       <Link to={`/products/${_id}`}>
-        <Img src={imageUrl} />
+        <Img src={imageUrl} alt={name} />
         <Details>
           <p>{name}</p>
           <p>{price} €</p>

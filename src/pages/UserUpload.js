@@ -148,13 +148,10 @@ const SelectArrow = styled.span`
 `
 const SelectText = styled.div`
   margin-right: 8px;
-  color: #d3d3d3;
+  color: #1a1a1a;
   font-size: 12px;
   line-height: 24px;
   text-transform: uppercase;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 `
 const List = styled.ul`
   position: absolute;
