@@ -279,7 +279,7 @@ export const UploadForm = () => {
       method: 'POST',
       body: formData,
       headers: {
-        /* Authorization: accessToken, */
+        Authorization: accessToken,
       },
     })
       .then((res) => res.json())
