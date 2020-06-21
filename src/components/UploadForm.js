@@ -279,7 +279,7 @@ export const UploadForm = () => {
       method: 'POST',
       body: formData,
       headers: {
-        Authorization: accessToken,
+        /* Authorization: accessToken, */
       },
     })
       .then((res) => res.json())
@@ -296,6 +296,10 @@ export const UploadForm = () => {
         setPreview()
         setMessage(json.message)
         dispatch(profile(accessToken, userId))
+      })
+      .catch(() => {
+        dispatch(ui.actions.setLoading(false))
+        setMessage('Could not create product.')
       })
   }
 
