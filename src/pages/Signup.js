@@ -130,9 +130,9 @@ export const Signup = () => {
         <Label htmlFor="email">
           Email
           <Input
-            type="email"
             id="email"
             placeholder="EMAIL"
+            type="email"
             required
             value={email}
             onChange={(event) => setEmail(event.target.value)} />

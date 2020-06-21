@@ -115,13 +115,16 @@ export const ProfilePage = () => {
             placeholder="NAME"
             required
             value={name}
-            onChange={(event) => setName(event.target.value)} />
+            onChange={(event) => setName(event.target.value)}
+            minLength="1"
+            maxLength="40" />
         </Label>
         <Label htmlFor="email">
           Email
           <Input
             id="email"
             placeholder="EMAIL"
+            type="email"
             required
             value={email}
             onChange={(event) => setEmail(event.target.value)} />
