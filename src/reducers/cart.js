@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { profile } from '../reducers/user'
 
 const initialState = {
   items: []
@@ -65,6 +66,9 @@ export const submitOrder = (
         Authorization: accessToken
       }
     })
+      .then(() => {
+        dispatch(profile(accessToken, userId))
+      })
       .then(() => {
         dispatch(cart.actions.clearCart())
       })

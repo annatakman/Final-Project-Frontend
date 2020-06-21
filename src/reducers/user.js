@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { ui } from '../reducers/ui'
 
 const initialState = {
   login: {
@@ -145,6 +146,36 @@ export const signup = (
         dispatch(user.actions.setPostcode({ postcode: json.user.postcode }))
         dispatch(user.actions.setCity({ city: json.user.city }))
         dispatch(user.actions.setTelephone({ telephone: json.user.telephone }))
+      })
+      .catch((err) => {
+        dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+      })
+  }
+}
+
+// Thunk to get profile orders and products
+export const profile = (
+  accessToken,
+  userId
+) => {
+  const PROFILE_URL = `https://final-technigo-project.herokuapp.com/users/${userId}`
+  return (dispatch) => {
+    fetch(PROFILE_URL, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: accessToken,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Could not update profile information.')
+        }
+        return res.json()
+      })
+      .then((json) => {
+        dispatch(user.actions.setProducts({ products: json.products }))
+        dispatch(user.actions.setOrders({ orders: json.orderHistory }))
       })
       .catch((err) => {
         dispatch(user.actions.setErrorMessage({ errorMessage: err }))
