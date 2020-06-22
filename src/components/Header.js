@@ -50,8 +50,8 @@ const Title = styled.h1`
     text-align: left;
   }
 
-  @media (max-width: 370px) {
-    font-size: 12px;
+  @media (max-width: 415px) {
+    font-size: 11px;
   }
 `
 const NavList = styled.ul`
