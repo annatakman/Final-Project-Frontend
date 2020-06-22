@@ -15,6 +15,9 @@ const Section = styled.section`
   margin-bottom: 20px;
   padding: 20px;
 `
+const SubTitle = styled.p`
+  text-align: center;
+`
 
 export const UserUpload = () => {
   const history = useHistory()

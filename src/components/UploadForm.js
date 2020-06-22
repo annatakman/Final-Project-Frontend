@@ -15,6 +15,7 @@ const MessageWrapper = styled.div`
 const Form = styled.form`
   display: grid;
   width: 100%;
+  max-width: 450px;
   margin: 10px;
 
   @media (min-width: 1025px) {

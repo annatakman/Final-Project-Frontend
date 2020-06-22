@@ -33,7 +33,7 @@ const Title = styled.h1`
 const Form = styled.form`
   display: grid;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   margin: 10px;
 `
 const Label = styled.label`
