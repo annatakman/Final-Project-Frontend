@@ -15,7 +15,7 @@ const CartWrapper = styled.section`
 `
 const Cart = styled.section`
   display: grid;
-  
+
   @media (min-width: 1025px) {
     display: flex;
     flex-direction: column;
@@ -32,13 +32,13 @@ const ButtonWrapper = styled.div`
   grid-template-columns: 100%;
   width: 100%;
 
-@media (min-width: 1025px) {
-  display: grid;
-  grid-template-columns: 1fr 1fr /* 1fr */;
-  grid-column-gap: 20px;
-  margin: 30px auto;
-  width: 40vw;
-}
+  @media (min-width: 1025px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr /* 1fr */;
+    grid-column-gap: 20px;
+    margin: 30px auto;
+    width: 40vw;
+  }
 `
 const Text = styled.p`
   margin-top: 50px;
@@ -53,11 +53,21 @@ export const CartPage = () => {
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
   const cartItems = useSelector((store) => store.cart.items)
-  const [name, setName] = useState(useSelector((store) => store.user.login.name))
-  const [street, setStreet] = useState(useSelector((store) => store.user.login.street))
-  const [postcode, setPostcode] = useState(useSelector((store) => store.user.login.postcode))
-  const [city, setCity] = useState(useSelector((store) => store.user.login.city))
-  const [telephone, setTelephone] = useState(useSelector((store) => store.user.login.telephone))
+  const [name, setName] = useState(
+    useSelector((store) => store.user.login.name)
+  )
+  const [street, setStreet] = useState(
+    useSelector((store) => store.user.login.street)
+  )
+  const [postcode, setPostcode] = useState(
+    useSelector((store) => store.user.login.postcode)
+  )
+  const [city, setCity] = useState(
+    useSelector((store) => store.user.login.city)
+  )
+  const [telephone, setTelephone] = useState(
+    useSelector((store) => store.user.login.telephone)
+  )
   const items = cartItems.map((item) => item._id)
   const totalProducts = cartItems.length
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0)
@@ -67,7 +77,18 @@ export const CartPage = () => {
   const toLogin = () => history.push('/login')
   const toProducts = () => history.push('/products')
   const handleSubmit = () => {
-    dispatch(submitOrder(items, userId, name, street, postcode, city, telephone, accessToken))
+    dispatch(
+      submitOrder(
+        items,
+        userId,
+        name,
+        street,
+        postcode,
+        city,
+        telephone,
+        accessToken
+      )
+    )
     history.push('/confirmation')
   }
 
@@ -75,17 +96,24 @@ export const CartPage = () => {
      history.push('/signup')
    } */
 
-
   return (
     <CartWrapper>
       {cartItems.length > 0 && (
         <>
           <Cart>
             {cartItems.map((item) => (
-              <CartItem key={item._id} _id={item._id} imageUrl={item.imageUrl} name={item.name} price={item.price} />
+              <CartItem
+                key={item._id}
+                _id={item._id}
+                imageUrl={item.imageUrl}
+                name={item.name}
+                price={item.price}
+              />
             ))}
 
-            <OrderTotal>Total products: {totalProducts} | Order total: {totalPrice} €</OrderTotal>
+            <OrderTotal>
+              Total products: {totalProducts} | Order total: {totalPrice} €
+            </OrderTotal>
 
             <Route path="/checkout" exact>
               <Text>Ship to</Text>
@@ -99,29 +127,49 @@ export const CartPage = () => {
                 city={city}
                 setCity={setCity}
                 telephone={telephone}
-                setTelephone={setTelephone} />
+                setTelephone={setTelephone}
+              />
             </Route>
           </Cart>
 
           <ButtonWrapper>
-            {accessToken &&
+            {accessToken && (
               <>
                 <Route path="/cart" exact>
-                  <Button title="To checkout" onClick={toCheckout} background="#1a1a1a" color="#fff" />
+                  <Button
+                    title="To checkout"
+                    onClick={toCheckout}
+                    background="#1a1a1a"
+                    color="#fff"
+                  />
                 </Route>
                 <Route path="/checkout" exact>
-                  <Button title="Submit order" onClick={handleSubmit} background="#1a1a1a" color="#fff" />
+                  <Button
+                    title="Submit order"
+                    onClick={handleSubmit}
+                    background="#1a1a1a"
+                    color="#fff"
+                  />
                 </Route>
               </>
-            }
+            )}
 
-            {!accessToken && <Button title="Log in" onClick={toLogin} background="#1a1a1a" color="#fff" />
-            /* (
+            {
+              !accessToken && (
+                <Button
+                  title="Log in"
+                  onClick={toLogin}
+                  background="#1a1a1a"
+                  color="#fff"
+                />
+              )
+              /* (
               <>
               <Button title="Log in" onClick={toLogin} background="#d3d3d3" />
               <Button title="Sign up" onClick={toSignup} background="#1a1a1a" color="#fff" />
             </>
-            ) */}
+            ) */
+            }
 
             <Button title="Clear cart" onClick={clearAll} />
           </ButtonWrapper>

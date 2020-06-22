@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { edit } from '../reducers/user'
 import { Button } from '../lib/Button'
@@ -74,6 +75,7 @@ const Input = styled.input`
 
 export const ProfilePage = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
   const [name, setName] = useState(
@@ -95,6 +97,7 @@ export const ProfilePage = () => {
   const [telephone, setTelephone] = useState(
     useSelector((store) => store.user.login.telephone)
   )
+  const toProducts = () => history.push('/products')
 
   // To edit user profile.
   const handleEdit = (event) => {
@@ -106,30 +109,34 @@ export const ProfilePage = () => {
 
   return (
     <Section>
-      <Title>Edit your profile here</Title>
-      <Form onSubmit={handleEdit}>
-        <Label htmlFor="name">
-          Name
-          <Input
-            id="name"
-            placeholder="NAME"
-            required
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            minLength="1"
-            maxLength="40" />
-        </Label>
-        <Label htmlFor="email">
-          Email
-          <Input
-            id="email"
-            placeholder="EMAIL"
-            type="email"
-            required
-            value={email}
-            onChange={(event) => setEmail(event.target.value)} />
-        </Label>
-        {/* <Label htmlFor="password">Password
+      {accessToken && (
+        <>
+          <Title>Edit your profile here</Title>
+          <Form onSubmit={handleEdit}>
+            <Label htmlFor="name">
+              Name
+              <Input
+                id="name"
+                placeholder="NAME"
+                required
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                minLength="1"
+                maxLength="40"
+              />
+            </Label>
+            <Label htmlFor="email">
+              Email
+              <Input
+                id="email"
+                placeholder="EMAIL"
+                type="email"
+                required
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </Label>
+            {/* <Label htmlFor="password">Password
           <Input
             id="password"
             placeholder="PASSWORD"
@@ -139,53 +146,59 @@ export const ProfilePage = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </Label> */}
-        <Label htmlFor="street">
-          Street
-          <Input
-            id="street"
-            placeholder="STREET"
-            required
-            value={street}
-            onChange={(event) => setStreet(event.target.value)} />
-        </Label>
-        <Label htmlFor="postcode">
-          Postal code
-          <Input
-            id="postcode"
-            placeholder="POSTAL CODE"
-            required
-            value={postcode}
-            onChange={(event) => setPostcode(event.target.value)} />
-        </Label>
-        <Label htmlFor="city">
-          City
-          <Input
-            id="city"
-            placeholder="CITY"
-            required
-            value={city}
-            onChange={(event) => setCity(event.target.value)} />
-        </Label>
-        <Label htmlFor="telephone">
-          Telephone
-          <Input
-            id="telephone"
-            placeholder="TELEPHONE"
-            required
-            value={telephone}
-            onChange={(event) => setTelephone(event.target.value)} />
-        </Label>
+            <Label htmlFor="street">
+              Street
+              <Input
+                id="street"
+                placeholder="STREET"
+                required
+                value={street}
+                onChange={(event) => setStreet(event.target.value)}
+              />
+            </Label>
+            <Label htmlFor="postcode">
+              Postal code
+              <Input
+                id="postcode"
+                placeholder="POSTAL CODE"
+                required
+                value={postcode}
+                onChange={(event) => setPostcode(event.target.value)}
+              />
+            </Label>
+            <Label htmlFor="city">
+              City
+              <Input
+                id="city"
+                placeholder="CITY"
+                required
+                value={city}
+                onChange={(event) => setCity(event.target.value)}
+              />
+            </Label>
+            <Label htmlFor="telephone">
+              Telephone
+              <Input
+                id="telephone"
+                placeholder="TELEPHONE"
+                required
+                value={telephone}
+                onChange={(event) => setTelephone(event.target.value)}
+              />
+            </Label>
 
-        <Button
-          type="submit"
-          title="Save changes"
-          background="#1a1a1a"
-          color="#fff" />
-      </Form>
-
-      <Orders />
-
-      <UserProfileProducts />
+            <Button
+              type="submit"
+              title="Save changes"
+              background="#1a1a1a"
+              color="#fff"
+            />
+          </Form>
+          <Orders />
+          <UserProfileProducts />
+        </>
+      )}
+      {!accessToken && history.push('/')}
     </Section>
   )
 }
