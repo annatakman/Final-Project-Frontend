@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { Button } from '../lib/Button'
 
 const ConfirmationWrapper = styled.section`
@@ -12,7 +13,7 @@ const ConfirmationWrapper = styled.section`
 const Confirmation = styled.section`
   display: grid;
   grid-template-columns: 100%;
-  
+
   @media (min-width: 1025px) {
     width: 40vw;
   }
@@ -40,24 +41,33 @@ const ButtonWrapper = styled.div`
 
 export const OrderConfirmation = () => {
   const history = useHistory()
+  const accessToken = useSelector((store) => store.user.login.accessToken)
   const toProfile = () => history.push('/profilepage')
   const toHome = () => history.push('/')
 
   return (
     <ConfirmationWrapper>
-      <Confirmation>
-        <ConfirmationTitle>Thank you!</ConfirmationTitle>
-        <ConfirmationMessage>
-          Your order will be processed and shipped when payment has been received. Please follow the payment instructions in your confirmation email.
-        </ConfirmationMessage>
-        <ConfirmationMessage>
-          Once your package has been shipped, we will send you an email with tracking details.
-        </ConfirmationMessage>
-        <ButtonWrapper>
-          <Button title="Check order status" onClick={toProfile} />
-          <Button title="Back to homepage" onClick={toHome} />
-        </ButtonWrapper>
-      </Confirmation>
+      {accessToken && (
+        <>
+          <Confirmation>
+            <ConfirmationTitle>Thank you!</ConfirmationTitle>
+            <ConfirmationMessage>
+              Your order will be processed and shipped when payment has been
+              received. Please follow the payment instructions in your
+              confirmation email.
+            </ConfirmationMessage>
+            <ConfirmationMessage>
+              Once your package has been shipped, we will send you an email with
+              tracking details.
+            </ConfirmationMessage>
+            <ButtonWrapper>
+              <Button title="Check order status" onClick={toProfile} />
+              <Button title="Back to homepage" onClick={toHome} />
+            </ButtonWrapper>
+          </Confirmation>
+        </>
+      )}
+      {!accessToken && history.push('/')}
     </ConfirmationWrapper>
   )
 }
