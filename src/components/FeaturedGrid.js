@@ -4,6 +4,8 @@ import { ProductCard } from './ProductCard'
 
 const FeaturedContainer = styled.section`
   display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 const Grid = styled.div`
   display: grid;
@@ -12,8 +14,13 @@ const Grid = styled.div`
   grid-row-gap: 20px;
 
   @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-column-gap: 2%;
+  }
+
+  @media (min-width: 1025px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-width: 1300px;
   }
 `
 
