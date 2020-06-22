@@ -28,7 +28,7 @@ const ErrorWrapper = styled.div`
 `
 const Form = styled.form`
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   display: grid;
   margin: 10px;
 `

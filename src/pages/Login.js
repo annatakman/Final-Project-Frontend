@@ -28,7 +28,7 @@ const Form = styled.form`
   display: grid;
   margin: 10px;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
 `
 const Label = styled.label`
   color: transparent;
