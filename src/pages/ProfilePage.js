@@ -84,7 +84,6 @@ export const ProfilePage = () => {
   const [email, setEmail] = useState(
     useSelector((store) => store.user.login.email)
   )
-  //const [password, setPassword] = useState(useSelector((store) => store.user.login.password))
   const [street, setStreet] = useState(
     useSelector((store) => store.user.login.street)
   )
@@ -97,7 +96,6 @@ export const ProfilePage = () => {
   const [telephone, setTelephone] = useState(
     useSelector((store) => store.user.login.telephone)
   )
-  //const toProducts = () => history.push('/products')
 
   // To edit user profile.
   const handleEdit = (event) => {
@@ -136,16 +134,6 @@ export const ProfilePage = () => {
                 onChange={(event) => setEmail(event.target.value)}
               />
             </Label>
-            {/* <Label htmlFor="password">Password
-          <Input
-            id="password"
-            placeholder="PASSWORD"
-            type="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </Label> */}
             <Label htmlFor="street">
               Street
               <Input
@@ -198,7 +186,7 @@ export const ProfilePage = () => {
           <UserProfileProducts />
         </>
       )}
-      {!accessToken && history.push('/')}
+      {!accessToken && history.push('/login')}
     </Section>
   )
 }

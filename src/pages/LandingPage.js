@@ -25,19 +25,10 @@ const HeroTextContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
   background: #ffffff4d;
-  
   transform: translate(-50%, -50%);
-
- /*  @media (max-width: 1024px) { */
-    width: 100%;
-    height: 100%;
-  /* } */
-
-  /* @media (min-width: 1025px) {
-    left: 80%;
-    align-items: flex-end;
-  } */
 `
 const HeroTitle = styled.h2`
   margin: 10px 0;

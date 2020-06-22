@@ -44,7 +44,7 @@ const Social = styled.div`
   
   @media (min-width: 768px) {
     a {
-    margin-right: 15px;
+      margin-right: 15px;
     }
   }
 `

@@ -11,10 +11,10 @@ const Section = styled.section`
 `
 
 const rotate360 = keyframes`
-  from {
+  from{
     transform: rotate(0deg);
   }
-  to {
+  to{
     transform: rotate(360deg);
   }
 `

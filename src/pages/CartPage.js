@@ -32,9 +32,9 @@ const ButtonWrapper = styled.div`
   grid-template-columns: 100%;
   width: 100%;
 
-  @media (min-width: 1025px) {
+  @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: 1fr 1fr /* 1fr */;
+    grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
     margin: 30px auto;
     width: 40vw;
@@ -91,10 +91,6 @@ export const CartPage = () => {
     )
     history.push('/confirmation')
   }
-
-  /*  const toSignup = () => {
-     history.push('/signup')
-   } */
 
   return (
     <CartWrapper>
@@ -163,12 +159,6 @@ export const CartPage = () => {
                   color="#fff"
                 />
               )
-              /* (
-              <>
-              <Button title="Log in" onClick={toLogin} background="#d3d3d3" />
-              <Button title="Sign up" onClick={toSignup} background="#1a1a1a" color="#fff" />
-            </>
-            ) */
             }
 
             <Button title="Clear cart" onClick={clearAll} />

@@ -42,7 +42,6 @@ const CardOverlay = styled.div`
   justify-content: center;
   width: 100%;
   height: 280px;
-  border: 1px solid #1a1a1a;
   transform: translate(-50%, -50%);
 `
 

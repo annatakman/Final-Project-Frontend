@@ -168,6 +168,7 @@ const List = styled.ul`
   overflow: auto;
 `
 const SizeList = styled(List)``
+
 const SubList = styled.ul`
   width: 100%;
   margin: 0;
@@ -279,7 +280,7 @@ export const UploadForm = () => {
     setSelectedFile(event.target.files[0])
   }
 
-  // To list product for sale, can be moved to thunk if we want to
+  // To list product for sale
   const handleListing = (event) => {
     event.preventDefault()
     dispatch(ui.actions.setLoading(true))

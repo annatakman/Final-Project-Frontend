@@ -38,6 +38,7 @@ export const cart = createSlice({
   }
 })
 
+// Thunk to submit order
 export const submitOrder = (
   items,
   userId,

@@ -12,7 +12,7 @@ const Article = styled.section`
   margin-bottom: 15px;
 
   @media (min-width: 768px) {
-    width: 60vw;
+    width: 50vw;
   } 
 `
 const Image = styled.img`

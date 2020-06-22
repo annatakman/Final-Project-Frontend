@@ -30,14 +30,14 @@ export const UserUpload = () => {
           <h2>
             List a product <FontAwesomeIcon icon={faTag} />
           </h2>
-          <p>
+          <SubTitle>
             Give your wardrobe a second life. Sell what you don't wear to
             someone in our community.
-          </p>
+          </SubTitle>
           <UploadForm />
         </>
       )}
-      {!accessToken && history.push('/')}
+      {!accessToken && history.push('/login')}
     </Section>
   )
 }

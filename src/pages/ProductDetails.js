@@ -9,7 +9,9 @@ const DetailPage = styled.section`
   @media (min-width: 1025px) {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
+    grid-column-gap: 20px;
     padding: 0 20px 20px 20px;
+    box-sizing: border-box;
   }
 `
 const Image = styled.img`
@@ -17,14 +19,17 @@ const Image = styled.img`
 
   @media (min-width: 1025px) {
     height: 90vh;
-    width: auto;
+    width: 50vw;
+    object-fit: cover;
+    object-position: 50% 50%;
   }
 `
 const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 20px;
+  margin: 0 20px;
+  width: 100%;
 `
 const Title = styled.h3`
   margin: 5px 0 2px 0;
@@ -53,8 +58,7 @@ const ButtonWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
-    margin-top: 30px;
-    margin-bottom: 0;
+    margin: 30px 20px 0 0;
   }
 `
 

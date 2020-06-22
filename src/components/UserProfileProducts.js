@@ -16,10 +16,6 @@ const ProductsWrapper = styled.section`
   grid-column-gap: 15px;
   width: 100%;
   max-width: 400px;
-  
-  /* @media (min-width: 1025px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  } */
 `
 const Text = styled.p`
   margin-top: 7px;

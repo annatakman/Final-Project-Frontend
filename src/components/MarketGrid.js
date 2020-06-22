@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { ShowLoader } from '../components/ShowLoader'
 import { ui } from '../reducers/ui'
-// import { Sort } from './Sort'
 import { ProductCard } from './ProductCard'
 import { Pagination } from './Pagination'
 import { Button } from '../lib/Button'
@@ -106,7 +105,6 @@ export const MarketGrid = () => {
     <FeaturedContainer>
       {!isLoading && (
         <>
-          {/* <Sort onChange={(e) => setSort(e.target.value)} /> */}
           <SortOptions>
             <Radio
               setState={setSort}

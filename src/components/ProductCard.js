@@ -22,8 +22,6 @@ const Img = styled.img`
 
   @media (min-width: 1025px) {
     height: 420px;
-    object-fit: cover;
-    object-position: 50% 50%; 
   }
 `
 const Details = styled.div`
