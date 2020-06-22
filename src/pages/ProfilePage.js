@@ -97,7 +97,7 @@ export const ProfilePage = () => {
   const [telephone, setTelephone] = useState(
     useSelector((store) => store.user.login.telephone)
   )
-  const toProducts = () => history.push('/products')
+  //const toProducts = () => history.push('/products')
 
   // To edit user profile.
   const handleEdit = (event) => {
