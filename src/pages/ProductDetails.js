@@ -67,6 +67,7 @@ export const ProductDetails = () => {
   const [imageUrl, setImageURL] = useState('')
   const [name, setName] = useState('')
   const [price, setPrice] = useState()
+  const [sellerName, setSellerName] = useState('')
   const PRODUCT_URL = `https://final-technigo-project.herokuapp.com/products/${productId}`
 
   useEffect(() => {
@@ -78,6 +79,9 @@ export const ProductDetails = () => {
         setImageURL(json.imageUrl)
         setName(json.name)
         setPrice(json.price)
+        if (!json.createdByAdmin) {
+          setSellerName(json.seller.name)
+        }
       })
   }, [PRODUCT_URL])
 
@@ -94,6 +98,7 @@ export const ProductDetails = () => {
   const toAllProducts = () => {
     history.push('/products')
   }
+  console.log(product)
 
   return (
     <DetailPage>
@@ -105,6 +110,7 @@ export const ProductDetails = () => {
           <p>Size: {product.size}</p>
           <p>{product.price} €</p>
         </Specification>
+        {sellerName && <p>Listed by: {product.seller.name}</p>}
         <ButtonWrapper>
           {!product.sold &&
             <>
