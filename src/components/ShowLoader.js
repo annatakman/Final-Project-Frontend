@@ -4,7 +4,10 @@ import styled, { keyframes } from 'styled-components'
 const Section = styled.section`
   display: grid;
   justify-content: center;
-  padding-top: 10px;
+  padding-top: 100px;
+  @media (min-width: 768px) {
+    padding-top: 200px;
+  }
 `
 
 const rotate360 = keyframes`

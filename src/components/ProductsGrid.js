@@ -58,7 +58,9 @@ export const ProductsGrid = () => {
 
   useEffect(() => {
     dispatch(ui.actions.setLoading(true))
-    fetch(`https://final-technigo-project.herokuapp.com/products?page=${page}&sort=${sort}&featured=false&featured=true&createdByAdmin=true`)
+    fetch(
+      `https://final-technigo-project.herokuapp.com/products?page=${page}&sort=${sort}&featured=false&featured=true&createdByAdmin=true`
+    )
       .then((res) => res.json())
       .then((json) => {
         dispatch(ui.actions.setLoading(false))
@@ -92,50 +94,74 @@ export const ProductsGrid = () => {
 
   return (
     <FeaturedContainer>
-      {!isLoading && <>
-        {/* <Sort onChange={(e) => setSort(e.target.value)} /> */}
-        <SortOptions>
-          <Radio setState={setSort} state={sort} value="newest" text="New in" />
-          <Radio setState={setSort} state={sort} value="high" text="€ high to low" />
-          <Radio setState={setSort} state={sort} value="low" text="€ low to high" />
-        </SortOptions>
+      {!isLoading && (
+        <>
+          {/* <Sort onChange={(e) => setSort(e.target.value)} /> */}
+          <SortOptions>
+            <Radio
+              setState={setSort}
+              state={sort}
+              value="newest"
+              text="New in"
+            />
+            <Radio
+              setState={setSort}
+              state={sort}
+              value="high"
+              text="€ high to low"
+            />
+            <Radio
+              setState={setSort}
+              state={sort}
+              value="low"
+              text="€ low to high"
+            />
+          </SortOptions>
 
-        {products.length > 0 &&
-          <>
-            <Grid>
-              {products.map((product) => (
-                <ProductCard
-                  key={product._id}
-                  _id={product._id}
-                  imageUrl={product.imageUrl}
-                  name={product.name}
-                  price={product.price}
-                  sold={product.sold} />
-              ))}
-            </Grid>
+          {products.length > 0 && (
+            <>
+              <Grid>
+                {products.map((product) => (
+                  <ProductCard
+                    key={product._id}
+                    _id={product._id}
+                    imageUrl={product.imageUrl}
+                    name={product.name}
+                    price={product.price}
+                    sold={product.sold}
+                  />
+                ))}
+              </Grid>
 
-            <Pagination
-              page={page}
-              totalPages={totalPages}
-              back={previousPage}
-              next={nextPage} />
-          </>
-        }
+              <Pagination
+                page={page}
+                totalPages={totalPages}
+                back={previousPage}
+                next={nextPage}
+              />
+            </>
+          )}
 
-
-        {products.length === 0 &&
-          <EmptyWrapper>
-            <EmptyState>We have no products for sale at the moment.</EmptyState>
-            <EmptyState>Go to the market page to see what our community has listed for sale.</EmptyState>
-            <Button
-              onClick={toMarket}
-              title="To market"
-              background="#1a1a1a"
-              color="#fff" />
-          </EmptyWrapper>
-        }
-      </>}
+          {products.length === 0 && (
+            <EmptyWrapper>
+              <EmptyState>
+                We have no products for sale at the moment.
+              </EmptyState>
+              <EmptyState>
+                Go to the market page to see what our community has listed for
+                sale.
+              </EmptyState>
+              <Button
+                onClick={toMarket}
+                title="To market"
+                background="#1a1a1a"
+                color="#fff"
+              />
+            </EmptyWrapper>
+          )}
+        </>
+      )}
       {isLoading && <ShowLoader />}
-    </FeaturedContainer >
+    </FeaturedContainer>
   )
 }

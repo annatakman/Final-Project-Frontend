@@ -76,7 +76,7 @@ const ImageInput = styled.input`
   ::-webkit-file-upload-button {
     opacity: 0;
   }
-  
+
   ::before {
     content: 'Select';
     display: inline-block;
@@ -135,7 +135,8 @@ const SelectButton = styled.button`
   }
 `
 const SelectArrow = styled.span`
-  transform: ${props => props.open ? 'rotate(180deg) translateZ(0px)' : 'none'};
+  transform: ${(props) =>
+    props.open ? 'rotate(180deg) translateZ(0px)' : 'none'};
   transition: transform 0.2s linear;
 `
 const SelectText = styled.div`
@@ -148,7 +149,7 @@ const SelectText = styled.div`
 const List = styled.ul`
   position: absolute;
   top: 37px;
-  display: ${props => props.open ? 'block' : 'none'};
+  display: ${(props) => (props.open ? 'block' : 'none')};
   width: 100%;
   height: 350px;
   margin: 0;
@@ -159,14 +160,13 @@ const List = styled.ul`
   background: #fff;
   font-size: 12px;
   text-align: justify;
-  opacity: ${props => props.open ? 1 : 0};
-  
+  opacity: ${(props) => (props.open ? 1 : 0)};
+
   transform: none;
   list-style: none;
-  overflow: auto; 
+  overflow: auto;
 `
-const SizeList = styled(List)`
-`
+const SizeList = styled(List)``
 const SubList = styled.ul`
   width: 100%;
   margin: 0;
@@ -227,10 +227,26 @@ export const UploadForm = () => {
     'Tops',
     'Jeans',
     'Shoes',
-    'Accessories'
+    'Accessories',
   ]
   const clothingSizes = ['XS', 'S', 'M', 'L', 'XL']
-  const jeansSizes = [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]
+  const jeansSizes = [
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+  ]
   const shoeSizes = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]
   const LIST_URL = 'https://final-technigo-project.herokuapp.com/products'
 
@@ -317,11 +333,15 @@ export const UploadForm = () => {
             </SelectButton>
             <List open={categoryOpen}>
               {categories.map((category) => (
-                <ListItem key={category} value={category} onClick={() => {
-                  handleCategoryOpen()
-                  setCategory(category)
-                  setSelectedCategory(category)
-                }}>
+                <ListItem
+                  key={category}
+                  value={category}
+                  onClick={() => {
+                    handleCategoryOpen()
+                    setCategory(category)
+                    setSelectedCategory(category)
+                  }}
+                >
                   {category}
                 </ListItem>
               ))}
@@ -336,57 +356,78 @@ export const UploadForm = () => {
               </SelectArrow>
             </SelectButton>
             <SizeList open={sizeOpen}>
-              <MainListItem>Clothing
+              <MainListItem>
+                Clothing
                 <SubList>
                   {clothingSizes.map((size) => (
-                    <ListItem key={size} value={size} onClick={() => {
-                      handleSizeOpen()
-                      setSize(size)
-                      setSelectedSize(size)
-                    }}>
+                    <ListItem
+                      key={size}
+                      value={size}
+                      onClick={() => {
+                        handleSizeOpen()
+                        setSize(size)
+                        setSelectedSize(size)
+                      }}
+                    >
                       {size}
                     </ListItem>
                   ))}
                 </SubList>
               </MainListItem>
-              <MainListItem>Jeans
+              <MainListItem>
+                Jeans
                 <SubList>
                   {jeansSizes.map((size) => (
-                    <ListItem key={size} value={size} onClick={() => {
-                      handleSizeOpen()
-                      setSize(size)
-                      setSelectedSize(size)
-                    }}>
+                    <ListItem
+                      key={size}
+                      value={size}
+                      onClick={() => {
+                        handleSizeOpen()
+                        setSize(size)
+                        setSelectedSize(size)
+                      }}
+                    >
                       {size}
                     </ListItem>
                   ))}
                 </SubList>
               </MainListItem>
-              <MainListItem>Shoes
+              <MainListItem>
+                Shoes
                 <SubList>
                   {shoeSizes.map((size) => (
-                    <ListItem key={size} value={size} onClick={() => {
-                      handleSizeOpen()
-                      setSize(size)
-                      setSelectedSize(size)
-                    }}>
+                    <ListItem
+                      key={size}
+                      value={size}
+                      onClick={() => {
+                        handleSizeOpen()
+                        setSize(size)
+                        setSelectedSize(size)
+                      }}
+                    >
                       {size}
                     </ListItem>
                   ))}
                 </SubList>
               </MainListItem>
-              <MainListItem>Accessories
+              <MainListItem>
+                Accessories
                 <SubList>
-                  <ListItem key="n/a" value="" onClick={() => {
-                    handleSizeOpen()
-                    setSize('N/A')
-                    setSelectedSize('N/A')
-                  }}>N/A</ListItem>
+                  <ListItem
+                    key="n/a"
+                    value=""
+                    onClick={() => {
+                      handleSizeOpen()
+                      setSize('N/A')
+                      setSelectedSize('N/A')
+                    }}
+                  >
+                    N/A
+                  </ListItem>
                 </SubList>
               </MainListItem>
             </SizeList>
           </Select>
-
         </Selections>
         <Label htmlFor="name">
           Product name
@@ -397,7 +438,8 @@ export const UploadForm = () => {
             id="name"
             onChange={(event) => setName(event.target.value)}
             minLength="3"
-            maxLength="30" />
+            maxLength="30"
+          />
         </Label>
         <Label htmlFor="description">
           Description
@@ -408,7 +450,8 @@ export const UploadForm = () => {
             id="description"
             onChange={(event) => setDescription(event.target.value)}
             minLength="3"
-            maxLength="70" />
+            maxLength="70"
+          />
         </Label>
         <Label htmlFor="price">
           Price €
@@ -419,7 +462,8 @@ export const UploadForm = () => {
             id="price"
             onChange={(event) => setPrice(event.target.value)}
             minLength="1"
-            maxLength="6" />
+            maxLength="6"
+          />
         </Label>
         <Label htmlFor="image">
           Select image
@@ -430,19 +474,21 @@ export const UploadForm = () => {
               type="file"
               id="image"
               onChange={onSelectFile}
-              alt={name} />
+              alt={name}
+            />
           </ImageSelect>
         </Label>
         {preview && <Img src={preview} />}
 
         <ButtonWrapper>
-          {!isLoading &&
+          {!isLoading && (
             <Button
               type="submit"
               title="List product"
               background="#1a1a1a"
-              color="#fff" />
-          }
+              color="#fff"
+            />
+          )}
           {isLoading && <ShowLoader />}
         </ButtonWrapper>
       </Form>
