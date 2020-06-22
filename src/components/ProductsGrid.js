@@ -13,16 +13,24 @@ import { Radio } from '../lib/Radio'
 const FeaturedContainer = styled.section`
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 0 20px 20px 20px;
 `
 const Grid = styled.div`
   display: grid;
+  width: 100%;
   grid-template-columns: 100%;
   grid-row-gap: 20px;
 
   @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2%;
+  }
+
+  @media (min-width: 1025px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 2%;
+    max-width: 1300px;
   }
 `
 const SortOptions = styled.div`
@@ -30,6 +38,8 @@ const SortOptions = styled.div`
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  max-width: 1300px;
+  margin: auto;
   margin-bottom: 20px;
   border-top: 1px solid #1a1a1a;
   border-bottom: 1px solid #1a1a1a;

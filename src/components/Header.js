@@ -8,6 +8,9 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { Hamburger } from './Hamburger'
 
 const HeaderContainer = styled.header`
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
   box-sizing: border-box;
 `
 const Nav = styled.nav`

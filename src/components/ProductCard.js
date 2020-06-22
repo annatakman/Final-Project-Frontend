@@ -8,10 +8,23 @@ import { cart } from '../reducers/cart'
 const Article = styled.article`
   position: relative;
   width: 100%;
+  height: 100%;
   background: #fff;
 `
 const Img = styled.img`
   width: 100%;
+
+  @media (min-width: 768px) {
+    height: 520px;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  @media (min-width: 1025px) {
+    height: 420px;
+    object-fit: cover;
+    object-position: 50% 50%; 
+  }
 `
 const Details = styled.div`
   display: flex;
