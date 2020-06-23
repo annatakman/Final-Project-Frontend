@@ -105,7 +105,10 @@ export const ProductDetails = () => {
   const toAllProducts = () => {
     history.push('/products')
   }
-  console.log(product)
+
+  const toMarket = () => {
+    history.push('/market')
+  }
 
   return (
     <DetailPage>
@@ -140,7 +143,8 @@ export const ProductDetails = () => {
           {product.sold &&
             <Button title="Sold" border="#d3d3d3" color="#d3d3d3" disabled />
           }
-          <Button onClick={toAllProducts} title="Back to all products" />
+          {product.createdByAdmin && <Button onClick={toAllProducts} title="Back to all products" />}
+          {!product.createdByAdmin && <Button onClick={toMarket} title="Back to market" />}
         </ButtonWrapper>
       </Details>
     </DetailPage >
