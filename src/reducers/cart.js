@@ -10,7 +10,6 @@ export const cart = createSlice({
   initialState: initialState,
   reducers: {
     addProduct: (state, action) => {
-      console.log(action)
       const existingProduct = state.items.find(
         (item) => item._id === action.payload._id
       )
