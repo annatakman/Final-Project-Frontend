@@ -6,15 +6,13 @@ const Section = styled.section`
   flex-direction: column;
   align-items:center;
   justify-content: center;
+  width: 100%;
+  max-width: 450px;
 `
 const Form = styled.div`
   display: grid;
   width: 100%;
   margin: 10px;
-
-  @media (min-width: 1025px) {
-    max-width: 40vw;
-  }
 `
 const Label = styled.label`
   margin: 0;
