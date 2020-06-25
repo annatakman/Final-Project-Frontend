@@ -1,19 +1,39 @@
-# Technigo React Starter App
+# Web shop and community market for second hand clothing
 
-This app has been generated using `create-react-app`, then cleaned up a little so we have a project with just the elements we need to get started.
+This was our final project at the Technigo coding bootcamp. We worked in a team of three people and together we built a mock web shop where you can shop used clothing and also sign up and sell your own used clothing online!
 
-Add components in the `src` folder and use them in `src/app.js` to get started.
+## Approach
 
-## Usage
+We started out by making an extensive plan for our project. We went through the flow of the web shop we planned to build, thinking about where we wanted the user to go next on our site and how to make it easy for them to get there. 
 
-1. On GitHub, click the 'use this template' button to create a new repo on your account
-1. Clone the new repo to your computer
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
+Next we decided which endpoints and which Mongoose models we needed in the backend. Our main models are for user, order and product. The product model was from the beginning adapted to allow for both upload of products from us and from the users. Part of the product pictures are uploaded by us directly to Cloudinary and stored there. Part of the pictures are uploaded by users through the site to Cloudinary. 
 
-Alternatively, if you don't want a new git repo on your account;
+Apart from the backend structure we also decided what routes and pages we wanted and how we wanted to use Redux. We use Redux to keep the state associated with the user, such as login, signup, profile page, order history and uploaded products. We also use Redux to keep the state associated with the cart, such as add and remove item, clear cart and submit order. 
 
-1. Download & extract the [latest release](https://github.com/Technigo/react-starter/releases/latest) from GitHub
-1. Open the directory in the terminal: `cd /path/to/react-starter`
-1. Install required dependencies with npm: `npm install`
-1. Start the project: `npm start`
+We started with the design quite late in the project, we already had all the pages in place and the majority of the functionality of the site. We found a couple of great design sketches online and decided to follow one of them when it comes to colors, fonts and buttons, and to add a couple of cool features from another one, such as the background picture on the login- and signup-pages. 
+
+## Learning objectives
+
+The aim of the final project was to build a bigger project that combined all the technologies we had previously used during the bootcamp. 
+
+## Technologies
+
+- Node.js
+- Express
+- Mongo DB
+- Mongoose
+- API
+- React
+- Redux
+- JSX
+- Javascript ES6
+- Styled Components
+
+## View it live
+
+Backend: https://final-technigo-project.herokuapp.com/
+
+Frontend: https://hippo-clothing.netlify.app/
+
+
+// Kajsa, Frida and Anna
