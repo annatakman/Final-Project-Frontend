@@ -16,11 +16,11 @@ const CartWrapper = styled.section`
 const Cart = styled.section`
   display: grid;
 
-  @media (min-width: 1025px) {
+  @media (min-width: 768px) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60vw;
+    width: 450px;
   }
 `
 const OrderTotal = styled.p`
@@ -31,13 +31,13 @@ const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: 100%;
   width: 100%;
+  max-width: 450px;
 
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
     margin: 30px auto;
-    width: 40vw;
   }
 `
 const Text = styled.p`

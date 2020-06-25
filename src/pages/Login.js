@@ -94,7 +94,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (accessToken) {
-      history.push('/')
+      history.goBack()
     } else {
       dispatch(user.actions.setErrorMessage(''))
     }

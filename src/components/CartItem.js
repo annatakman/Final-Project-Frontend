@@ -13,6 +13,7 @@ const Article = styled.section`
 
   @media (min-width: 768px) {
     width: 50vw;
+    max-width: 750px;
   } 
 `
 const Image = styled.img`

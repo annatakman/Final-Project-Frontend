@@ -12,16 +12,19 @@ const DetailPage = styled.section`
     grid-column-gap: 20px;
     padding: 0 20px 20px 20px;
     box-sizing: border-box;
+    max-width: 1300px;
+    margin: auto;
   }
 `
 const Image = styled.img`
   width: 100%;
 
   @media (min-width: 1025px) {
-    height: 90vh;
+    height: 85vh;
     width: 50vw;
+    max-width: 650px;
     object-fit: cover;
-    object-position: 50% 50%;
+    object-position: 50% 20%;
   }
 `
 const Details = styled.div`
