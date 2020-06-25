@@ -23,6 +23,7 @@ import { CartPage } from 'pages/CartPage'
 import { OrderConfirmation } from 'pages/OrderConfirmation'
 import { UserUpload } from 'pages/UserUpload'
 import { Market } from 'pages/Market'
+import { About } from 'pages/About'
 import { ui } from 'reducers/ui'
 
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -118,6 +119,10 @@ export const App = () => {
 
               <Route path="/market">
                 <Market />
+              </Route>
+
+              <Route path="/about">
+                <About />
               </Route>
             </Switch>
           </MainContent>
