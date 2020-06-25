@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons'
 
@@ -53,7 +54,9 @@ export const Footer = () => {
   return (
     <FooterWrapper>
       <FooterSection>
+        <Link to="/about">
         <FooterTitle>About us</FooterTitle>
+        </Link>
         <FooterP>
           This is a fictional webshop. The shop was created for the Technigo Bootcamp's final project.
         </FooterP>
