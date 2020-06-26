@@ -35,5 +35,7 @@ Backend: https://final-technigo-project.herokuapp.com/
 
 Frontend: https://hippo-clothing.netlify.app/
 
+Backend repository: https://github.com/fridamaria/final-project-backend 
+
 
 // Kajsa, Frida and Anna
